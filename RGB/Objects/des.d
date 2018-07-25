@@ -1,0 +1,10 @@
+.\objects\des.o: driverlib\des.c
+.\objects\des.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\des.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\des.o: ..\RGB\inc/hw_des.h
+.\objects\des.o: ..\RGB\inc/hw_ints.h
+.\objects\des.o: ..\RGB\inc/hw_memmap.h
+.\objects\des.o: ..\RGB\inc/hw_types.h
+.\objects\des.o: ..\RGB\driverlib/debug.h
+.\objects\des.o: ..\RGB\driverlib/des.h
+.\objects\des.o: ..\RGB\driverlib/interrupt.h

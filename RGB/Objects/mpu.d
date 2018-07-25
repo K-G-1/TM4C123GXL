@@ -1,0 +1,9 @@
+.\objects\mpu.o: driverlib\mpu.c
+.\objects\mpu.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\mpu.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\mpu.o: ..\RGB\inc/hw_ints.h
+.\objects\mpu.o: ..\RGB\inc/hw_nvic.h
+.\objects\mpu.o: ..\RGB\inc/hw_types.h
+.\objects\mpu.o: ..\RGB\driverlib/debug.h
+.\objects\mpu.o: ..\RGB\driverlib/interrupt.h
+.\objects\mpu.o: ..\RGB\driverlib/mpu.h

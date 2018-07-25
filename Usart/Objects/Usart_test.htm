@@ -1,0 +1,225 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html><head>
+<title>Static Call Graph - [.\Objects\Usart_test.axf]</title></head>
+<body><HR>
+<H1>Static Call Graph for image .\Objects\Usart_test.axf</H1><HR>
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050106: Last Updated: Wed Jul 25 17:35:36 2018
+<BR><P>
+<H3>Maximum Stack Usage =          0 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
+Call chain for Maximum Stack Depth:</H3>
+
+<P>
+<H3>
+Mutually Recursive functions
+</H3> <LI><a href="#[3]">NmiSR</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[3]">NmiSR</a><BR>
+ <LI><a href="#[4]">FaultISR</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[4]">FaultISR</a><BR>
+ <LI><a href="#[5]">IntDefaultHandler</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[5]">IntDefaultHandler</a><BR>
+ <LI><a href="#[17]">SysCtlDelay</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[17]">SysCtlDelay</a><BR>
+</UL>
+<P>
+<H3>
+Function Pointers
+</H3><UL>
+ <LI><a href="#[4]">FaultISR</a> from startup_rvmdk.o(RESET) referenced from startup_rvmdk.o(RESET)
+ <LI><a href="#[5]">IntDefaultHandler</a> from startup_rvmdk.o(RESET) referenced 114 times from startup_rvmdk.o(RESET)
+ <LI><a href="#[3]">NmiSR</a> from startup_rvmdk.o(RESET) referenced from startup_rvmdk.o(RESET)
+ <LI><a href="#[2]">Reset_Handler</a> from startup_rvmdk.o(RESET) referenced from startup_rvmdk.o(RESET)
+</UL>
+<P>
+<H3>
+Global Symbols
+</H3>
+<P><STRONG><a name="[2]"></a>Reset_Handler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_rvmdk.o(RESET))
+<BR><BR>[Calls]<UL><LI><a href="#[6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main
+</UL>
+<BR>[Address Reference Count : 1]<UL><LI> startup_rvmdk.o(RESET)
+</UL>
+<P><STRONG><a name="[6]"></a>__main</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, __main.o(!!!main))
+<BR><BR>[Calls]<UL><LI><a href="#[8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry
+<LI><a href="#[7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
+</UL>
+<BR>[Called By]<UL><LI><a href="#[2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Reset_Handler
+</UL>
+
+<P><STRONG><a name="[7]"></a>__scatterload</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, __scatter.o(!!!scatter))
+<BR><BR>[Called By]<UL><LI><a href="#[6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main
+</UL>
+
+<P><STRONG><a name="[9]"></a>__scatterload_rt2</STRONG> (Thumb, 44 bytes, Stack size 0 bytes, __scatter.o(!!!scatter), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry
+</UL>
+
+<P><STRONG><a name="[f]"></a>__rt_lib_init</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, libinit.o(.ARM.Collect$$libinit$$00000000))
+<BR><BR>[Called By]<UL><LI><a href="#[e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_li
+</UL>
+
+<P><STRONG><a name="[a]"></a>__rt_lib_init_fp_1</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, libinit2.o(.ARM.Collect$$libinit$$00000001))
+<BR><BR>[Calls]<UL><LI><a href="#[b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fp_init
+</UL>
+
+<P><STRONG><a name="[14]"></a>__rt_lib_shutdown</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, libshutdown.o(.ARM.Collect$$libshutdown$$00000000))
+<BR><BR>[Called By]<UL><LI><a href="#[13]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_exit_ls
+</UL>
+
+<P><STRONG><a name="[8]"></a>__rt_entry</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, __rtentry.o(.ARM.Collect$$rtentry$$00000000))
+<BR><BR>[Called By]<UL><LI><a href="#[6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main
+<LI><a href="#[9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload_rt2
+</UL>
+
+<P><STRONG><a name="[c]"></a>__rt_entry_sh</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, __rtentry4.o(.ARM.Collect$$rtentry$$00000004))
+<BR><BR>[Calls]<UL><LI><a href="#[d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__user_setup_stackheap
+</UL>
+
+<P><STRONG><a name="[e]"></a>__rt_entry_li</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000A))
+<BR><BR>[Calls]<UL><LI><a href="#[f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_lib_init
+</UL>
+
+<P><STRONG><a name="[10]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
+<BR><BR>[Calls]<UL><LI><a href="#[11]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[12]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exit
+</UL>
+
+<P><STRONG><a name="[1a]"></a>__rt_exit</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, rtexit.o(.ARM.Collect$$rtexit$$00000000))
+<BR><BR>[Called By]<UL><LI><a href="#[12]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exit
+</UL>
+
+<P><STRONG><a name="[13]"></a>__rt_exit_ls</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, rtexit2.o(.ARM.Collect$$rtexit$$00000003))
+<BR><BR>[Calls]<UL><LI><a href="#[14]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_lib_shutdown
+</UL>
+
+<P><STRONG><a name="[15]"></a>__rt_exit_exit</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, rtexit2.o(.ARM.Collect$$rtexit$$00000004))
+<BR><BR>[Calls]<UL><LI><a href="#[16]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_sys_exit
+</UL>
+
+<P><STRONG><a name="[17]"></a>SysCtlDelay</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, sysctl.o(.emb_text))
+<BR><BR>[Calls]<UL><LI><a href="#[17]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlDelay
+</UL>
+<BR>[Called By]<UL><LI><a href="#[17]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlDelay
+<LI><a href="#[1e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlClockSet
+</UL>
+
+<P><STRONG><a name="[19]"></a>__user_initial_stackheap</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_rvmdk.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__user_setup_stackheap
+</UL>
+
+<P><STRONG><a name="[d]"></a>__user_setup_stackheap</STRONG> (Thumb, 74 bytes, Stack size 0 bytes, sys_stackheap_outer.o(.text))
+<BR><BR>[Calls]<UL><LI><a href="#[19]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__user_initial_stackheap
+<LI><a href="#[18]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__user_perproc_libspace
+</UL>
+<BR>[Called By]<UL><LI><a href="#[c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_sh
+</UL>
+
+<P><STRONG><a name="[12]"></a>exit</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, exit.o(.text))
+<BR><BR>[Calls]<UL><LI><a href="#[1a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_exit
+</UL>
+<BR>[Called By]<UL><LI><a href="#[10]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
+</UL>
+
+<P><STRONG><a name="[18]"></a>__user_perproc_libspace</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, libspace.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__user_setup_stackheap
+</UL>
+
+<P><STRONG><a name="[16]"></a>_sys_exit</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, sys_exit.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[15]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_exit_exit
+</UL>
+
+<P><STRONG><a name="[1c]"></a>GPIODirModeSet</STRONG> (Thumb, 50 bytes, Stack size 0 bytes, gpio.o(i.GPIODirModeSet))
+<BR><BR>[Called By]<UL><LI><a href="#[1b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinTypeUART
+</UL>
+
+<P><STRONG><a name="[1d]"></a>GPIOPadConfigSet</STRONG> (Thumb, 342 bytes, Stack size 0 bytes, gpio.o(i.GPIOPadConfigSet))
+<BR><BR>[Called By]<UL><LI><a href="#[1b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinTypeUART
+</UL>
+
+<P><STRONG><a name="[23]"></a>GPIOPinConfigure</STRONG> (Thumb, 70 bytes, Stack size 0 bytes, gpio.o(i.GPIOPinConfigure))
+<BR><BR>[Called By]<UL><LI><a href="#[11]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[1b]"></a>GPIOPinTypeUART</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, gpio.o(i.GPIOPinTypeUART))
+<BR><BR>[Calls]<UL><LI><a href="#[1d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPadConfigSet
+<LI><a href="#[1c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIODirModeSet
+</UL>
+<BR>[Called By]<UL><LI><a href="#[11]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[24]"></a>SysCtlClockGet</STRONG> (Thumb, 324 bytes, Stack size 0 bytes, sysctl.o(i.SysCtlClockGet))
+<BR><BR>[Called By]<UL><LI><a href="#[11]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[1e]"></a>SysCtlClockSet</STRONG> (Thumb, 280 bytes, Stack size 0 bytes, sysctl.o(i.SysCtlClockSet))
+<BR><BR>[Calls]<UL><LI><a href="#[17]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlDelay
+</UL>
+<BR>[Called By]<UL><LI><a href="#[11]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[22]"></a>SysCtlPeripheralEnable</STRONG> (Thumb, 46 bytes, Stack size 0 bytes, sysctl.o(i.SysCtlPeripheralEnable))
+<BR><BR>[Called By]<UL><LI><a href="#[11]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[26]"></a>UARTCharGet</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, uart.o(i.UARTCharGet))
+<BR><BR>[Called By]<UL><LI><a href="#[11]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[25]"></a>UARTCharPut</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, uart.o(i.UARTCharPut))
+<BR><BR>[Called By]<UL><LI><a href="#[11]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[1f]"></a>UARTConfigSetExpClk</STRONG> (Thumb, 76 bytes, Stack size 0 bytes, uart.o(i.UARTConfigSetExpClk))
+<BR><BR>[Calls]<UL><LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTEnable
+<LI><a href="#[20]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTDisable
+</UL>
+<BR>[Called By]<UL><LI><a href="#[11]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[20]"></a>UARTDisable</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, uart.o(i.UARTDisable))
+<BR><BR>[Called By]<UL><LI><a href="#[1f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTConfigSetExpClk
+</UL>
+
+<P><STRONG><a name="[21]"></a>UARTEnable</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, uart.o(i.UARTEnable))
+<BR><BR>[Called By]<UL><LI><a href="#[1f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTConfigSetExpClk
+</UL>
+
+<P><STRONG><a name="[11]"></a>main</STRONG> (Thumb, 110 bytes, Stack size 0 bytes, uart_polled.o(i.main))
+<BR><BR>[Calls]<UL><LI><a href="#[1b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinTypeUART
+<LI><a href="#[23]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinConfigure
+<LI><a href="#[1f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTConfigSetExpClk
+<LI><a href="#[25]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTCharPut
+<LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTCharGet
+<LI><a href="#[22]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlPeripheralEnable
+<LI><a href="#[1e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlClockSet
+<LI><a href="#[24]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlClockGet
+</UL>
+<BR>[Called By]<UL><LI><a href="#[10]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
+</UL>
+
+<P><STRONG><a name="[b]"></a>_fp_init</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, fpinit.o(x$fpl$fpinit))
+<BR><BR>[Called By]<UL><LI><a href="#[a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_lib_init_fp_1
+</UL>
+<P>
+<H3>
+Local Symbols
+</H3>
+<P><STRONG><a name="[3]"></a>NmiSR</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_rvmdk.o(RESET))
+<BR><BR>[Calls]<UL><LI><a href="#[3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NmiSR
+</UL>
+<BR>[Called By]<UL><LI><a href="#[3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NmiSR
+</UL>
+<BR>[Address Reference Count : 1]<UL><LI> startup_rvmdk.o(RESET)
+</UL>
+<P><STRONG><a name="[4]"></a>FaultISR</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_rvmdk.o(RESET))
+<BR><BR>[Calls]<UL><LI><a href="#[4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FaultISR
+</UL>
+<BR>[Called By]<UL><LI><a href="#[4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FaultISR
+</UL>
+<BR>[Address Reference Count : 1]<UL><LI> startup_rvmdk.o(RESET)
+</UL>
+<P><STRONG><a name="[5]"></a>IntDefaultHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_rvmdk.o(RESET))
+<BR><BR>[Calls]<UL><LI><a href="#[5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IntDefaultHandler
+</UL>
+<BR>[Called By]<UL><LI><a href="#[5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IntDefaultHandler
+</UL>
+<BR>[Address Reference Count : 1]<UL><LI> startup_rvmdk.o(RESET)
+</UL><P>
+<H3>
+Undefined Global Symbols
+</H3><HR></body></html>
