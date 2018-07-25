@@ -1,10 +1,10 @@
 .\objects\des.o: driverlib\des.c
 .\objects\des.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\objects\des.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\des.o: ..\Usart\inc/hw_des.h
-.\objects\des.o: ..\Usart\inc/hw_ints.h
-.\objects\des.o: ..\Usart\inc/hw_memmap.h
-.\objects\des.o: ..\Usart\inc/hw_types.h
-.\objects\des.o: ..\Usart\driverlib/debug.h
-.\objects\des.o: ..\Usart\driverlib/des.h
-.\objects\des.o: ..\Usart\driverlib/interrupt.h
+.\objects\des.o: ..\Buttons\inc/hw_des.h
+.\objects\des.o: ..\Buttons\inc/hw_ints.h
+.\objects\des.o: ..\Buttons\inc/hw_memmap.h
+.\objects\des.o: ..\Buttons\inc/hw_types.h
+.\objects\des.o: ..\Buttons\driverlib/debug.h
+.\objects\des.o: ..\Buttons\driverlib/des.h
+.\objects\des.o: ..\Buttons\driverlib/interrupt.h

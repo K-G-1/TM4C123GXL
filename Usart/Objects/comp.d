@@ -1,10 +1,10 @@
 .\objects\comp.o: driverlib\comp.c
 .\objects\comp.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\objects\comp.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\comp.o: ..\Usart\inc/hw_comp.h
-.\objects\comp.o: ..\Usart\inc/hw_ints.h
-.\objects\comp.o: ..\Usart\inc/hw_memmap.h
-.\objects\comp.o: ..\Usart\inc/hw_types.h
-.\objects\comp.o: ..\Usart\driverlib/comp.h
-.\objects\comp.o: ..\Usart\driverlib/debug.h
-.\objects\comp.o: ..\Usart\driverlib/interrupt.h
+.\objects\comp.o: ..\Buttons\inc/hw_comp.h
+.\objects\comp.o: ..\Buttons\inc/hw_ints.h
+.\objects\comp.o: ..\Buttons\inc/hw_memmap.h
+.\objects\comp.o: ..\Buttons\inc/hw_types.h
+.\objects\comp.o: ..\Buttons\driverlib/comp.h
+.\objects\comp.o: ..\Buttons\driverlib/debug.h
+.\objects\comp.o: ..\Buttons\driverlib/interrupt.h

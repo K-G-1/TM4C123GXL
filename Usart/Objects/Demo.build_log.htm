@@ -21,12 +21,24 @@ Target DLL:      lmidk-agdi.dll V???
 Dialog DLL:      TCM.DLL V1.14.4.0
  
 <h2>Project:</h2>
-G:\Keil\TI TM4C\Usart\Usart_test.uvprojx
+G:\Keil\TI TM4C\Usart\Demo.uvprojx
 Project File Date:  07/25/2018
 
 <h2>Output:</h2>
 Build target 'Target 1'
-".\Objects\Usart_test.axf" - 0 Error(s), 0 Warning(s).
+compiling main.c...
+main.c(135): warning:  #167-D: argument of type "unsigned long *" is incompatible with parameter of type "volatile uint32_t *"
+      RGBColorSet(ulColors);
+main.c(218): warning:  #167-D: argument of type "unsigned long *" is incompatible with parameter of type "volatile uint32_t *"
+              RGBSet(ulColors,0.02f);
+main.c(225): warning:  #167-D: argument of type "unsigned long *" is incompatible with parameter of type "volatile uint32_t *"
+              RGBSet(ulColors,0.02f);
+main.c(228): warning:  #111-D: statement is unreachable
+      return 0;
+main.c: 4 warnings, 0 errors
+linking...
+Program Size: Code=2520 RO-data=1180 RW-data=12 ZI-data=364  
+".\Objects\Demo.axf" - 0 Error(s), 4 Warning(s).
 
 <h2>Collection of Component include folders:</h2>
   G:\Keil\TI TM4C\Usart\RTE

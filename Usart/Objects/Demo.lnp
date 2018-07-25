@@ -1,4 +1,6 @@
 --cpu Cortex-M4.fp
+".\objects\main.o"
+".\objects\startup_rvmdk.o"
 ".\objects\adc.o"
 ".\objects\aes.o"
 ".\objects\can.o"
@@ -31,9 +33,9 @@
 ".\objects\udma.o"
 ".\objects\usb.o"
 ".\objects\watchdog.o"
-".\objects\startup_rvmdk.o"
-".\objects\uart_polled.o"
---nodebug --strict --scatter ".\Objects\Usart_test.sct"
+".\objects\rgb.o"
+".\objects\buttons.o"
+--strict --scatter ".\Objects\Demo.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
---list ".\Listings\Usart_test.map" -o .\Objects\Usart_test.axf
+--list ".\Demo.map" -o .\Objects\Demo.axf
