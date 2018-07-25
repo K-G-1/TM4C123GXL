@@ -585,4 +585,13 @@
             </File>
             <File>
               <FileName>uart_loopback.c</FileName>
-              <FileType>1
+              <FileType>1</FileType>
+              <FilePath>.\uart\uart_loopback.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+      </Groups>
+    </Target>
+  </Targets>
+
+</Project>
