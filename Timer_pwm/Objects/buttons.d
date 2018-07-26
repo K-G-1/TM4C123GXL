@@ -1,0 +1,12 @@
+.\objects\buttons.o: drivers\buttons.c
+.\objects\buttons.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\buttons.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\buttons.o: ..\Buttons\inc/hw_types.h
+.\objects\buttons.o: ..\Buttons\inc/hw_memmap.h
+.\objects\buttons.o: ..\Buttons\inc/hw_gpio.h
+.\objects\buttons.o: ..\Buttons\driverlib/sysctl.h
+.\objects\buttons.o: ..\Buttons\driverlib/rom.h
+.\objects\buttons.o: ..\Buttons\driverlib/rom_map.h
+.\objects\buttons.o: ..\Buttons\driverlib/pin_map.h
+.\objects\buttons.o: ..\Buttons\driverlib/gpio.h
+.\objects\buttons.o: ..\Buttons\drivers/buttons.h
