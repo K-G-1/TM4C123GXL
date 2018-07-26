@@ -11,6 +11,7 @@
 .\objects\main.o: drivers/RGB.h
 .\objects\main.o: drivers/buttons.h
 .\objects\main.o: inc/hw_ints.h
+.\objects\main.o: inc/hw_uart.h
 .\objects\main.o: driverlib/debug.h
 .\objects\main.o: driverlib/fpu.h
 .\objects\main.o: driverlib/interrupt.h

@@ -12,6 +12,7 @@
 #include "drivers/buttons.h"
 
 #include "inc/hw_ints.h"
+#include "inc/hw_uart.h"
 #include "driverlib/debug.h"
 #include "driverlib/fpu.h"
 #include "driverlib/interrupt.h"
@@ -26,6 +27,9 @@
 
 #define SYS_CLOCK 16000000
 
+
+uint8_t SndFrmCnt[5]; 
+char bt;
 //*****************************************************************************
 //
 // The error routine that is called if the driver library encounters an error.
@@ -52,41 +56,46 @@ UARTIntHandler(void)
     //
     // Get the interrrupt status.
     //
-    ui32Status = ROM_UARTIntStatus(UART0_BASE, true);
+    ui32Status = UARTIntStatus(UART0_BASE, true);
 
     //
     // Clear the asserted interrupts.
     //
-    ROM_UARTIntClear(UART0_BASE, ui32Status);
+    UARTIntClear(UART0_BASE, ui32Status);
 
-    //
-    // Loop while there are characters in the receive FIFO.
-    //
-    while(ROM_UARTCharsAvail(UART0_BASE))
+//    //
+//    // Loop while there are characters in the receive FIFO.
+//    //
+//    while(ROM_UARTCharsAvail(UART0_BASE))
+//    {
+//        //
+//        // Read the next character from the UART and write it back to the UART.
+//        //
+//        ROM_UARTCharPutNonBlocking(UART0_BASE,
+//                                   ROM_UARTCharGetNonBlocking(UART0_BASE));
+//    }
+    
+    if((ui32Status == UART_INT_RX) || (ui32Status == UART_INT_RT))
     {
-        //
-        // Read the next character from the UART and write it back to the UART.
-        //
-        ROM_UARTCharPutNonBlocking(UART0_BASE,
-                                   ROM_UARTCharGetNonBlocking(UART0_BASE));
+        while(UARTCharsAvail(UART0_BASE))
+        {   
+            bt=UARTCharGetNonBlocking(UART0_BASE);
+//            ROM_UARTCharPutNonBlocking(UART0_BASE, bt);
+        }
+    }else if(ui32Status == UART_INT_TX)
+    {
+        while(UARTSpaceAvail(UART0_BASE))
+        {
 
-        //
-        // Blink the LED to show a character transfer is occuring.
-        //
-//        GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2, GPIO_PIN_2);
+                UARTCharPutNonBlocking(UART0_BASE, bt);
+                UARTIntDisable(UART0_BASE, UART_INT_TX);
 
-        //
-        // Delay for 1 millisecond.  Each SysCtlDelay is about 3 clocks.
-        //
-        SysCtlDelay(SysCtlClockGet() / (1000 * 3));
-
-        //
-        // Turn off the LED
-        //
-//        GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2, 0);
-
+                GPIOPinWrite(GPIO_PORTF_BASE,GPIO_PIN_1,GPIO_PIN_1); //TXEN-1=1  ??
+                
+        }
     }
 }
+
 
 //*****************************************************************************
 //
@@ -108,10 +117,18 @@ UARTSend(const uint8_t *pui8Buffer, uint32_t ui32Count)
     }
 }
 
+
+void Uart_TX()
+{
+    SndFrmCnt[5]=0;
+    ROM_UARTIntEnable(UART0_BASE, UART_INT_TX);
+    ROM_UARTCharPutNonBlocking(UART0_BASE, 0xFF);
+}
 //*****************************************************************************
 //
 // This example demonstrates how to send a string of data to the UART.
-//
+// 串口发送中断未完成，进不去中断，
+// 接受中断OK
 //*****************************************************************************
 
 int main()
@@ -193,8 +210,8 @@ int main()
     // Enable the UART interrupt.
     //
     ROM_IntEnable(INT_UART0);
-    ROM_UARTIntEnable(UART0_BASE, UART_INT_RX | UART_INT_RT);
-
+    ROM_UARTIntEnable(UART0_BASE, UART_INT_RX | UART_INT_RT|UART_INT_TX);
+    
     //
     // Prompt for text to be entered.
     //
@@ -223,6 +240,10 @@ int main()
             ulColors[RED] = (0xFF00FF &0x00FF00);
             ulColors[GREEN] = (0xFF00FF &0x0000FF)<<8;
             RGBSet(ulColors,0.02f);
+            UARTIntEnable(UART0_BASE, UART_INT_TX);
+            HWREG(UART0_BASE + UART_O_DR) = 0x34;
+
+//            UARTCharPutNonBlocking(UART0_BASE, 0xFF);
         }
     }
     return 0;
