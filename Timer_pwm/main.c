@@ -175,8 +175,9 @@ void Timer3_init()
     HWREG(TIMER1_BASE + TIMER_O_CFG) = 0x0004;
     HWREG(TIMER1_BASE + TIMER_O_TAMR) = 0x0A;
     HWREG(TIMER1_BASE + TIMER_O_CTL) = 0x0001;
-    HWREG(TIMER1_BASE + TIMER_O_TAILR) = 0xBEBC200;
-    HWREG(TIMER1_BASE + TIMER_O_TAMATCHR) = 0xBEBC1FF;
+	HWREG(TIMER1_BASE + TIMER_O_TAPR) = 0;
+    HWREG(TIMER1_BASE + TIMER_O_TAILR) = 5000 - 1 ;
+    HWREG(TIMER1_BASE + TIMER_O_TAMATCHR) = 1000 -1;
     HWREG(TIMER1_BASE + TIMER_O_CTL) |= TIMER_BOTH & (TIMER_CTL_TAEN |
                                                   TIMER_CTL_TBEN);
 
@@ -187,7 +188,7 @@ int main()
 {
     unsigned long ulColors[3];
     uint8_t ucDelta,ucState;
-    int PWM_data = 0xBEBC1FF;
+    int PWM_data = 0 ;
     unsigned long ulPrevCount = 0;
     //
     // Enable lazy stacking for interrupt handlers.  This allows floating-point
@@ -200,7 +201,9 @@ int main()
     //
     // Set the clocking to run directly from the crystal.
     //
-    ROM_SysCtlClockSet(SYSCTL_SYSDIV_4 | SYSCTL_USE_OSC | SYSCTL_OSC_MAIN |
+//    ROM_SysCtlClockSet(SYSCTL_SYSDIV_4 | SYSCTL_USE_PLL | SYSCTL_OSC_MAIN |
+//                       SYSCTL_XTAL_16MHZ);
+	ROM_SysCtlClockSet(SYSCTL_SYSDIV_4 | SYSCTL_USE_PLL | SYSCTL_OSC_MAIN |
                        SYSCTL_XTAL_16MHZ);
 //    //
 //    // Initialize the rgb driver.
@@ -246,8 +249,10 @@ int main()
         ucState = ButtonsPoll(&ucDelta, 0);
         if(BUTTON_PRESSED(LEFT_BUTTON, ucState, ucDelta))
         {
-            PWM_data -= 0x0f;
+            PWM_data += 0xFF;
             HWREG(TIMER1_BASE + TIMER_O_TAMATCHR) = PWM_data;
+			
+			UARTprintf("\n   systick = %d",SysCtlClockGet());
         }
     }
     return 0;

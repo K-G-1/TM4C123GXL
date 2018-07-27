@@ -1,6 +1,6 @@
 .\objects\adc.o: driverlib\adc.c
-.\objects\adc.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
-.\objects\adc.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\adc.o: G:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\adc.o: G:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\adc.o: ..\Buttons\inc/hw_adc.h
 .\objects\adc.o: ..\Buttons\inc/hw_ints.h
 .\objects\adc.o: ..\Buttons\inc/hw_memmap.h

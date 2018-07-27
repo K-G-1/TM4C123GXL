@@ -1,6 +1,6 @@
 .\objects\buttons.o: drivers\buttons.c
-.\objects\buttons.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
-.\objects\buttons.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\buttons.o: G:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\buttons.o: G:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\buttons.o: ..\Buttons\inc/hw_types.h
 .\objects\buttons.o: ..\Buttons\inc/hw_memmap.h
 .\objects\buttons.o: ..\Buttons\inc/hw_gpio.h

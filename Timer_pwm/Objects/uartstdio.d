@@ -1,7 +1,7 @@
 .\objects\uartstdio.o: utils\uartstdio.c
-.\objects\uartstdio.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
-.\objects\uartstdio.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\uartstdio.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\objects\uartstdio.o: G:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\uartstdio.o: G:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\uartstdio.o: G:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 .\objects\uartstdio.o: ..\Buttons\inc/hw_ints.h
 .\objects\uartstdio.o: ..\Buttons\inc/hw_memmap.h
 .\objects\uartstdio.o: ..\Buttons\inc/hw_types.h

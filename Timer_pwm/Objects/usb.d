@@ -1,6 +1,6 @@
 .\objects\usb.o: driverlib\usb.c
-.\objects\usb.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
-.\objects\usb.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\usb.o: G:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\usb.o: G:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\usb.o: ..\Buttons\inc/hw_ints.h
 .\objects\usb.o: ..\Buttons\inc/hw_memmap.h
 .\objects\usb.o: ..\Buttons\inc/hw_types.h

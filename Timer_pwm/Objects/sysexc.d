@@ -1,6 +1,6 @@
 .\objects\sysexc.o: driverlib\sysexc.c
-.\objects\sysexc.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
-.\objects\sysexc.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\sysexc.o: G:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\sysexc.o: G:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\sysexc.o: ..\Buttons\inc/hw_ints.h
 .\objects\sysexc.o: ..\Buttons\inc/hw_sysctl.h
 .\objects\sysexc.o: ..\Buttons\inc/hw_sysexc.h

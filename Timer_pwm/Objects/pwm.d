@@ -1,6 +1,6 @@
 .\objects\pwm.o: driverlib\pwm.c
-.\objects\pwm.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
-.\objects\pwm.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\pwm.o: G:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\pwm.o: G:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\pwm.o: ..\Buttons\inc/hw_ints.h
 .\objects\pwm.o: ..\Buttons\inc/hw_memmap.h
 .\objects\pwm.o: ..\Buttons\inc/hw_pwm.h

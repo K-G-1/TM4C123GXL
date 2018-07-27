@@ -1,6 +1,6 @@
 .\objects\eeprom.o: driverlib\eeprom.c
-.\objects\eeprom.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
-.\objects\eeprom.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\eeprom.o: G:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\eeprom.o: G:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\eeprom.o: ..\Buttons\inc/hw_eeprom.h
 .\objects\eeprom.o: ..\Buttons\inc/hw_flash.h
 .\objects\eeprom.o: ..\Buttons\inc/hw_ints.h

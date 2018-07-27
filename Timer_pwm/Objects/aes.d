@@ -1,6 +1,6 @@
 .\objects\aes.o: driverlib\aes.c
-.\objects\aes.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\aes.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\aes.o: G:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\aes.o: G:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\objects\aes.o: ..\Buttons\inc/hw_aes.h
 .\objects\aes.o: ..\Buttons\inc/hw_ccm.h
 .\objects\aes.o: ..\Buttons\inc/hw_ints.h

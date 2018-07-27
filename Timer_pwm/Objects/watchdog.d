@@ -1,6 +1,6 @@
 .\objects\watchdog.o: driverlib\watchdog.c
-.\objects\watchdog.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
-.\objects\watchdog.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\watchdog.o: G:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\watchdog.o: G:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\watchdog.o: ..\Buttons\inc/hw_ints.h
 .\objects\watchdog.o: ..\Buttons\inc/hw_memmap.h
 .\objects\watchdog.o: ..\Buttons\inc/hw_types.h
