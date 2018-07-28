@@ -1,0 +1,10 @@
+.\objects\oled.o: drivers\oled\oled.c
+.\objects\oled.o: drivers\oled\oled.h
+.\objects\oled.o: .\drivers\IIC\IIC.h
+.\objects\oled.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\oled.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\oled.o: ..\Buttons\driverlib/sysctl.h
+.\objects\oled.o: ..\Buttons\driverlib/gpio.h
+.\objects\oled.o: ..\Buttons\driverlib/pin_map.h
+.\objects\oled.o: ..\Buttons\inc/hw_memmap.h
+.\objects\oled.o: drivers\oled\codetable.h

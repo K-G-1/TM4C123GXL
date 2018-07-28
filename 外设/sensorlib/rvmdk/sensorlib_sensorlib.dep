@@ -1,0 +1,117 @@
+Dependencies for Project 'sensorlib', Target 'sensorlib': (DO NOT MODIFY !)
+F (.\ak8963.c)(0x5B573F9C)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O2 -Otime --apcs=interwork --split_sections -I.. --c99-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\CMSIS\Include-I D:\Keil_v5\ARM\Inc\Luminary-D__UVISION_VERSION="514" -Drvmdk-o .\rvmdk\ak8963.o --omf_browse .\rvmdk\ak8963.crf --depend .\rvmdk\ak8963.d)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (..\sensorlib/hw_ak8963.h)(0x5B573F9C)
+I (..\sensorlib/i2cm_drv.h)(0x5B573F9C)
+I (..\sensorlib/ak8963.h)(0x5B573F9C)
+F (.\ak8975.c)(0x5B573F9C)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O2 -Otime --apcs=interwork --split_sections -I.. --c99-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\CMSIS\Include-I D:\Keil_v5\ARM\Inc\Luminary-D__UVISION_VERSION="514" -Drvmdk-o .\rvmdk\ak8975.o --omf_browse .\rvmdk\ak8975.crf --depend .\rvmdk\ak8975.d)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (..\sensorlib/hw_ak8975.h)(0x5B573F9C)
+I (..\sensorlib/i2cm_drv.h)(0x5B573F9C)
+I (..\sensorlib/ak8975.h)(0x5B573F9C)
+F (.\bmp180.c)(0x5B573F9C)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O2 -Otime --apcs=interwork --split_sections -I.. --c99-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\CMSIS\Include-I D:\Keil_v5\ARM\Inc\Luminary-D__UVISION_VERSION="514" -Drvmdk-o .\rvmdk\bmp180.o --omf_browse .\rvmdk\bmp180.crf --depend .\rvmdk\bmp180.d)
+I (D:\Keil_v5\ARM\ARMCC\include\math.h)(0x5475F2FE)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (..\sensorlib/hw_bmp180.h)(0x5B573F9C)
+I (..\sensorlib/i2cm_drv.h)(0x5B573F9C)
+I (..\sensorlib/bmp180.h)(0x5B573F9C)
+F (.\bq27510g3.c)(0x5B573F9C)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O2 -Otime --apcs=interwork --split_sections -I.. --c99-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\CMSIS\Include-I D:\Keil_v5\ARM\Inc\Luminary-D__UVISION_VERSION="514" -Drvmdk-o .\rvmdk\bq27510g3.o --omf_browse .\rvmdk\bq27510g3.crf --depend .\rvmdk\bq27510g3.d)
+I (D:\Keil_v5\ARM\ARMCC\include\math.h)(0x5475F2FE)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (..\sensorlib/hw_bq27510g3.h)(0x5B573F9C)
+I (..\sensorlib/i2cm_drv.h)(0x5B573F9C)
+I (..\sensorlib/bq27510g3.h)(0x5B573F9C)
+F (.\cm3218.c)(0x5B573F9C)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O2 -Otime --apcs=interwork --split_sections -I.. --c99-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\CMSIS\Include-I D:\Keil_v5\ARM\Inc\Luminary-D__UVISION_VERSION="514" -Drvmdk-o .\rvmdk\cm3218.o --omf_browse .\rvmdk\cm3218.crf --depend .\rvmdk\cm3218.d)
+I (D:\Keil_v5\ARM\ARMCC\include\math.h)(0x5475F2FE)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (..\sensorlib/hw_cm3218.h)(0x5B573F9C)
+I (..\sensorlib/i2cm_drv.h)(0x5B573F9C)
+I (..\sensorlib/cm3218.h)(0x5B573F9C)
+F (.\comp_dcm.c)(0x5B573F9C)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O2 -Otime --apcs=interwork --split_sections -I.. --c99-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\CMSIS\Include-I D:\Keil_v5\ARM\Inc\Luminary-D__UVISION_VERSION="514" -Drvmdk-o .\rvmdk\comp_dcm.o --omf_browse .\rvmdk\comp_dcm.crf --depend .\rvmdk\comp_dcm.d)
+I (D:\Keil_v5\ARM\ARMCC\include\math.h)(0x5475F2FE)
+I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5475F300)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (..\driverlib/debug.h)(0x5B573F67)
+I (..\sensorlib/comp_dcm.h)(0x5B573F9C)
+I (..\sensorlib/vector.h)(0x5B573F9C)
+F (.\i2cm_drv.c)(0x5B573F9C)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O2 -Otime --apcs=interwork --split_sections -I.. --c99-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\CMSIS\Include-I D:\Keil_v5\ARM\Inc\Luminary-D__UVISION_VERSION="514" -Drvmdk-o .\rvmdk\i2cm_drv.o --omf_browse .\rvmdk\i2cm_drv.crf --depend .\rvmdk\i2cm_drv.d)
+I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5475F300)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (..\inc/hw_i2c.h)(0x5B573F9B)
+I (..\inc/hw_memmap.h)(0x5B573F9B)
+I (..\inc/hw_types.h)(0x5B573F9B)
+I (..\driverlib/debug.h)(0x5B573F67)
+I (..\driverlib/i2c.h)(0x5B573F68)
+I (..\driverlib/interrupt.h)(0x5B573F68)
+I (..\driverlib/rom.h)(0x5B573F68)
+I (..\driverlib/rom_map.h)(0x5B573F68)
+I (..\sensorlib/i2cm_drv.h)(0x5B573F9C)
+F (.\isl29023.c)(0x5B573F9C)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O2 -Otime --apcs=interwork --split_sections -I.. --c99-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\CMSIS\Include-I D:\Keil_v5\ARM\Inc\Luminary-D__UVISION_VERSION="514" -Drvmdk-o .\rvmdk\isl29023.o --omf_browse .\rvmdk\isl29023.crf --depend .\rvmdk\isl29023.d)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5475F300)
+I (..\sensorlib/hw_isl29023.h)(0x5B573F9C)
+I (..\sensorlib/i2cm_drv.h)(0x5B573F9C)
+I (..\sensorlib/isl29023.h)(0x5B573F9C)
+F (.\kxti9.c)(0x5B573F9C)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O2 -Otime --apcs=interwork --split_sections -I.. --c99-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\CMSIS\Include-I D:\Keil_v5\ARM\Inc\Luminary-D__UVISION_VERSION="514" -Drvmdk-o .\rvmdk\kxti9.o --omf_browse .\rvmdk\kxti9.crf --depend .\rvmdk\kxti9.d)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (..\sensorlib/hw_kxti9.h)(0x5B573F9C)
+I (..\sensorlib/i2cm_drv.h)(0x5B573F9C)
+I (..\sensorlib/kxti9.h)(0x5B573F9C)
+F (.\l3gd20h.c)(0x5B573F9C)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O2 -Otime --apcs=interwork --split_sections -I.. --c99-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\CMSIS\Include-I D:\Keil_v5\ARM\Inc\Luminary-D__UVISION_VERSION="514" -Drvmdk-o .\rvmdk\l3gd20h.o --omf_browse .\rvmdk\l3gd20h.crf --depend .\rvmdk\l3gd20h.d)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (..\sensorlib/hw_l3gd20h.h)(0x5B573F9C)
+I (..\sensorlib/i2cm_drv.h)(0x5B573F9C)
+I (..\sensorlib/l3gd20h.h)(0x5B573F9C)
+F (.\lsm303d.c)(0x5B573F9C)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O2 -Otime --apcs=interwork --split_sections -I.. --c99-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\CMSIS\Include-I D:\Keil_v5\ARM\Inc\Luminary-D__UVISION_VERSION="514" -Drvmdk-o .\rvmdk\lsm303d.o --omf_browse .\rvmdk\lsm303d.crf --depend .\rvmdk\lsm303d.d)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (..\sensorlib/hw_lsm303d.h)(0x5B573F9C)
+I (..\sensorlib/i2cm_drv.h)(0x5B573F9C)
+I (..\sensorlib/lsm303d.h)(0x5B573F9C)
+F (.\lsm303dlhc_accel.c)(0x5B573F9C)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O2 -Otime --apcs=interwork --split_sections -I.. --c99-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\CMSIS\Include-I D:\Keil_v5\ARM\Inc\Luminary-D__UVISION_VERSION="514" -Drvmdk-o .\rvmdk\lsm303dlhc_accel.o --omf_browse .\rvmdk\lsm303dlhc_accel.crf --depend .\rvmdk\lsm303dlhc_accel.d)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (..\sensorlib/hw_lsm303dlhc.h)(0x5B573F9C)
+I (..\sensorlib/i2cm_drv.h)(0x5B573F9C)
+I (..\sensorlib/lsm303dlhc_accel.h)(0x5B573F9C)
+F (.\lsm303dlhc_mag.c)(0x5B573F9C)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O2 -Otime --apcs=interwork --split_sections -I.. --c99-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\CMSIS\Include-I D:\Keil_v5\ARM\Inc\Luminary-D__UVISION_VERSION="514" -Drvmdk-o .\rvmdk\lsm303dlhc_mag.o --omf_browse .\rvmdk\lsm303dlhc_mag.crf --depend .\rvmdk\lsm303dlhc_mag.d)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (..\sensorlib/hw_lsm303dlhc.h)(0x5B573F9C)
+I (..\sensorlib/i2cm_drv.h)(0x5B573F9C)
+I (..\sensorlib/lsm303dlhc_mag.h)(0x5B573F9C)
+F (.\magneto.c)(0x5B573F9C)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O2 -Otime --apcs=interwork --split_sections -I.. --c99-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\CMSIS\Include-I D:\Keil_v5\ARM\Inc\Luminary-D__UVISION_VERSION="514" -Drvmdk-o .\rvmdk\magneto.o --omf_browse .\rvmdk\magneto.crf --depend .\rvmdk\magneto.d)
+I (D:\Keil_v5\ARM\ARMCC\include\math.h)(0x5475F2FE)
+I (..\sensorlib/magneto.h)(0x5B573F9C)
+F (.\mpu6050.c)(0x5B573F9C)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O2 -Otime --apcs=interwork --split_sections -I.. --c99-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\CMSIS\Include-I D:\Keil_v5\ARM\Inc\Luminary-D__UVISION_VERSION="514" -Drvmdk-o .\rvmdk\mpu6050.o --omf_browse .\rvmdk\mpu6050.crf --depend .\rvmdk\mpu6050.d)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (..\sensorlib/hw_mpu6050.h)(0x5B573F9C)
+I (..\sensorlib/i2cm_drv.h)(0x5B573F9C)
+I (..\sensorlib/mpu6050.h)(0x5B573F9C)
+F (.\mpu9150.c)(0x5B573F9C)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O2 -Otime --apcs=interwork --split_sections -I.. --c99-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\CMSIS\Include-I D:\Keil_v5\ARM\Inc\Luminary-D__UVISION_VERSION="514" -Drvmdk-o .\rvmdk\mpu9150.o --omf_browse .\rvmdk\mpu9150.crf --depend .\rvmdk\mpu9150.d)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (..\sensorlib/hw_ak8975.h)(0x5B573F9C)
+I (..\sensorlib/hw_mpu9150.h)(0x5B573F9C)
+I (..\sensorlib/i2cm_drv.h)(0x5B573F9C)
+I (..\sensorlib/ak8975.h)(0x5B573F9C)
+I (..\sensorlib/mpu9150.h)(0x5B573F9C)
+F (.\quaternion.c)(0x5B573F9C)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O2 -Otime --apcs=interwork --split_sections -I.. --c99-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\CMSIS\Include-I D:\Keil_v5\ARM\Inc\Luminary-D__UVISION_VERSION="514" -Drvmdk-o .\rvmdk\quaternion.o --omf_browse .\rvmdk\quaternion.crf --depend .\rvmdk\quaternion.d)
+I (D:\Keil_v5\ARM\ARMCC\include\math.h)(0x5475F2FE)
+I (..\sensorlib/quaternion.h)(0x5B573F9C)
+F (.\sht21.c)(0x5B573F9C)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O2 -Otime --apcs=interwork --split_sections -I.. --c99-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\CMSIS\Include-I D:\Keil_v5\ARM\Inc\Luminary-D__UVISION_VERSION="514" -Drvmdk-o .\rvmdk\sht21.o --omf_browse .\rvmdk\sht21.crf --depend .\rvmdk\sht21.d)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (..\sensorlib/hw_sht21.h)(0x5B573F9C)
+I (..\sensorlib/i2cm_drv.h)(0x5B573F9C)
+I (..\sensorlib/sht21.h)(0x5B573F9C)
+F (.\tmp006.c)(0x5B573F9C)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O2 -Otime --apcs=interwork --split_sections -I.. --c99-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\CMSIS\Include-I D:\Keil_v5\ARM\Inc\Luminary-D__UVISION_VERSION="514" -Drvmdk-o .\rvmdk\tmp006.o --omf_browse .\rvmdk\tmp006.crf --depend .\rvmdk\tmp006.d)
+I (D:\Keil_v5\ARM\ARMCC\include\math.h)(0x5475F2FE)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (..\sensorlib/hw_tmp006.h)(0x5B573F9C)
+I (..\sensorlib/i2cm_drv.h)(0x5B573F9C)
+I (..\sensorlib/tmp006.h)(0x5B573F9C)
+F (.\tmp100.c)(0x5B573F9C)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O2 -Otime --apcs=interwork --split_sections -I.. --c99-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\CMSIS\Include-I D:\Keil_v5\ARM\Inc\Luminary-D__UVISION_VERSION="514" -Drvmdk-o .\rvmdk\tmp100.o --omf_browse .\rvmdk\tmp100.crf --depend .\rvmdk\tmp100.d)
+I (D:\Keil_v5\ARM\ARMCC\include\math.h)(0x5475F2FE)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (..\sensorlib/hw_tmp100.h)(0x5B573F9C)
+I (..\sensorlib/i2cm_drv.h)(0x5B573F9C)
+I (..\sensorlib/tmp100.h)(0x5B573F9C)
+F (.\vector.c)(0x5B573F9C)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O2 -Otime --apcs=interwork --split_sections -I.. --c99-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\CMSIS\Include-I D:\Keil_v5\ARM\Inc\Luminary-D__UVISION_VERSION="514" -Drvmdk-o .\rvmdk\vector.o --omf_browse .\rvmdk\vector.crf --depend .\rvmdk\vector.d)
+I (..\sensorlib/vector.h)(0x5B573F9C)
+F (.\readme.txt)(0x5B573F9C)()

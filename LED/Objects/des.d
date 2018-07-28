@@ -1,0 +1,10 @@
+.\objects\des.o: driverlib\des.c
+.\objects\des.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\des.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\des.o: ..\GPIO\inc/hw_des.h
+.\objects\des.o: ..\GPIO\inc/hw_ints.h
+.\objects\des.o: ..\GPIO\inc/hw_memmap.h
+.\objects\des.o: ..\GPIO\inc/hw_types.h
+.\objects\des.o: ..\GPIO\driverlib/debug.h
+.\objects\des.o: ..\GPIO\driverlib/des.h
+.\objects\des.o: ..\GPIO\driverlib/interrupt.h

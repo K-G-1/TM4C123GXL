@@ -177,7 +177,7 @@ void Timer3_init()
     HWREG(TIMER1_BASE + TIMER_O_CTL) = 0x0001;
 	HWREG(TIMER1_BASE + TIMER_O_TAPR) = 0;
     HWREG(TIMER1_BASE + TIMER_O_TAILR) = 5000 - 1 ;
-    HWREG(TIMER1_BASE + TIMER_O_TAMATCHR) = 1000 -1;
+    HWREG(TIMER1_BASE + TIMER_O_TAMATCHR) = 5000 -2;
     HWREG(TIMER1_BASE + TIMER_O_CTL) |= TIMER_BOTH & (TIMER_CTL_TAEN |
                                                   TIMER_CTL_TBEN);
 
@@ -188,7 +188,7 @@ int main()
 {
     unsigned long ulColors[3];
     uint8_t ucDelta,ucState;
-    int PWM_data = 0 ;
+    int PWM_data = 5000 ;
     unsigned long ulPrevCount = 0;
     //
     // Enable lazy stacking for interrupt handlers.  This allows floating-point
@@ -249,7 +249,11 @@ int main()
         ucState = ButtonsPoll(&ucDelta, 0);
         if(BUTTON_PRESSED(LEFT_BUTTON, ucState, ucDelta))
         {
-            PWM_data += 0xFF;
+            PWM_data -= 100;
+            if(PWM_data <= 0)
+            {
+                PWM_data = 5000-2;
+            }
             HWREG(TIMER1_BASE + TIMER_O_TAMATCHR) = PWM_data;
 			
 			UARTprintf("\n   systick = %d",SysCtlClockGet());

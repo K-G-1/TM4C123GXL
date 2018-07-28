@@ -1,0 +1,12 @@
+.\rvmdk\i2cm_drv.o: i2cm_drv.c
+.\rvmdk\i2cm_drv.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\rvmdk\i2cm_drv.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\rvmdk\i2cm_drv.o: ..\inc/hw_i2c.h
+.\rvmdk\i2cm_drv.o: ..\inc/hw_memmap.h
+.\rvmdk\i2cm_drv.o: ..\inc/hw_types.h
+.\rvmdk\i2cm_drv.o: ..\driverlib/debug.h
+.\rvmdk\i2cm_drv.o: ..\driverlib/i2c.h
+.\rvmdk\i2cm_drv.o: ..\driverlib/interrupt.h
+.\rvmdk\i2cm_drv.o: ..\driverlib/rom.h
+.\rvmdk\i2cm_drv.o: ..\driverlib/rom_map.h
+.\rvmdk\i2cm_drv.o: ..\sensorlib/i2cm_drv.h
