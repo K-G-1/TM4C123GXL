@@ -1,0 +1,52 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: ¦ÌVision V5.14.0.0
+Copyright (C) 2015 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: ti 20607, rfgyuhj, LIC=EPP8T-R3S85-9X4UW-Q58UG-13VTV-UCM1K
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Professional  Version: 5.14.0.0
+Toolchain Path:  D:\Keil_v5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.05 update 1 (build 106)
+Assembler:       Armasm.exe V5.05 update 1 (build 106)
+Linker/Locator:  ArmLink.exe V5.05 update 1 (build 106)
+Library Manager: ArmAr.exe V5.05 update 1 (build 106)
+Hex Converter:   FromElf.exe V5.05 update 1 (build 106)
+CPU DLL:         SARMCM3.DLL V5.14.0.0
+Dialog DLL:      DCM.DLL V1.13.1.0
+Target DLL:      lmidk-agdi.dll V???
+Dialog DLL:      TCM.DLL V1.14.4.0
+ 
+<h2>Project:</h2>
+G:\Keil\TI TM4C\ADC\Demo.uvprojx
+Project File Date:  07/28/2018
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling main.c...
+inc/hw_adc.h(415): warning:  #47-D: incompatible redefinition of macro "ADC_CTL_VREF_M" (declared at line 5460 of ".\inc\tm4c123gh6pm.h")
+  #define ADC_CTL_VREF_M          0x00000003  // Voltage Reference Select
+main.c(137): warning:  #167-D: argument of type "unsigned long *" is incompatible with parameter of type "volatile uint32_t *"
+      RGBColorSet(ulColors);
+main.c(269): warning:  #111-D: statement is unreachable
+      return 0;
+main.c(107): warning:  #177-D: variable "PWM_data" was declared but never referenced
+      int PWM_data = 5000 ;
+main.c(108): warning:  #177-D: variable "ulPrevCount" was declared but never referenced
+      unsigned long ulPrevCount = 0;
+main.c: 5 warnings, 0 errors
+linking...
+Program Size: Code=5360 RO-data=3300 RW-data=20 ZI-data=364  
+".\Objects\Demo.axf" - 0 Error(s), 5 Warning(s).
+
+<h2>Collection of Component include folders:</h2>
+  G:\Keil\TI TM4C\ADC\RTE
+  D:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0
+
+<h2>Collection of Component Files used:</h2>
+</pre>
+</body>
+</html>

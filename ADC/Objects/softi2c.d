@@ -1,0 +1,9 @@
+.\objects\softi2c.o: utils\softi2c.c
+.\objects\softi2c.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\softi2c.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\softi2c.o: ..\Buttons\inc/hw_types.h
+.\objects\softi2c.o: ..\Buttons\driverlib/debug.h
+.\objects\softi2c.o: ..\Buttons\driverlib/gpio.h
+.\objects\softi2c.o: ..\Buttons\driverlib/rom.h
+.\objects\softi2c.o: ..\Buttons\driverlib/rom_map.h
+.\objects\softi2c.o: ..\Timer_pwm\utils/softi2c.h

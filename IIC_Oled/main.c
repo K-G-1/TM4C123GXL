@@ -153,16 +153,8 @@ int main()
     UARTprintf("\n   Mode = cap");   
     
     OLED_Init();
-////    OLED_Fill(0);
-////    IIC_Init();
-//    SCL_H;
-//    SDA_H;
-//    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
-//    ROM_GPIODirModeSet(IIC_PORT, SDA, GPIO_DIR_MODE_IN);
-//    MAP_GPIOPadConfigSet(IIC_PORT, SDA,
-//                         GPIO_STRENGTH_2MA, GPIO_PIN_TYPE_STD_WPU);
-//                         
-//    SDA_OUT();                         
+    oled_dis_str();
+    
     while(1)
     {
         ucState = ButtonsPoll(&ucDelta, 0);

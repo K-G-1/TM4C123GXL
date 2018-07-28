@@ -26,7 +26,20 @@ Project File Date:  07/28/2018
 
 <h2>Output:</h2>
 Build target 'Target 1'
-".\Objects\Demo.axf" - 0 Error(s), 0 Warning(s).
+compiling main.c...
+main.c(134): warning:  #167-D: argument of type "unsigned long *" is incompatible with parameter of type "volatile uint32_t *"
+      RGBColorSet(ulColors);
+main.c(174): warning:  #111-D: statement is unreachable
+      return 0;
+main.c(105): warning:  #177-D: variable "PWM_data" was declared but never referenced
+      int PWM_data = 5000 ;
+main.c(106): warning:  #177-D: variable "ulPrevCount" was declared but never referenced
+      unsigned long ulPrevCount = 0;
+main.c: 4 warnings, 0 errors
+compiling oled.c...
+linking...
+Program Size: Code=4604 RO-data=3300 RW-data=20 ZI-data=364  
+".\Objects\Demo.axf" - 0 Error(s), 4 Warning(s).
 
 <h2>Collection of Component include folders:</h2>
   G:\Keil\TI TM4C\IIC_Oled\RTE
