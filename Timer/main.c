@@ -60,7 +60,7 @@ Timer3IntHandler(void)
     //
     ROM_TimerIntClear(TIMER3_BASE, TIMER_TIMA_TIMEOUT);
 
-    UARTSend("Timer 3 interrupt\r\n",20);
+    UARTSend("Timer 3 interrupt \n",22);
 }
 
 
@@ -80,7 +80,7 @@ Timer4IntHandler(void)
     //
     ROM_TimerIntClear(TIMER4_BASE, TIMER_TIMA_TIMEOUT);
     
-    UARTSend("Timer 4 interrupt\r\n",20);
+    UARTSend("Timer 4 interrupt \n",30);
     
     
 }
@@ -193,7 +193,7 @@ int main()
     //
     // Set the clocking to run directly from the crystal.
     //
-    ROM_SysCtlClockSet(SYSCTL_SYSDIV_4 | SYSCTL_USE_OSC | SYSCTL_OSC_MAIN |
+    ROM_SysCtlClockSet(SYSCTL_SYSDIV_1 | SYSCTL_USE_OSC | SYSCTL_OSC_MAIN |
                        SYSCTL_XTAL_16MHZ);
     //
     // Initialize the rgb driver.
@@ -206,7 +206,7 @@ int main()
     //
     // Initialize the three color values.
     //
-    ulColors[BLUE] = 0xffFF;
+    ulColors[BLUE] = 0xffff;
     ulColors[RED] = 0xffff;
     ulColors[GREEN] = 0xffff;
     RGBColorSet(ulColors);

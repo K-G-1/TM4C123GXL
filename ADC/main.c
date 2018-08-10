@@ -106,7 +106,7 @@ int main()
     uint16_t Key_status;
     int PWM_data = 5000 ;
     unsigned long ulPrevCount = 0;
-    uint32_t pui32ADC0Value[1];
+    uint32_t pui32ADC0Value[4];
     //
     // Enable lazy stacking for interrupt handlers.  This allows floating-point
     // instructions to be used within interrupt handlers, but at the expense of
@@ -189,7 +189,7 @@ int main()
     // conversion.  Each ADC module has 4 programmable sequences, sequence 0
     // to sequence 3.  This example is arbitrarily using sequence 3.
     //
-    ADCSequenceConfigure(ADC0_BASE, 3, ADC_TRIGGER_PROCESSOR, 0);
+    ADCSequenceConfigure(ADC0_BASE, 2, ADC_TRIGGER_PROCESSOR, 0);
     
     //
     // Configure step 0 on sequence 3.  Sample channel 0 (ADC_CTL_CH0) in
@@ -201,19 +201,19 @@ int main()
     // conversion using sequence 3 we will only configure step 0.  For more
     // information on the ADC sequences and steps, reference the datasheet.
     //
-    ADCSequenceStepConfigure(ADC0_BASE, 3, 0, ADC_CTL_CH0 | ADC_CTL_IE |
+    ADCSequenceStepConfigure(ADC0_BASE, 2, 2, ADC_CTL_CH0 | ADC_CTL_IE |
                              ADC_CTL_END);
                              
     //
     // Since sample sequence 3 is now configured, it must be enabled.
     //
-    ADCSequenceEnable(ADC0_BASE, 3);
+    ADCSequenceEnable(ADC0_BASE, 2);
 
     //
     // Clear the interrupt status flag.  This is done to make sure the
     // interrupt flag is cleared before we sample.
     //
-    ADCIntClear(ADC0_BASE, 3);
+    ADCIntClear(ADC0_BASE, 2);
 
 /**
     HWREG(ADC0_BASE + ADC_O_EMUX) = 0xF000;
@@ -231,35 +231,35 @@ int main()
 			UARTprintf("\n   systick = %d",SysCtlClockGet());
             UARTprintf("\n   key status = %d",Key_status);
         }
-//        else if(BUTTON_PRESSED(RIGHT_BUTTON, ucState, ucDelta))
+        else if(BUTTON_PRESSED(RIGHT_BUTTON, ucState, ucDelta))
         {
             //
             // Trigger the ADC conversion.
             //
-            ADCProcessorTrigger(ADC0_BASE, 3);
+            ADCProcessorTrigger(ADC0_BASE, 2);
 
             //
             // Wait for conversion to be completed.
             //
-            while(!ADCIntStatus(ADC0_BASE, 3, false))
+            while(!ADCIntStatus(ADC0_BASE, 2, false))
             {
             }
 
             //
             // Clear the ADC interrupt flag.
             //
-            ADCIntClear(ADC0_BASE, 3);
+            ADCIntClear(ADC0_BASE, 2);
 
             //
             // Read ADC Value.
             //
-            ADCSequenceDataGet(ADC0_BASE, 3, pui32ADC0Value);
+            ADCSequenceDataGet(ADC0_BASE, 2, pui32ADC0Value);
 
             //
             // Display the AIN0 (PE3) digital value on the console.
             //
-            UARTprintf("AIN0 = %4d\r", pui32ADC0Value[0]);
-            
+            UARTprintf("\n AIN0 = %4d %4d\r", pui32ADC0Value[0],pui32ADC0Value[1]);
+            //distence (/cm)
             OLED_P6x8data(64,0,pui32ADC0Value[0] * 3096/40960);
             
             ROM_SysCtlDelay(1000 * SysCtlClockGet()/3000);

@@ -1,0 +1,60 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: ¦ÌVision V5.14.0.0
+Copyright (C) 2015 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: ti 20607, rfgyuhj, LIC=EPP8T-R3S85-9X4UW-Q58UG-13VTV-UCM1K
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Professional  Version: 5.14.0.0
+Toolchain Path:  D:\Keil_v5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.05 update 1 (build 106)
+Assembler:       Armasm.exe V5.05 update 1 (build 106)
+Linker/Locator:  ArmLink.exe V5.05 update 1 (build 106)
+Library Manager: ArmAr.exe V5.05 update 1 (build 106)
+Hex Converter:   FromElf.exe V5.05 update 1 (build 106)
+CPU DLL:         SARMCM3.DLL V5.14.0.0
+Dialog DLL:      DCM.DLL V1.13.1.0
+Target DLL:      lmidk-agdi.dll V???
+Dialog DLL:      TCM.DLL V1.14.4.0
+ 
+<h2>Project:</h2>
+G:\Keil\TI TM4C\IIC\Demo.uvprojx
+Project File Date:  08/10/2018
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling mpu6050.c...
+drivers\MPU6050\mpu6050.c(250): warning:  #177-D: variable "x1" was declared but never referenced
+        static float x,y,z,x1,y1,z1;
+drivers\MPU6050\mpu6050.c(250): warning:  #177-D: variable "y1" was declared but never referenced
+        static float x,y,z,x1,y1,z1;
+drivers\MPU6050\mpu6050.c(250): warning:  #177-D: variable "z1" was declared but never referenced
+        static float x,y,z,x1,y1,z1;
+drivers\MPU6050\mpu6050.c(255): warning:  #177-D: variable "sum4" was declared but never referenced
+        long  sum1=0,sum2=0,sum3=0,sum4=0,sum5=0,sum6=0;
+drivers\MPU6050\mpu6050.c(255): warning:  #177-D: variable "sum5" was declared but never referenced
+        long  sum1=0,sum2=0,sum3=0,sum4=0,sum5=0,sum6=0;
+drivers\MPU6050\mpu6050.c(255): warning:  #177-D: variable "sum6" was declared but never referenced
+        long  sum1=0,sum2=0,sum3=0,sum4=0,sum5=0,sum6=0;
+drivers\MPU6050\mpu6050.c(152): warning:  #177-D: function "KalmanFilter_x" was declared but never referenced
+  static float KalmanFilter_x(const float ResrcData,float ProcessNiose_Q,float MeasureNoise_R)
+drivers\MPU6050\mpu6050.c(175): warning:  #177-D: function "KalmanFilter_y" was declared but never referenced
+  static float KalmanFilter_y(const float ResrcData,float ProcessNiose_Q,float MeasureNoise_R)
+drivers\MPU6050\mpu6050.c(197): warning:  #177-D: function "KalmanFilter_z" was declared but never referenced
+  static float KalmanFilter_z(const float ResrcData,float ProcessNiose_Q,float MeasureNoise_R)
+drivers\MPU6050\mpu6050.c: 9 warnings, 0 errors
+linking...
+Program Size: Code=17492 RO-data=3968 RW-data=1644 ZI-data=1100  
+".\Objects\Demo.axf" - 0 Error(s), 9 Warning(s).
+
+<h2>Collection of Component include folders:</h2>
+  G:\Keil\TI TM4C\IIC\RTE
+  D:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0
+
+<h2>Collection of Component Files used:</h2>
+</pre>
+</body>
+</html>

@@ -1,0 +1,9 @@
+.\objects\hmc5883l.o: drivers\HMC5883L\HMC5883L.c
+.\objects\hmc5883l.o: .\drivers\IIC\IIC.h
+.\objects\hmc5883l.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\hmc5883l.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\hmc5883l.o: ..\Buttons\driverlib/sysctl.h
+.\objects\hmc5883l.o: ..\Buttons\driverlib/gpio.h
+.\objects\hmc5883l.o: ..\Buttons\driverlib/pin_map.h
+.\objects\hmc5883l.o: ..\Buttons\inc/hw_memmap.h
+.\objects\hmc5883l.o: drivers\HMC5883L\hmc5883l.h

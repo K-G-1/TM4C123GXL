@@ -613,6 +613,11 @@
               <FileType>1</FileType>
               <FilePath>.\drivers\oled\oled.c</FilePath>
             </File>
+            <File>
+              <FileName>softi2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\utils\softi2c.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

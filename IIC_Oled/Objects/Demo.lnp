@@ -38,6 +38,7 @@
 ".\objects\buttons.o"
 ".\objects\iic.o"
 ".\objects\oled.o"
+".\objects\softi2c.o"
 --strict --scatter ".\Objects\Demo.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

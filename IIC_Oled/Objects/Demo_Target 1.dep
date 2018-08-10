@@ -411,3 +411,12 @@ I (..\Buttons\driverlib/gpio.h)(0x5B573F68)
 I (..\Buttons\driverlib/pin_map.h)(0x5B573F68)
 I (..\Buttons\inc/hw_memmap.h)(0x5B573F9B)
 I (drivers\oled\codetable.h)(0x5B5C94A6)
+F (.\utils\softi2c.c)(0x5B573FAB)(-c --cpu Cortex-M4.fp -g -O2 --apcs=interwork --split_sections -I..\Buttons -I.\inc -I.\driverlib -I.\drivers -I.\utils -I.\inc -I..\Timer_pwm -I.\drivers\IIC -I.\drivers\oled-I "G:\Keil\TI TM4C\IIC_Oled\RTE"-I D:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DTM4C123GH6PM -DPART_TM4C123GH6PM -DTARGET_IS_TM4C123_RB1-o .\objects\softi2c.o --omf_browse .\objects\softi2c.crf --depend .\objects\softi2c.d)
+I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5475F300)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (..\Buttons\inc/hw_types.h)(0x5B573F9B)
+I (..\Buttons\driverlib/debug.h)(0x5B573F67)
+I (..\Buttons\driverlib/gpio.h)(0x5B573F68)
+I (..\Buttons\driverlib/rom.h)(0x5B573F68)
+I (..\Buttons\driverlib/rom_map.h)(0x5B573F68)
+I (..\Timer_pwm\utils/softi2c.h)(0x5B573FAB)

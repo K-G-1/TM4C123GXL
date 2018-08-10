@@ -1,0 +1,16 @@
+.\objects\send_data.o: drivers\send\send_data.c
+.\objects\send_data.o: drivers\send\send_data.h
+.\objects\send_data.o: .\drivers\Algorithm\Algorithm_math\Algorithm_math.h
+.\objects\send_data.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\send_data.o: ..\Timer_pwm\utils/uartstdio.h
+.\objects\send_data.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\objects\send_data.o: ..\Buttons\inc/hw_memmap.h
+.\objects\send_data.o: .\drivers\MPU6050\mpu6050.h
+.\objects\send_data.o: .\drivers\IIC\IIC.h
+.\objects\send_data.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\send_data.o: ..\Buttons\driverlib/sysctl.h
+.\objects\send_data.o: ..\Buttons\driverlib/gpio.h
+.\objects\send_data.o: ..\Buttons\driverlib/pin_map.h
+.\objects\send_data.o: .\drivers\IMU\IMU.h
+.\objects\send_data.o: .\drivers\HMC5883L\hmc5883l.h
+.\objects\send_data.o: ..\Buttons\driverlib/uart.h

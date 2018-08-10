@@ -22,96 +22,12 @@ Dialog DLL:      TCM.DLL V1.14.4.0
  
 <h2>Project:</h2>
 G:\Keil\TI TM4C\Õ‚…Ë\sensorlib\sensorlib.uvproj
-Project File Date:  07/24/2018
+Project File Date:  07/27/2018
 
 <h2>Output:</h2>
 Build target 'sensorlib'
-compiling ak8963.c...
-compiling ak8975.c...
-ak8975.c(498): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-          *pfMagnetoX = ((float)(int16_t)((psInst->pui8Data[2] << 8) |
-ak8975.c(504): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-          *pfMagnetoY = ((float)(int16_t)((psInst->pui8Data[4] << 8) |
-ak8975.c(510): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-          *pfMagnetoZ = ((float)(int16_t)((psInst->pui8Data[6] << 8) |
-ak8975.c: 3 warnings, 0 errors
-compiling bmp180.c...
-compiling bq27510g3.c...
-compiling cm3218.c...
-compiling comp_dcm.c...
-comp_dcm.c(391): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-comp_dcm.c(394): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-comp_dcm.c: 2 warnings, 0 errors
-compiling i2cm_drv.c...
-compiling isl29023.c...
-compiling kxti9.c...
-compiling l3gd20h.c...
-compiling lsm303d.c...
-compiling lsm303dlhc_accel.c...
-compiling lsm303dlhc_mag.c...
-compiling magneto.c...
-compiling mpu6050.c...
-compiling mpu9150.c...
-mpu9150.c(1161): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-          *pfMagnetoX *= CONVERT_TO_TESLA;
-mpu9150.c(1166): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-          *pfMagnetoY *= CONVERT_TO_TESLA;
-mpu9150.c(1171): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-          *pfMagnetoZ *= CONVERT_TO_TESLA;
-mpu9150.c: 3 warnings, 0 errors
-compiling quaternion.c...
-quaternion.c(70): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-      fRoll = fRollDeg * M_PI / 180.0;
-quaternion.c(71): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-      fPitch = fPitchDeg *  M_PI / 180.0;
-quaternion.c(72): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-      fYaw = fYawDeg * M_PI / 180.0;
-quaternion.c(77): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-      fCOSY = cosf(fYaw / 2.0);
-quaternion.c(78): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-      fCOSP = cosf(fPitch / 2.0);
-quaternion.c(79): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-      fCOSR = cosf(fRoll / 2.0);
-quaternion.c(84): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-      fSINY = sinf(fYaw / 2.0);
-quaternion.c(85): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-      fSINP = sinf(fPitch / 2.0);
-quaternion.c(86): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-      fSINR = sinf(fRoll / 2.0);
-quaternion.c(278): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-      return(acosf(pfQProd[Q_W]) * 2.0);
-quaternion.c: 10 warnings, 0 errors
-compiling sht21.c...
-sht21.c(493): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-      *pfTemperature = -46.85 + 175.72 * (*pfTemperature / 65536.0);
-sht21.c(551): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-      *pfHumidity = -6.0 + 125.0 * (*pfHumidity / 65536.0);
-sht21.c(556): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-      *pfHumidity /= 100.0;
-sht21.c: 3 warnings, 0 errors
-compiling tmp006.c...
-tmp006.c(564): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-      *pfAmbient = *pfAmbient / 32.0;
-tmp006.c(569): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-      fTdie2 = *pfAmbient + T_REF;
-tmp006.c(574): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-      fS = psInst->fCalibrationFactor * (1.0f + (A1 * (*pfAmbient)) +
-tmp006.c(580): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-      fVo = B0 + (B1 * (*pfAmbient)) + (B2 * ((*pfAmbient) * (*pfAmbient)));
-tmp006.c(587): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-      fVx = (((float) i16Object) * 156.25e-9) - fVo;
-tmp006.c(592): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-      fObj = fVx + C2 * (fVx * fVx);
-tmp006.c(597): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-      *pfObject = (sqrtf(sqrtf((fTdie2 * fTdie2 * fTdie2 * fTdie2) +
-tmp006.c: 7 warnings, 0 errors
-compiling tmp100.c...
-tmp100.c(573): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-      *pfTemperature = ((float)(((int16_t)psInst->pui8Data[0] << 8) |
-tmp100.c: 1 warning, 0 errors
-compiling vector.c...
 creating Library...
-".\rvmdk\sensorlib.lib" - 0 Error(s), 29 Warning(s).
+".\rvmdk\sensorlib.lib" - 0 Error(s), 0 Warning(s).
 </pre>
 </body>
 </html>
