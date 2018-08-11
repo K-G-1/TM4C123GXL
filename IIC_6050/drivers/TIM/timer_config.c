@@ -17,6 +17,8 @@
 #include "IMU.h"
 #include "hmc5883l.h"
 #include "send_data.h"
+#include "oled.h"
+
 
 volatile uint32_t g_ui32Counter = 0;
 volatile uint32_t g_Timer_0_A_Counter = 0;
@@ -69,8 +71,9 @@ SysTickIntHandler(void)
     {
         cnt = 0;
         g_ui32Counter++;
-        UARTprintf("\n   timer status = %d %d %d %d",g_ui32Counter,g_Timer_0_A_Counter,
-                                                    (int16_t)angle.pitch,(int16_t)angle.roll);
+//        UARTprintf("\n   timer status = %d %d %d %d",g_ui32Counter,g_Timer_0_A_Counter,
+//                                                    (int16_t)angle.pitch,(int16_t)angle.roll);
+        oled_dis_data(angle.pitch,angle.roll,angle.yaw,0);
     }
     
 }
@@ -90,7 +93,7 @@ void Timer_0_A_init(void)
     //
     TimerConfigure(TIMER0_BASE, TIMER_CFG_PERIODIC);
 //    TimerPrescaleSet(TIMER0_BASE,TIMER_A,16);
-    TimerLoadSet(TIMER0_BASE, TIMER_A, SysCtlClockGet()/50);   //200hz 5ms
+    TimerLoadSet(TIMER0_BASE, TIMER_A, SysCtlClockGet()/40);   //200hz 5ms
     //
     // Setup the interrupts for the timer timeouts.
     //

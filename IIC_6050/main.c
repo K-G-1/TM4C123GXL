@@ -98,7 +98,7 @@ ConfigureUART(void)
     //
     // Initialize the UART for console I/O.
     //
-    UARTStdioConfig(0, 115200, 16000000);
+    UARTStdioConfig(0, 500000, 16000000);
     //
     // Prompt for text to be entered.
     //
@@ -121,8 +121,8 @@ int main()
     // instructions to be used within interrupt handlers, but at the expense of
     // extra stack usage.
     //
-//    ROM_FPUEnable();
-//    ROM_FPULazyStackingEnable();
+    ROM_FPUEnable();
+    ROM_FPULazyStackingEnable();
     
     //
     // Set the clocking to run directly from the crystal.
@@ -172,7 +172,8 @@ int main()
     systick_init();
     Timer_0_A_init();
     Init_HMC5883L();
-    
+    sensor.gyro.CALIBRATE = 1;
+    sensor.acc.CALIBRATE = 1;
     
     while(1)
     {

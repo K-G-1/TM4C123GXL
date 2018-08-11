@@ -208,9 +208,9 @@ void oled_dis_str(void)
 
 void oled_dis_data(int P,int R,int Y,u16 H)
 {
-	OLED_P6x8data(36,2,P);
-	OLED_P6x8data(36,3,R);
-	OLED_P6x8data(36,4,Y);
-	OLED_P6x8data(36,5,H);
+	OLED_P6x8data(36,0,P);
+	OLED_P6x8data(36,1,R);
+	OLED_P6x8data(36,2,Y);
+	OLED_P6x8data(36,3,H);
 	
 }

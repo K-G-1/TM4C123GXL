@@ -15,6 +15,7 @@ struct _angle{
 
 extern struct _angle angle;
 
+float invSqrt(float x);
 void Prepare_Data(void);
 void Get_Attitude(void);
 void IMUupdate(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz);

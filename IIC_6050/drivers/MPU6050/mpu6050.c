@@ -26,16 +26,16 @@ u8 MPU_Init(void)
     IIC_Init();
 	IIC_ADD_write(MPU_ADDR,MPU_PWR_MGMT1_REG,0X00);	//唤醒MPU6050 
 	
-    IIC_ADD_write(MPU_ADDR,MPU_PWR_MGMT1_REG,0X03);	//唤醒MPU6050 
+//    IIC_ADD_write(MPU_ADDR,MPU_PWR_MGMT1_REG,0X01);	//唤醒MPU6050 
     
-	IIC_ADD_write(MPU_ADDR,0x19, 0x07);    //陀螺仪采样率
+	IIC_ADD_write(MPU_ADDR,0x19, 0x04);    //陀螺仪采样率
 //	IIC_ADD_write(MPU_ADDR,MPU_CFG_REG, 0x04);        //25Hz 
 	
 	IIC_ADD_write(MPU_ADDR,MPU_INTBP_CFG_REG, 0x42);   //使能旁路I2C
 	IIC_ADD_write(MPU_ADDR,MPU_USER_CTRL_REG, 0x40);     //使能旁路I2C
-	IIC_ADD_write(MPU_ADDR,MPU_CFG_REG, 0x02);     //低通滤波
+	IIC_ADD_write(MPU_ADDR,MPU_CFG_REG, 0x03);     //低通滤波
 	IIC_ADD_write(MPU_ADDR,MPU_GYRO_CFG_REG, 0x10);      //+-1000
-	IIC_ADD_write(MPU_ADDR,MPU_ACCEL_CFG_REG, 0x09);
+	IIC_ADD_write(MPU_ADDR,MPU_ACCEL_CFG_REG, 0x08);
 	
 	
 	res=IIC_ADD_read(MPU_ADDR,MPU_DEVICE_ID_REG);
@@ -95,7 +95,7 @@ void MPU_Updata(void)
 
 	sensor.acc.origin.x = ((((int16_t)mpu6050_buffer[0]) << 8) | mpu6050_buffer[1]) - sensor.acc.quiet.x;
 	sensor.acc.origin.y = ((((int16_t)mpu6050_buffer[2]) << 8) | mpu6050_buffer[3]) - sensor.acc.quiet.y;
-	sensor.acc.origin.z = ((((int16_t)mpu6050_buffer[4]) << 8) | mpu6050_buffer[5]) - sensor.acc.quiet.z;
+	sensor.acc.origin.z = ((((int16_t)mpu6050_buffer[4]) << 8) | mpu6050_buffer[5]) ;
 
 	sensor.acc.radian.x = (float )sensor.acc.origin.x ;
 	sensor.acc.radian.y = (float )sensor.acc.origin.y ;
@@ -146,8 +146,8 @@ void MPU_Updata(void)
 	Q:过程噪声，Q增大，动态响应变快，收敛稳定性变坏
 	R:测量噪声，R增大，动态响应变慢，收敛稳定性变好	
 */
-#define KALMAN_Q        0.05
-#define KALMAN_R        5.0000
+#define KALMAN_Q        0.5
+#define KALMAN_R        100.0000
 
 static float KalmanFilter_x(const float ResrcData,float ProcessNiose_Q,float MeasureNoise_R)
 {
@@ -259,9 +259,9 @@ void Prepare_Data(void)
 //	SampleANDExchange();                 //气压计数值
 	
 //	
-//	sensor.acc.averag.x = KalmanFilter_x(sensor.acc.origin.x,KALMAN_Q,KALMAN_R) ;  // ACC X轴卡尔曼滤波
-//	sensor.acc.averag.y = KalmanFilter_y(sensor.acc.origin.y,KALMAN_Q,KALMAN_R) ;  // ACC Y轴卡尔曼滤波
-//	sensor.acc.averag.z = KalmanFilter_z(sensor.acc.origin.z,KALMAN_Q,KALMAN_R) ;  // ACC Z轴卡尔曼滤波
+	sensor.acc.averag.x = KalmanFilter_x(sensor.acc.origin.x,KALMAN_Q,KALMAN_R) ;  // ACC X轴卡尔曼滤波
+	sensor.acc.averag.y = KalmanFilter_y(sensor.acc.origin.y,KALMAN_Q,KALMAN_R) ;  // ACC Y轴卡尔曼滤波
+	sensor.acc.averag.z = KalmanFilter_z(sensor.acc.origin.z,KALMAN_Q,KALMAN_R*4) ;  // ACC Z轴卡尔曼滤波
 	
 //  sensor.gyro.radian1.x = KalmanFilter_x(sensor.gyro.radian.x,KALMAN_Q,KALMAN_R);  // ACC X轴卡尔曼滤波
 //	sensor.gyro.radian1.y = KalmanFilter_y(sensor.gyro.radian.y,KALMAN_Q,KALMAN_R);  // ACC Y轴卡尔曼滤波
@@ -287,36 +287,36 @@ void Prepare_Data(void)
 // 	sensor.acc.averag.y = LPF_1st(y1,sensor.acc.origin.y ,0.17f);	y1= sensor.acc.averag.y;
 //	sensor.acc.averag.z = LPF_1st(z1,sensor.acc.origin.z  ,0.17f);	z1 = sensor.acc.averag.z;//
 //	
-	File_Buf[0][num] = sensor.acc.origin.x;
-	File_Buf[1][num] = sensor.acc.origin.y;
-	File_Buf[2][num] = sensor.acc.origin.z;
+//	File_Buf[0][num] = sensor.acc.origin.x;
+//	File_Buf[1][num] = sensor.acc.origin.y;
+//	File_Buf[2][num] = sensor.acc.origin.z;
 
-//////	File_Buf[3][num] = sensor.gyro.radian.x;
-//////	File_Buf[4][num] = sensor.gyro.radian.y;
-//////	File_Buf[5][num] = sensor.gyro.radian.z;
+////////	File_Buf[3][num] = sensor.gyro.radian.x;
+////////	File_Buf[4][num] = sensor.gyro.radian.y;
+////////	File_Buf[5][num] = sensor.gyro.radian.z;
 
-	
-	for(i=0;i<20;i++)
-	{
-     sum1 += File_Buf[0][i];
-		 sum2 += File_Buf[1][i];
-		 sum3 += File_Buf[2][i];
-//		 sum4 += File_Buf[3][i];
-//		 sum5 += File_Buf[4][i];
-//		 sum6 += File_Buf[5][i];
-  }
-
-//////	sensor.gyro.radian1.x = sum1 / 10;
-//////	sensor.gyro.radian1.y = sum2 / 10;
-//////	sensor.gyro.radian1.z = sum3 / 10;
-////	
-////	
 //	
-	sensor.acc.averag.x = sum1 / 20.0f;
-	sensor.acc.averag.y = sum2 / 20.0f;
-	sensor.acc.averag.z = sum3 / 20.0f;
-	
-	num = (num + 1) % 20;
+//	for(i=0;i<20;i++)
+//	{
+//     sum1 += File_Buf[0][i];
+//		 sum2 += File_Buf[1][i];
+//		 sum3 += File_Buf[2][i];
+////		 sum4 += File_Buf[3][i];
+////		 sum5 += File_Buf[4][i];
+////		 sum6 += File_Buf[5][i];
+//  }
+
+////////	sensor.gyro.radian1.x = sum1 / 10;
+////////	sensor.gyro.radian1.y = sum2 / 10;
+////////	sensor.gyro.radian1.z = sum3 / 10;
+//////	
+//////	
+////	
+//	sensor.acc.averag.x = sum1 / 20.0f;
+//	sensor.acc.averag.y = sum2 / 20.0f;
+//	sensor.acc.averag.z = sum3 / 20.0f;
+//	
+//	num = (num + 1) % 20;
 //	
 
 	
