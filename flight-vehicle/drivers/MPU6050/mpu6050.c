@@ -2,6 +2,8 @@
 #include "mpu6050.h"
 #include "Algorithm_filter.h"
 #include "hmc5883l.h"
+#include "e2prom.h"
+
 
 u8		 mpu6050_buffer[15];
 u16 Gyro_x;
@@ -362,7 +364,7 @@ void MPU_Acc_Offset(void)
 	 sensor.acc.quiet.y=sensor.acc.temp.y/cnt;
 	 sensor.acc.quiet.z=sensor.acc.temp.z/cnt;
 	 
-//	AT24cxx_save_Acc_Gyro_offest();
+    save_Acc_Gyro_offest();
 
 	 
 }	
@@ -400,6 +402,6 @@ void MPU_Gyro_Offset(void)
 	 sensor.gyro.quiet.y=sensor.gyro.temp.y/cnt;
 	 sensor.gyro.quiet.z=sensor.gyro.temp.z/cnt;
 	 
-//		AT24cxx_save_Acc_Gyro_offest();
+    save_Acc_Gyro_offest();
 }
 

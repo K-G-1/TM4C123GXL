@@ -60,15 +60,23 @@ void
 Timer3IntHandler(void)
 {
     unsigned long ulstatus;
-
-    // ???????
-    ulstatus = TimerIntStatus(TIMER3_BASE, TIMER_CAPA_EVENT);
-   
-    // ???????   
+    static uint32_t cap_time = 0;
+    static uint32_t old_cap_time = 0;
+    static uint32_t new_cap_time = 0;
+    ulstatus = TimerIntStatus(TIMER3_BASE, false);
+ 
     TimerIntClear(TIMER3_BASE, ulstatus);
-   
-    // ?????????
-    UARTprintf("Captured Value: 0x%04d\n", TimerValueGet(TIMER3_BASE, TIMER_A));
+    
+    if(ulstatus == TIMER_CAPA_EVENT)
+        new_cap_time =  TimerValueGet(TIMER3_BASE, TIMER_A);
+    
+    if(new_cap_time <old_cap_time)
+        cap_time = new_cap_time + (0xffff - old_cap_time);
+    else 
+        cap_time = new_cap_time - old_cap_time;
+    
+    old_cap_time = new_cap_time;
+    UARTprintf("Captured Value: 0x%04d\n", cap_time);
 }
 
 
@@ -164,11 +172,12 @@ void Timer3_init()
     
     GPIOPadConfigSet(GPIO_PORTB_BASE, GPIO_PIN_2, GPIO_STRENGTH_2MA, GPIO_PIN_TYPE_STD_WPU);
             
-    TimerConfigure(TIMER3_BASE, TIMER_CFG_SPLIT_PAIR | TIMER_CFG_A_CAP_TIME_UP);
+    TimerConfigure(TIMER3_BASE, TIMER_CFG_SPLIT_PAIR | TIMER_CFG_A_CAP_TIME);
     
     TimerControlEvent(TIMER3_BASE, TIMER_A, TIMER_EVENT_NEG_EDGE);
     
-    TimerLoadSet(TIMER3_BASE, TIMER_A, 0x8FFF);
+    TimerLoadSet(TIMER3_BASE, TIMER_A, 0xffff);
+    TimerMatchSet(TIMER3_BASE, TIMER_A, 0);
     
     TimerIntRegister(TIMER3_BASE, TIMER_A, Timer3IntHandler);
     
@@ -239,6 +248,8 @@ int main()
     //time 3 4 init 
     //
     Timer3_init();
+    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOC);
+    GPIOPinTypeGPIOOutput(GPIO_PORTC_BASE, GPIO_PIN_4);
     while(1)
     {
         //
@@ -263,7 +274,11 @@ int main()
             ulColors[GREEN] = (0xFF00FF &0x0000FF)<<8;
             RGBSet(ulColors,0.02f);
         }
-
+        GPIOPinWrite(GPIO_PORTC_BASE, GPIO_PIN_4, (GPIO_PIN_4));
+        SysCtlDelay(15000);    // 
+        GPIOPinWrite(GPIO_PORTC_BASE, GPIO_PIN_4, ~(GPIO_PIN_4));
+        SysCtlDelay(15000); 
+        
     }
     return 0;
 }

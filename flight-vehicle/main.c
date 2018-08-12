@@ -34,7 +34,9 @@
 #include "IMU.h"
 #include "hmc5883l.h"
 #include "motor.h"
-
+#include "send_data.h"
+#include "e2prom.h"
+#include "Rc_input.h"
 
 #define RED_LED  GPIO_PIN_1
 #define BLUE_LED  GPIO_PIN_2
@@ -47,6 +49,41 @@
 
 extern volatile uint32_t g_ui32Counter ;
 extern volatile uint32_t g_Timer_0_A_Counter;
+
+
+//*****************************************************************************
+//
+// The UART interrupt handler.
+//
+//*****************************************************************************
+void
+UART_0_IntHandler(void)
+{
+    uint32_t ui32Status;
+    uint32_t bt = 0;
+    //
+    // Get the interrrupt status.
+    //
+    ui32Status = UARTIntStatus(UART0_BASE, true);
+
+    //
+    // Clear the asserted interrupts.
+    //
+    UARTIntClear(UART0_BASE, ui32Status);
+    
+    if((ui32Status == UART_INT_RX) || (ui32Status == UART_INT_RT))
+    {
+        while(UARTCharsAvail(UART0_BASE))
+        {   
+            bt=UARTCharGetNonBlocking(UART0_BASE);
+            Data_Receive_Prepare(bt);
+        }
+    }else if(ui32Status == UART_INT_TX)
+    {
+
+    }
+}
+
 //*****************************************************************************
 //
 // Send a string to the UART.
@@ -93,14 +130,28 @@ ConfigureUART(void)
     ROM_GPIOPinTypeUART(GPIO_PORTA_BASE, GPIO_PIN_0 | GPIO_PIN_1);
 
     //
-    // Use the internal 16MHz oscillator as the UART clock source.
+    // Enable processor interrupts.
     //
-    UARTClockSourceSet(UART0_BASE, UART_CLOCK_PIOSC);
+    ROM_IntMasterEnable();
+    //
+    // Configure the UART for 115,200, 8-N-1 operation.
+    //
+    ROM_UARTConfigSetExpClk(UART0_BASE, ROM_SysCtlClockGet(), 500000,
+                            (UART_CONFIG_WLEN_8 | UART_CONFIG_STOP_ONE |
+                             UART_CONFIG_PAR_NONE));
 
     //
-    // Initialize the UART for console I/O.
+    // Enable the UART interrupt.
     //
-    UARTStdioConfig(0, 500000, 16000000);
+    IntPrioritySet(INT_UART0,0x40);
+    
+    ROM_IntEnable(INT_UART0);
+    //没有使用发送中断，因为暂时用不到
+    
+    
+    
+    ROM_UARTIntEnable(UART0_BASE, UART_INT_RX | UART_INT_RT);
+    
     //
     // Prompt for text to be entered.
     //
@@ -114,7 +165,7 @@ int main()
     unsigned long ulColors[3];
     uint8_t ucDelta,ucState;
     uint16_t Key_status;
-    int PWM_data = 125000 ;
+    int PWM_data = 0 ;
     unsigned long ulPrevCount = 0;
     uint8_t mpu6050_check = 0;
     
@@ -164,8 +215,6 @@ int main()
     //
     ConfigureUART();
 
-    UARTprintf("mpu6050 example ->");   
- 
     
     OLED_Init();
     oled_dis_str();
@@ -175,10 +224,12 @@ int main()
     Timer_1_A_init();
     Init_HMC5883L();
     
+    e2prom_init();
     motor_init();
+    RC_init();
 //    sensor.gyro.CALIBRATE = 1;
 //    sensor.acc.CALIBRATE = 1;
-    
+    read_Acc_Gyro_offest();
     while(1)
     {
         ucState = ButtonsPoll(&ucDelta, 0);
@@ -190,7 +241,7 @@ int main()
         }
         else if(BUTTON_PRESSED(RIGHT_BUTTON, ucState, ucDelta))
         {
-            PWM_data -= 0x0f;
+            PWM_data += 0xFF;
             HWREG(WTIMER0_BASE + TIMER_O_TAMATCHR) = PWM_data;
             HWREG(WTIMER0_BASE + TIMER_O_TBMATCHR) = PWM_data;
             HWREG(WTIMER1_BASE + TIMER_O_TAMATCHR) = PWM_data;

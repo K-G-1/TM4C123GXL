@@ -1,0 +1,12 @@
+.\objects\e2prom.o: drivers\EEPROM\e2prom.c
+.\objects\e2prom.o: drivers\EEPROM\e2prom.h
+.\objects\e2prom.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\e2prom.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\e2prom.o: ..\Buttons\inc/hw_memmap.h
+.\objects\e2prom.o: ..\Buttons\inc/hw_types.h
+.\objects\e2prom.o: ..\Buttons\driverlib/sysctl.h
+.\objects\e2prom.o: ..\Buttons\driverlib/eeprom.h
+.\objects\e2prom.o: .\drivers\MPU6050\mpu6050.h
+.\objects\e2prom.o: .\drivers\IIC\IIC.h
+.\objects\e2prom.o: ..\Buttons\driverlib/gpio.h
+.\objects\e2prom.o: ..\Buttons\driverlib/pin_map.h

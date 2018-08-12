@@ -9,3 +9,4 @@
 .\objects\mpu6050.o: drivers\MPU6050\mpu6050.h
 .\objects\mpu6050.o: .\drivers\Algorithm\Algorithm_filter\Algorithm_filter.h
 .\objects\mpu6050.o: .\drivers\HMC5883L\hmc5883l.h
+.\objects\mpu6050.o: .\drivers\EEPROM\e2prom.h

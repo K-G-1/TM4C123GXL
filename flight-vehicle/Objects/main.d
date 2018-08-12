@@ -31,3 +31,7 @@
 .\objects\main.o: .\drivers\IMU\IMU.h
 .\objects\main.o: .\drivers\HMC5883L\hmc5883l.h
 .\objects\main.o: .\drivers\MOTO\motor.h
+.\objects\main.o: .\drivers\send\send_data.h
+.\objects\main.o: .\drivers\Algorithm\Algorithm_math\Algorithm_math.h
+.\objects\main.o: .\drivers\EEPROM\e2prom.h
+.\objects\main.o: .\drivers\RC\Rc_input.h

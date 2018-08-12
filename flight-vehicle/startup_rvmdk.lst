@@ -158,7 +158,7 @@ ARM Macro Assembler    Page 3
                        ***********************
    95 00000000         
    96 00000000                 EXTERN           SysTickIntHandler
-   97 00000000         
+   97 00000000                 EXTERN           UART_0_IntHandler
    98 00000000         
    99 00000000         ;*******************************************************
                        ***********************
@@ -210,7 +210,7 @@ ARM Macro Assembler    Page 4
                                                             
   126 00000050 00000000        DCD              IntDefaultHandler ; GPIO Port E
                                                             
-  127 00000054 00000000        DCD              IntDefaultHandler 
+  127 00000054 00000000        DCD              UART_0_IntHandler 
                                                             ; UART0 Rx and Tx
   128 00000058 00000000        DCD              IntDefaultHandler 
                                                             ; UART1 Rx and Tx
@@ -739,7 +739,6 @@ Symbol: IntDefaultHandler
       At line 124 in file startup_rvmdk.S
       At line 125 in file startup_rvmdk.S
       At line 126 in file startup_rvmdk.S
-      At line 127 in file startup_rvmdk.S
       At line 128 in file startup_rvmdk.S
       At line 129 in file startup_rvmdk.S
       At line 130 in file startup_rvmdk.S
@@ -772,13 +771,13 @@ Symbol: IntDefaultHandler
       At line 157 in file startup_rvmdk.S
       At line 158 in file startup_rvmdk.S
       At line 159 in file startup_rvmdk.S
+      At line 160 in file startup_rvmdk.S
 
 
 
 ARM Macro Assembler    Page 2 Alphabetic symbol ordering
 Relocatable symbols
 
-      At line 160 in file startup_rvmdk.S
       At line 161 in file startup_rvmdk.S
       At line 162 in file startup_rvmdk.S
       At line 165 in file startup_rvmdk.S
@@ -837,13 +836,13 @@ Relocatable symbols
       At line 248 in file startup_rvmdk.S
       At line 249 in file startup_rvmdk.S
       At line 250 in file startup_rvmdk.S
+      At line 251 in file startup_rvmdk.S
 
 
 
 ARM Macro Assembler    Page 3 Alphabetic symbol ordering
 Relocatable symbols
 
-      At line 251 in file startup_rvmdk.S
       At line 252 in file startup_rvmdk.S
       At line 253 in file startup_rvmdk.S
       At line 254 in file startup_rvmdk.S
@@ -953,6 +952,14 @@ Symbol: SysTickIntHandler
    Uses
       At line 121 in file startup_rvmdk.S
 Comment: SysTickIntHandler used once
+UART_0_IntHandler 00000000
+
+Symbol: UART_0_IntHandler
+   Definitions
+      At line 97 in file startup_rvmdk.S
+   Uses
+      At line 127 in file startup_rvmdk.S
+Comment: UART_0_IntHandler used once
 __main 00000000
 
 Symbol: __main
@@ -969,5 +976,5 @@ Symbol: __use_two_region_memory
    Uses
       None
 Comment: __use_two_region_memory unused
-3 symbols
-357 symbols in table
+4 symbols
+358 symbols in table

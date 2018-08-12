@@ -71,8 +71,6 @@ SysTickIntHandler(void)
     {
         cnt = 0;
         g_ui32Counter++;
-//        UARTprintf("\n   timer status = %d %d %d %d",g_ui32Counter,g_Timer_0_A_Counter,
-//                                                    (int16_t)angle.pitch,(int16_t)angle.roll);
         oled_dis_data(angle.pitch,angle.roll,angle.yaw,0);
     }
     
@@ -105,7 +103,7 @@ void Timer_1_A_init(void)
     // Enable the timers.
     //
     IntEnable(INT_TIMER1A);
-    IntPrioritySet(INT_TIMER1A,0x10);
+    IntPrioritySet(INT_TIMER1A,0xE0);
     TimerEnable(TIMER1_BASE, TIMER_A);
     
     

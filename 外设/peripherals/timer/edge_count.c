@@ -364,7 +364,7 @@ main(void)
     // pins are connected to specific timers.
     //
     ROM_TimerConfigure(TIMER4_BASE, (TIMER_CFG_SPLIT_PAIR |
-                       TIMER_CFG_A_CAP_COUNT));
+                       TIMER_CFG_A_PERIODIC));
     ROM_TimerControlEvent(TIMER4_BASE, TIMER_A, TIMER_EVENT_POS_EDGE);
     ROM_TimerLoadSet(TIMER4_BASE, TIMER_A, 9);
     ROM_TimerMatchSet(TIMER4_BASE, TIMER_A, 0);

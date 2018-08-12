@@ -46,6 +46,8 @@
 ".\objects\hmc5883l.o"
 ".\objects\send_data.o"
 ".\objects\motor.o"
+".\objects\e2prom.o"
+".\objects\rc_input.o"
 --strict --scatter ".\Objects\Demo.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
