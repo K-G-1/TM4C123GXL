@@ -1,5 +1,5 @@
 Dependencies for Project 'Demo', Target 'Target 1': (DO NOT MODIFY !)
-F (.\main.c)(0x5B6EF8AA)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I..\Buttons -I.\inc -I.\driverlib -I.\drivers -I.\utils -I.\inc -I..\Timer_pwm -I.\drivers\IIC -I.\drivers\oled -I.\drivers\MPU6050 -I.\drivers\Algorithm\Algorithm_filter -I.\drivers\TIM -I.\drivers\IMU -I.\drivers\Algorithm\Algorithm_math -I.\drivers\HMC5883L -I.\drivers\send-I "G:\Keil\TI TM4C\IIC_6050\RTE"-I D:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DTM4C123GH6PM -DPART_TM4C123GH6PM -DTARGET_IS_TM4C123_RB1-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+F (.\main.c)(0x5B6FDF5D)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I..\Buttons -I.\inc -I.\driverlib -I.\drivers -I.\utils -I.\inc -I..\Timer_pwm -I.\drivers\IIC -I.\drivers\oled -I.\drivers\MPU6050 -I.\drivers\Algorithm\Algorithm_filter -I.\drivers\TIM -I.\drivers\IMU -I.\drivers\Algorithm\Algorithm_math -I.\drivers\HMC5883L -I.\drivers\send-I "G:\Keil\TI TM4C\IIC_6050\RTE"-I D:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DTM4C123GH6PM -DPART_TM4C123GH6PM -DTARGET_IS_TM4C123_RB1-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
 I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
 I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5475F300)
 I (D:\Keil_v5\ARM\ARMCC\include\math.h)(0x5475F2FE)
@@ -28,7 +28,7 @@ I (..\Buttons\driverlib/pin_map.h)(0x5B573F68)
 I (..\Buttons\inc/hw_memmap.h)(0x5B573F9B)
 I (.\drivers\oled\oled.h)(0x5B5C94A6)
 I (.\drivers\MPU6050\mpu6050.h)(0x5B6D899D)
-I (.\drivers\TIM\timer_config.h)(0x5B6D3544)
+I (.\drivers\TIM\timer_config.h)(0x5B6FDF5D)
 I (.\drivers\IMU\IMU.h)(0x5B6DD2BD)
 I (.\drivers\HMC5883L\hmc5883l.h)(0x5B6D9177)
 F (.\startup_rvmdk.S)(0x5B6D33B4)(--cpu Cortex-M4.fp -g --apcs=interwork -I "G:\Keil\TI TM4C\IIC_6050\RTE"-I D:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0-I D:\Keil_v5\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 514" --pd "TM4C123GH6PM SETA 1"--list .\startup_rvmdk.lst --xref -o .\objects\startup_rvmdk.o --depend .\objects\startup_rvmdk.d)
@@ -424,7 +424,7 @@ I (..\Buttons\driverlib/gpio.h)(0x5B573F68)
 I (..\Buttons\driverlib/rom.h)(0x5B573F68)
 I (..\Buttons\driverlib/rom_map.h)(0x5B573F68)
 I (..\Timer_pwm\utils/softi2c.h)(0x5B573FAB)
-F (.\drivers\MPU6050\mpu6050.c)(0x5B6F0B43)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I..\Buttons -I.\inc -I.\driverlib -I.\drivers -I.\utils -I.\inc -I..\Timer_pwm -I.\drivers\IIC -I.\drivers\oled -I.\drivers\MPU6050 -I.\drivers\Algorithm\Algorithm_filter -I.\drivers\TIM -I.\drivers\IMU -I.\drivers\Algorithm\Algorithm_math -I.\drivers\HMC5883L -I.\drivers\send-I "G:\Keil\TI TM4C\IIC_6050\RTE"-I D:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DTM4C123GH6PM -DPART_TM4C123GH6PM -DTARGET_IS_TM4C123_RB1-o .\objects\mpu6050.o --omf_browse .\objects\mpu6050.crf --depend .\objects\mpu6050.d)
+F (.\drivers\MPU6050\mpu6050.c)(0x5B6FE060)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I..\Buttons -I.\inc -I.\driverlib -I.\drivers -I.\utils -I.\inc -I..\Timer_pwm -I.\drivers\IIC -I.\drivers\oled -I.\drivers\MPU6050 -I.\drivers\Algorithm\Algorithm_filter -I.\drivers\TIM -I.\drivers\IMU -I.\drivers\Algorithm\Algorithm_math -I.\drivers\HMC5883L -I.\drivers\send-I "G:\Keil\TI TM4C\IIC_6050\RTE"-I D:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DTM4C123GH6PM -DPART_TM4C123GH6PM -DTARGET_IS_TM4C123_RB1-o .\objects\mpu6050.o --omf_browse .\objects\mpu6050.crf --depend .\objects\mpu6050.d)
 I (.\drivers\IIC\IIC.h)(0x5B6D319E)
 I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
 I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5475F300)
@@ -437,8 +437,8 @@ I (.\drivers\Algorithm\Algorithm_filter\Algorithm_filter.h)(0x5B6D2DE6)
 I (.\drivers\HMC5883L\hmc5883l.h)(0x5B6D9177)
 F (.\drivers\Algorithm\Algorithm_filter\Algorithm_filter.c)(0x5B6D2393)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I..\Buttons -I.\inc -I.\driverlib -I.\drivers -I.\utils -I.\inc -I..\Timer_pwm -I.\drivers\IIC -I.\drivers\oled -I.\drivers\MPU6050 -I.\drivers\Algorithm\Algorithm_filter -I.\drivers\TIM -I.\drivers\IMU -I.\drivers\Algorithm\Algorithm_math -I.\drivers\HMC5883L -I.\drivers\send-I "G:\Keil\TI TM4C\IIC_6050\RTE"-I D:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DTM4C123GH6PM -DPART_TM4C123GH6PM -DTARGET_IS_TM4C123_RB1-o .\objects\algorithm_filter.o --omf_browse .\objects\algorithm_filter.crf --depend .\objects\algorithm_filter.d)
 I (drivers\Algorithm\Algorithm_filter\Algorithm_filter.h)(0x5B6D2DE6)
-F (.\drivers\TIM\timer_config.c)(0x5B6F12EE)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I..\Buttons -I.\inc -I.\driverlib -I.\drivers -I.\utils -I.\inc -I..\Timer_pwm -I.\drivers\IIC -I.\drivers\oled -I.\drivers\MPU6050 -I.\drivers\Algorithm\Algorithm_filter -I.\drivers\TIM -I.\drivers\IMU -I.\drivers\Algorithm\Algorithm_math -I.\drivers\HMC5883L -I.\drivers\send-I "G:\Keil\TI TM4C\IIC_6050\RTE"-I D:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DTM4C123GH6PM -DPART_TM4C123GH6PM -DTARGET_IS_TM4C123_RB1-o .\objects\timer_config.o --omf_browse .\objects\timer_config.crf --depend .\objects\timer_config.d)
-I (drivers\TIM\timer_config.h)(0x5B6D3544)
+F (.\drivers\TIM\timer_config.c)(0x5B6FE14C)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I..\Buttons -I.\inc -I.\driverlib -I.\drivers -I.\utils -I.\inc -I..\Timer_pwm -I.\drivers\IIC -I.\drivers\oled -I.\drivers\MPU6050 -I.\drivers\Algorithm\Algorithm_filter -I.\drivers\TIM -I.\drivers\IMU -I.\drivers\Algorithm\Algorithm_math -I.\drivers\HMC5883L -I.\drivers\send-I "G:\Keil\TI TM4C\IIC_6050\RTE"-I D:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DTM4C123GH6PM -DPART_TM4C123GH6PM -DTARGET_IS_TM4C123_RB1-o .\objects\timer_config.o --omf_browse .\objects\timer_config.crf --depend .\objects\timer_config.d)
+I (drivers\TIM\timer_config.h)(0x5B6FDF5D)
 I (.\inc\tm4c123gh6pm.h)(0x5B573F9B)
 I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5475F300)
 I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
@@ -460,7 +460,7 @@ I (.\drivers\HMC5883L\hmc5883l.h)(0x5B6D9177)
 I (.\drivers\send\send_data.h)(0x5B6DA522)
 I (.\drivers\Algorithm\Algorithm_math\Algorithm_math.h)(0x5B6D484A)
 I (.\drivers\oled\oled.h)(0x5B5C94A6)
-F (.\drivers\IMU\IMU.c)(0x5B6F10B8)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I..\Buttons -I.\inc -I.\driverlib -I.\drivers -I.\utils -I.\inc -I..\Timer_pwm -I.\drivers\IIC -I.\drivers\oled -I.\drivers\MPU6050 -I.\drivers\Algorithm\Algorithm_filter -I.\drivers\TIM -I.\drivers\IMU -I.\drivers\Algorithm\Algorithm_math -I.\drivers\HMC5883L -I.\drivers\send-I "G:\Keil\TI TM4C\IIC_6050\RTE"-I D:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DTM4C123GH6PM -DPART_TM4C123GH6PM -DTARGET_IS_TM4C123_RB1-o .\objects\imu.o --omf_browse .\objects\imu.crf --depend .\objects\imu.d)
+F (.\drivers\IMU\IMU.c)(0x5B6FE118)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I..\Buttons -I.\inc -I.\driverlib -I.\drivers -I.\utils -I.\inc -I..\Timer_pwm -I.\drivers\IIC -I.\drivers\oled -I.\drivers\MPU6050 -I.\drivers\Algorithm\Algorithm_filter -I.\drivers\TIM -I.\drivers\IMU -I.\drivers\Algorithm\Algorithm_math -I.\drivers\HMC5883L -I.\drivers\send-I "G:\Keil\TI TM4C\IIC_6050\RTE"-I D:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DTM4C123GH6PM -DPART_TM4C123GH6PM -DTARGET_IS_TM4C123_RB1-o .\objects\imu.o --omf_browse .\objects\imu.crf --depend .\objects\imu.d)
 I (drivers\IMU\IMU.h)(0x5B6DD2BD)
 I (D:\Keil_v5\ARM\ARMCC\include\math.h)(0x5475F2FE)
 I (.\drivers\MPU6050\mpu6050.h)(0x5B6D899D)

@@ -1,0 +1,15 @@
+.\objects\motor.o: drivers\MOTO\motor.c
+.\objects\motor.o: drivers\MOTO\motor.h
+.\objects\motor.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\motor.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\motor.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\time.h
+.\objects\motor.o: ..\Buttons\inc/hw_memmap.h
+.\objects\motor.o: ..\Buttons\inc/hw_types.h
+.\objects\motor.o: ..\Buttons\inc/hw_timer.h
+.\objects\motor.o: ..\Buttons\driverlib/gpio.h
+.\objects\motor.o: ..\Buttons\driverlib/pin_map.h
+.\objects\motor.o: ..\Buttons\driverlib/sysctl.h
+.\objects\motor.o: ..\Buttons\driverlib/timer.h
+.\objects\motor.o: ..\Buttons\driverlib/interrupt.h
+.\objects\motor.o: ..\Buttons\driverlib/rom.h
+.\objects\motor.o: ..\Buttons\driverlib/rom_map.h

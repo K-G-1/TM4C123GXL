@@ -1,0 +1,11 @@
+.\objects\mpu6050.o: drivers\MPU6050\mpu6050.c
+.\objects\mpu6050.o: .\drivers\IIC\IIC.h
+.\objects\mpu6050.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\mpu6050.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\mpu6050.o: ..\Buttons\driverlib/sysctl.h
+.\objects\mpu6050.o: ..\Buttons\driverlib/gpio.h
+.\objects\mpu6050.o: ..\Buttons\driverlib/pin_map.h
+.\objects\mpu6050.o: ..\Buttons\inc/hw_memmap.h
+.\objects\mpu6050.o: drivers\MPU6050\mpu6050.h
+.\objects\mpu6050.o: .\drivers\Algorithm\Algorithm_filter\Algorithm_filter.h
+.\objects\mpu6050.o: .\drivers\HMC5883L\hmc5883l.h

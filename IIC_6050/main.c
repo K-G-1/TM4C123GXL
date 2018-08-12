@@ -170,7 +170,7 @@ int main()
     mpu6050_check = MPU_Init();
     
     systick_init();
-    Timer_0_A_init();
+    Timer_1_A_init();
     Init_HMC5883L();
     sensor.gyro.CALIBRATE = 1;
     sensor.acc.CALIBRATE = 1;
