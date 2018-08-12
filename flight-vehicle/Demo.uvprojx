@@ -365,7 +365,7 @@
               <MiscControls></MiscControls>
               <Define>PART_TM4C123GH6PM TARGET_IS_TM4C123_RB1</Define>
               <Undefine></Undefine>
-              <IncludePath>..\Buttons;.\inc;.\driverlib;.\drivers;.\utils;.\inc;..\Timer_pwm;.\drivers\IIC;.\drivers\oled;.\drivers\MPU6050;.\drivers\Algorithm\Algorithm_filter;.\drivers\TIM;.\drivers\IMU;.\drivers\Algorithm\Algorithm_math;.\drivers\HMC5883L;.\drivers\send</IncludePath>
+              <IncludePath>..\Buttons;.\inc;.\driverlib;.\drivers;.\utils;.\inc;..\Timer_pwm;.\drivers\IIC;.\drivers\oled;.\drivers\MPU6050;.\drivers\Algorithm\Algorithm_filter;.\drivers\TIM;.\drivers\IMU;.\drivers\Algorithm\Algorithm_math;.\drivers\HMC5883L;.\drivers\send;.\drivers\MOTO</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -614,11 +614,6 @@
               <FilePath>.\drivers\oled\oled.c</FilePath>
             </File>
             <File>
-              <FileName>softi2c.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\utils\softi2c.c</FilePath>
-            </File>
-            <File>
               <FileName>mpu6050.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\drivers\MPU6050\mpu6050.c</FilePath>
@@ -652,6 +647,11 @@
               <FileName>send_data.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\drivers\send\send_data.c</FilePath>
+            </File>
+            <File>
+              <FileName>motor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\drivers\MOTO\motor.c</FilePath>
             </File>
           </Files>
         </Group>

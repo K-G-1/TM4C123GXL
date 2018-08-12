@@ -167,13 +167,13 @@ int main()
     UARTprintf("mpu6050 example ->");   
  
     
-//    OLED_Init();
-//    oled_dis_str();
-//    mpu6050_check = MPU_Init();
-//    
-//    systick_init();
-//    Timer_1_A_init();
-//    Init_HMC5883L();
+    OLED_Init();
+    oled_dis_str();
+    mpu6050_check = MPU_Init();
+    
+    systick_init();
+    Timer_1_A_init();
+    Init_HMC5883L();
     
     motor_init();
 //    sensor.gyro.CALIBRATE = 1;
