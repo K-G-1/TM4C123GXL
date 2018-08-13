@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\Demo.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\Demo.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050106: Last Updated: Mon Aug 13 01:47:21 2018
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050106: Last Updated: Mon Aug 13 19:13:34 2018
 <BR><P>
 <H3>Maximum Stack Usage =        264 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -774,7 +774,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[34]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Get_Attitude
 </UL>
 
-<P><STRONG><a name="[6a]"></a>RC_init</STRONG> (Thumb, 128 bytes, Stack size 8 bytes, rc_input.o(i.RC_init))
+<P><STRONG><a name="[6a]"></a>RC_init</STRONG> (Thumb, 170 bytes, Stack size 8 bytes, rc_input.o(i.RC_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = RC_init &rArr; TimerIntRegister &rArr; _TimerIntNumberGet
 </UL>
 <BR>[Calls]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IntEnable
@@ -892,6 +892,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = TimerControlEvent
 </UL>
 <BR>[Called By]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RC_init
+<LI><a href="#[8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WTimer2IntHandler
 </UL>
 
 <P><STRONG><a name="[72]"></a>TimerEnable</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, timer.o(i.TimerEnable))
@@ -996,12 +997,13 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_rvmdk.o(RESET)
 </UL>
-<P><STRONG><a name="[8]"></a>WTimer2IntHandler</STRONG> (Thumb, 102 bytes, Stack size 8 bytes, rc_input.o(i.WTimer2IntHandler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = WTimer2IntHandler
+<P><STRONG><a name="[8]"></a>WTimer2IntHandler</STRONG> (Thumb, 296 bytes, Stack size 8 bytes, rc_input.o(i.WTimer2IntHandler))
+<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = WTimer2IntHandler &rArr; TimerControlEvent
 </UL>
 <BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerValueGet
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerIntStatus
 <LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerIntClear
+<LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerControlEvent
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> rc_input.o(i.RC_init)
 </UL>
@@ -1098,7 +1100,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMUupdate
 </UL>
 
-<P><STRONG><a name="[15]"></a>main</STRONG> (Thumb, 210 bytes, Stack size 24 bytes, main.o(i.main))
+<P><STRONG><a name="[15]"></a>main</STRONG> (Thumb, 212 bytes, Stack size 24 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 156<LI>Call Chain = main &rArr; oled_dis_str &rArr; OLED_P6x8Str &rArr; OLED_Set_Pos &rArr; OLED_WrCmd &rArr; IIC_ADD_write &rArr; IIC_Wait_Ack &rArr; IIC_Stop &rArr; delay_us &rArr; SysCtlClockGet
 </UL>
 <BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;systick_init

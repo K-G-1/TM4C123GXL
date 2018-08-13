@@ -207,7 +207,7 @@ int main()
     //
     // Set the clocking to run directly from the crystal.
     //
-    ROM_SysCtlClockSet(SYSCTL_SYSDIV_4 | SYSCTL_USE_OSC | SYSCTL_OSC_MAIN |
+    ROM_SysCtlClockSet(SYSCTL_SYSDIV_2 | SYSCTL_USE_OSC | SYSCTL_OSC_MAIN |
                        SYSCTL_XTAL_16MHZ);
     //
     // Initialize the rgb driver.
@@ -252,28 +252,28 @@ int main()
     GPIOPinTypeGPIOOutput(GPIO_PORTC_BASE, GPIO_PIN_4);
     while(1)
     {
-        //
-        // Poll the buttons. When called periodically this function will
-        // run the button debouncing algorithm.
-        //
-        ucState = ButtonsPoll(&ucDelta, 0);
-        //
-        // Test to see if the SELECT button was pressed and do something
-        //
-        if(BUTTON_PRESSED(LEFT_BUTTON, ucState, ucDelta))
-        {
-            ulColors[BLUE] =(0xCCFF33 & 0xFF0000)>>8;
-            ulColors[RED] = (0xCCFF33 &0x00FF00);
-            ulColors[GREEN] = (0xCCFF33 &0x0000FF)<<8;
-            RGBSet(ulColors,0.02f);
-        }
-        else if(BUTTON_PRESSED(RIGHT_BUTTON, ucState, ucDelta))
-        {
-            ulColors[BLUE] =(0xFF00FF & 0xFF0000)>>8;
-            ulColors[RED] = (0xFF00FF &0x00FF00);
-            ulColors[GREEN] = (0xFF00FF &0x0000FF)<<8;
-            RGBSet(ulColors,0.02f);
-        }
+//        //
+//        // Poll the buttons. When called periodically this function will
+//        // run the button debouncing algorithm.
+//        //
+//        ucState = ButtonsPoll(&ucDelta, 0);
+//        //
+//        // Test to see if the SELECT button was pressed and do something
+//        //
+//        if(BUTTON_PRESSED(LEFT_BUTTON, ucState, ucDelta))
+//        {
+//            ulColors[BLUE] =(0xCCFF33 & 0xFF0000)>>8;
+//            ulColors[RED] = (0xCCFF33 &0x00FF00);
+//            ulColors[GREEN] = (0xCCFF33 &0x0000FF)<<8;
+//            RGBSet(ulColors,0.02f);
+//        }
+//        else if(BUTTON_PRESSED(RIGHT_BUTTON, ucState, ucDelta))
+//        {
+//            ulColors[BLUE] =(0xFF00FF & 0xFF0000)>>8;
+//            ulColors[RED] = (0xFF00FF &0x00FF00);
+//            ulColors[GREEN] = (0xFF00FF &0x0000FF)<<8;
+//            RGBSet(ulColors,0.02f);
+//        }
         GPIOPinWrite(GPIO_PORTC_BASE, GPIO_PIN_4, (GPIO_PIN_4));
         SysCtlDelay(15000);    // 
         GPIOPinWrite(GPIO_PORTC_BASE, GPIO_PIN_4, ~(GPIO_PIN_4));

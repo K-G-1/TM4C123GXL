@@ -365,7 +365,7 @@
               <MiscControls></MiscControls>
               <Define>PART_TM4C123GH6PM TARGET_IS_TM4C123_RB1</Define>
               <Undefine></Undefine>
-              <IncludePath>..\Buttons;.\inc;.\driverlib;.\drivers;.\utils</IncludePath>
+              <IncludePath>..\Buttons;.\inc;.\driverlib;.\drivers;.\utils;.\grlib</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>

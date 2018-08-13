@@ -164,7 +164,12 @@
         <Ww>
           <count>3</count>
           <WinNumber>1</WinNumber>
-          <ItemText>PWM_data,0x0A</ItemText>
+          <ItemText>cap_timer_B,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>4</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>PWM_data,0x10</ItemText>
         </Ww>
       </WatchWindow1>
       <Tracepoint>

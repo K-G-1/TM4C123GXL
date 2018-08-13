@@ -4,7 +4,7 @@
 
 
 void RC_init(void);
-
+void time_cap_init(void);
 
 #endif
 

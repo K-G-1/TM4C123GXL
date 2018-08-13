@@ -37,13 +37,13 @@ void motor_init()
     GPIOPinTypeTimer(GPIO_PORTC_BASE, GPIO_PIN_6);
     GPIOPinTypeTimer(GPIO_PORTC_BASE, GPIO_PIN_7);
     
-    GPIOPadConfigSet(GPIO_PORTC_BASE, GPIO_PIN_4, GPIO_STRENGTH_8MA_SC,
+    GPIOPadConfigSet(GPIO_PORTC_BASE, GPIO_PIN_4, GPIO_STRENGTH_2MA,
                      GPIO_PIN_TYPE_STD);     
-    GPIOPadConfigSet(GPIO_PORTC_BASE, GPIO_PIN_5, GPIO_STRENGTH_8MA_SC,
+    GPIOPadConfigSet(GPIO_PORTC_BASE, GPIO_PIN_5, GPIO_STRENGTH_2MA,
                      GPIO_PIN_TYPE_STD); 
-    GPIOPadConfigSet(GPIO_PORTC_BASE, GPIO_PIN_6, GPIO_STRENGTH_8MA_SC,
+    GPIOPadConfigSet(GPIO_PORTC_BASE, GPIO_PIN_6, GPIO_STRENGTH_2MA,
                      GPIO_PIN_TYPE_STD); 
-    GPIOPadConfigSet(GPIO_PORTC_BASE, GPIO_PIN_7, GPIO_STRENGTH_8MA_SC,
+    GPIOPadConfigSet(GPIO_PORTC_BASE, GPIO_PIN_7, GPIO_STRENGTH_2MA,
                      GPIO_PIN_TYPE_STD); 
     // WTIMER0
     HWREG(WTIMER0_BASE + TIMER_O_CTL) &= ~(TIMER_CTL_TAEN | TIMER_CTL_TBEN);//Disable the timers.
@@ -61,7 +61,7 @@ void motor_init()
     
 //    HWREG(WTIMER0_BASE + TIMER_O_CTL) = 0x0001;                              //timerA timerB 开始计数
     HWREG(WTIMER0_BASE + TIMER_O_CTL) |= TIMER_BOTH & (TIMER_CTL_TAEN |
-                                                  TIMER_CTL_TBEN);
+                                                  TIMER_CTL_TBEN |TIMER_CTL_TAPWML |TIMER_CTL_TBPWML);
     //WTIMER1                                              
     HWREG(WTIMER1_BASE + TIMER_O_CTL) &= ~(TIMER_CTL_TAEN | TIMER_CTL_TBEN);//Disable the timers.
     HWREG(WTIMER1_BASE + TIMER_O_CFG) = 0x0004;                              //不分离定时器，TIMER2作为32位定时器
@@ -78,7 +78,7 @@ void motor_init()
     
 //    HWREG(WTIMER0_BASE + TIMER_O_CTL) = 0x0001;                              //timerA timerB 开始计数
     HWREG(WTIMER1_BASE + TIMER_O_CTL) |= TIMER_BOTH & (TIMER_CTL_TAEN |
-                                                  TIMER_CTL_TBEN);
+                                                  TIMER_CTL_TBEN |TIMER_CTL_TAPWML |TIMER_CTL_TBPWML );
 
 }
 

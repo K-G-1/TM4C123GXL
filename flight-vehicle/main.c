@@ -241,7 +241,7 @@ int main()
         }
         else if(BUTTON_PRESSED(RIGHT_BUTTON, ucState, ucDelta))
         {
-            PWM_data += 0xFF;
+            PWM_data += 0x100 ;
             HWREG(WTIMER0_BASE + TIMER_O_TAMATCHR) = PWM_data;
             HWREG(WTIMER0_BASE + TIMER_O_TBMATCHR) = PWM_data;
             HWREG(WTIMER1_BASE + TIMER_O_TAMATCHR) = PWM_data;

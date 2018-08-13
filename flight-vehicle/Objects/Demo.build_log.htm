@@ -22,14 +22,27 @@ Dialog DLL:      TCM.DLL V1.14.4.0
  
 <h2>Project:</h2>
 G:\Keil\TI TM4C\flight-vehicle\Demo.uvprojx
-Project File Date:  08/12/2018
+Project File Date:  08/13/2018
 
 <h2>Output:</h2>
 Build target 'Target 1'
-compiling Rc_input.c...
+compiling main.c...
+.\drivers\MOTO\motor.h(4): warning:  #1295-D: Deprecated declaration motor_init - give arg types
+  void motor_init();
+main.c(201): warning:  #167-D: argument of type "unsigned long *" is incompatible with parameter of type "volatile uint32_t *"
+      RGBColorSet(ulColors);
+main.c(256): warning:  #111-D: statement is unreachable
+      return 0;
+main.c(167): warning:  #177-D: variable "Key_status" was declared but never referenced
+      uint16_t Key_status;
+main.c(169): warning:  #177-D: variable "ulPrevCount" was declared but never referenced
+      unsigned long ulPrevCount = 0;
+main.c(170): warning:  #550-D: variable "mpu6050_check" was set but never used
+      uint8_t mpu6050_check = 0;
+main.c: 6 warnings, 0 errors
 linking...
-Program Size: Code=18284 RO-data=3680 RW-data=1644 ZI-data=1172  
-".\Objects\Demo.axf" - 0 Error(s), 0 Warning(s).
+Program Size: Code=18540 RO-data=3680 RW-data=1644 ZI-data=1172  
+".\Objects\Demo.axf" - 0 Error(s), 6 Warning(s).
 
 <h2>Collection of Component include folders:</h2>
   G:\Keil\TI TM4C\flight-vehicle\RTE
