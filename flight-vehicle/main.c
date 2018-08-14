@@ -49,7 +49,7 @@
 
 extern volatile uint32_t g_ui32Counter ;
 extern volatile uint32_t g_Timer_0_A_Counter;
-
+uint32_t ulColors[3];
 
 //*****************************************************************************
 //
@@ -143,7 +143,7 @@ ConfigureUART(void)
     //
     // Enable the UART interrupt.
     //
-    IntPrioritySet(INT_UART0,0x40);
+    IntPrioritySet(INT_UART0,0x80);
     
     ROM_IntEnable(INT_UART0);
     //没有使用发送中断，因为暂时用不到
@@ -162,7 +162,7 @@ ConfigureUART(void)
 
 int main()
 {
-    unsigned long ulColors[3];
+    
     uint8_t ucDelta,ucState;
     uint16_t Key_status;
     int PWM_data = 0 ;
@@ -219,9 +219,13 @@ int main()
     OLED_Init();
     oled_dis_str();
     mpu6050_check = MPU_Init();
+    while(mpu6050_check != 0x68)
+    {
+        
+    }
     
     systick_init();
-    Timer_1_A_init();
+    Timer_2_A_init();
     Init_HMC5883L();
     
     e2prom_init();
@@ -230,10 +234,13 @@ int main()
 //    sensor.gyro.CALIBRATE = 1;
 //    sensor.acc.CALIBRATE = 1;
     read_Acc_Gyro_offest();
+    Read_PID_shell();
+    Read_PID_core();
+    Read_PID_hight();
     while(1)
     {
         ucState = ButtonsPoll(&ucDelta, 0);
-        
+        RGBColorSet(ulColors);
         if(BUTTON_PRESSED(LEFT_BUTTON, ucState, ucDelta))
         {
             sensor.gyro.CALIBRATE = 1;
@@ -241,16 +248,14 @@ int main()
         }
         else if(BUTTON_PRESSED(RIGHT_BUTTON, ucState, ucDelta))
         {
-            PWM_data += 0x100 ;
+            PWM_data += 0x800 ;
             HWREG(WTIMER0_BASE + TIMER_O_TAMATCHR) = PWM_data;
             HWREG(WTIMER0_BASE + TIMER_O_TBMATCHR) = PWM_data;
             HWREG(WTIMER1_BASE + TIMER_O_TAMATCHR) = PWM_data;
             HWREG(WTIMER1_BASE + TIMER_O_TBMATCHR) = PWM_data;
             
         }
-//        UARTprintf("\n   timer status = %d %d %d %d",g_ui32Counter,g_Timer_0_A_Counter,
-//                                                    (int16_t)angle.pitch,(int16_t)angle.roll);
-//        oled_dis_data(angle.pitch,angle.roll,angle.yaw,0);
+        
         
     }
     return 0;

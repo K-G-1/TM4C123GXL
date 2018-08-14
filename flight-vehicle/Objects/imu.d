@@ -12,3 +12,4 @@
 .\objects\imu.o: .\drivers\HMC5883L\hmc5883l.h
 .\objects\imu.o: .\drivers\Algorithm\Algorithm_math\Algorithm_math.h
 .\objects\imu.o: .\drivers\Algorithm\Algorithm_filter\Algorithm_filter.h
+.\objects\imu.o: ..\Buttons\drivers/RGB.h

@@ -149,10 +149,10 @@ u8 IIC_Read_Byte(u8 ack)
 		delay_us(1); 
     }					 
     
-//    if(ack)
-//        IIC_Ack();
-//    else
-//        IIC_NAck();
+    if(ack)
+        IIC_Ack();
+    else
+        IIC_NAck();
     return receive;
 }
 
@@ -208,16 +208,29 @@ u8 IIC_ADD_read(u8 DeviceAddr,u8 address)
 * 输入  :设备id，内部地址，需要读的字节个数（0不读取）
 * 输出  :读取的内容   
 *************************************************************/
-u8 IIC_Read_MultiBytes(u8 DeviceAddr,u8 address,u8 Len)
+u8 IIC_Read_MultiBytes(u8 DeviceAddr,u8 address,u8 Len,u8 *data)
 {
-	u8 t;
-	u32 temp=0;
-	for(t=0;t<Len;t++)
-	{
-		temp<<=8;
-		temp+=IIC_ADD_read(DeviceAddr,address+Len-t-1); 	 				   
-	}
-	return temp;
+	unsigned char temp;
+   IIC_Start();
+   IIC_Send_Byte(DeviceAddr);
+   IIC_Wait_Ack();
+ 
+    IIC_Send_Byte(address);   //发送低地址
+	IIC_Wait_Ack();	    
+	IIC_Start();  	 	   
+	IIC_Send_Byte(DeviceAddr+1);           //进入接收模式			   
+	IIC_Wait_Ack();	 
+    for (;Len>0;Len--)
+    {
+        if(Len != 1)
+            *data = IIC_Read_Byte(1);	
+        else 
+            *data = IIC_Read_Byte(0);
+
+        data ++;
+    }
+    IIC_Stop();//产生一个停止条件	 
+	return 0;
 }
 
 

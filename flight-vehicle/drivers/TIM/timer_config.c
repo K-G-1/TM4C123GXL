@@ -18,7 +18,8 @@
 #include "hmc5883l.h"
 #include "send_data.h"
 #include "oled.h"
-
+#include "Rc_input.h"
+#include "control.h"
 
 volatile uint32_t g_ui32Counter = 0;
 volatile uint32_t g_Timer_0_A_Counter = 0;
@@ -71,17 +72,18 @@ SysTickIntHandler(void)
     {
         cnt = 0;
         g_ui32Counter++;
-        oled_dis_data(angle.pitch,angle.roll,angle.yaw,0);
+        g_Timer_0_A_Counter = 0;
+//        oled_dis_data(angle.pitch,angle.roll,angle.yaw,0);
     }
     
 }
 
-void Timer_1_A_init(void)
+void Timer_2_A_init(void)
 {
     //
     // Enable the peripherals used by this example.
     //
-    SysCtlPeripheralEnable(SYSCTL_PERIPH_TIMER1);
+    SysCtlPeripheralEnable(SYSCTL_PERIPH_TIMER2);
     //
     // Enable processor interrupts.
     //
@@ -89,34 +91,44 @@ void Timer_1_A_init(void)
     //
     // Configure the two 32-bit periodic timers.
     //
-    TimerConfigure(TIMER1_BASE, TIMER_CFG_PERIODIC);
+    TimerConfigure(TIMER2_BASE, TIMER_CFG_PERIODIC);
 //    TimerPrescaleSet(TIMER0_BASE,TIMER_A,16);
-    TimerLoadSet(TIMER1_BASE, TIMER_A, SysCtlClockGet()/100);   //200hz 5ms
+    TimerLoadSet(TIMER2_BASE, TIMER_A, SysCtlClockGet()/200);   //50hz 20ms
     //
     // Setup the interrupts for the timer timeouts.
     //
-    TimerIntRegister(TIMER1_BASE, TIMER_A, Timer1AIntHandler);
+    TimerIntRegister(TIMER2_BASE, TIMER_A, Timer2AIntHandler);
     IntMasterEnable();
-    TimerIntEnable(TIMER1_BASE, TIMER_TIMA_TIMEOUT);
+    TimerIntEnable(TIMER2_BASE, TIMER_TIMA_TIMEOUT);
     
     //
     // Enable the timers.
     //
-    IntEnable(INT_TIMER1A);
-    IntPrioritySet(INT_TIMER1A,0xE0);
-    TimerEnable(TIMER1_BASE, TIMER_A);
+    IntEnable(INT_TIMER2A);
+    IntPrioritySet(INT_TIMER2A,0x40);
+    TimerEnable(TIMER2_BASE, TIMER_A);
     
     
 }
 
-void Timer1AIntHandler(void)
+void Timer2AIntHandler(void)
 {
-    TimerIntClear(TIMER1_BASE, TIMER_TIMA_TIMEOUT);
-    g_Timer_0_A_Counter ++;
-    Get_Attitude();
-    sand_IMU_data();
-    sand_ACC_GYRO_data();
+    static int time_cnt_1 = 0;
     
+    g_Timer_0_A_Counter ++;
+    time_cnt_1++;
+    Get_Attitude();
+    RC_Data_Refine();
+//    CONTROL(angle.roll,angle.pitch,angle.yaw);
+    if(time_cnt_1 == 2)
+        sand_IMU_data();
+    else if(time_cnt_1 == 7)
+        sand_ACC_GYRO_data();
+    else if(time_cnt_1 == 9)
+        sand_RC_data();
+    else if(time_cnt_1 >= 10)
+        time_cnt_1 = 0;
+    TimerIntClear(TIMER2_BASE, TIMER_TIMA_TIMEOUT);
     
     
     

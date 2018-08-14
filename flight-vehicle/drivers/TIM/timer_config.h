@@ -6,10 +6,10 @@
 #define u32 uint32_t
 
 void systick_init(void);
-void Timer_1_A_init(void);
+void Timer_2_A_init(void);
 
 
-void Timer1AIntHandler(void);
+void Timer2AIntHandler(void);
 
 #endif
 

@@ -4,6 +4,7 @@
 #include "hmc5883l.h"
 #include "Algorithm_math.h"
 #include "Algorithm_filter.h"
+#include "drivers/RGB.h"
 
 //注意  解算时，不加temp_pitch，则asin函数计算失败，不知道是怎么回事
 //第二次，发现不是asin计算失败，而是必须要使用float型的asinf，应该是TI的板子只能使用浮点计算，而且是float的单浮点
@@ -15,6 +16,7 @@ double ACC_KALMAN_X  =1;
 double ACC_KALMAN_Y  =1;
 double ACC_KALMAN_Z  =1;
 
+extern uint32_t ulColors[3];
 //void Prepare_Data()
 //{
 //    READ_MPU6050_ACCEL();
@@ -53,7 +55,7 @@ double ACC_KALMAN_Z  =1;
 //float Ki= 0.005f;
 #define Kp 0.5f                        // 比例增益支配收敛率accelerometer/magnetometer  
 #define Ki 0.002f                     // 积分增益支配执政速率陀螺仪的衔接gyroscopeases  //KP,KI需要调的
-#define halfT 0.005f                 // 采样周期的一半  本程序 2.5MS 采集一次  所以 halfT是1.25MS
+#define halfT 0.0025f                 // 采样周期的一半  本程序 2.5MS 采集一次  所以 halfT是1.25MS
 
 /**************************************
  * 函数名：Get_Attitude
@@ -64,6 +66,7 @@ double ACC_KALMAN_Z  =1;
  *************************************/
 void Get_Attitude(void)
 {
+    ulColors[GREEN] = 0x0000;
 	Prepare_Data();
 	
 	IMUupdate(  sensor.gyro.averag.x,
@@ -309,7 +312,8 @@ void IMUupdate(float gx, float gy, float gz, float ax, float ay, float az, float
 	angle.pitch *= RtA;
 	angle.yaw*= RtA;
 
-
+    ulColors[RED] = 0x0000;
+    ulColors[GREEN] = 0xFFFF;
 
 
 }

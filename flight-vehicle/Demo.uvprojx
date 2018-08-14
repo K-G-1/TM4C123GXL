@@ -365,7 +365,7 @@
               <MiscControls></MiscControls>
               <Define>PART_TM4C123GH6PM TARGET_IS_TM4C123_RB1</Define>
               <Undefine></Undefine>
-              <IncludePath>..\Buttons;.\inc;.\driverlib;.\drivers;.\utils;.\inc;..\Timer_pwm;.\drivers\IIC;.\drivers\oled;.\drivers\MPU6050;.\drivers\Algorithm\Algorithm_filter;.\drivers\TIM;.\drivers\IMU;.\drivers\Algorithm\Algorithm_math;.\drivers\HMC5883L;.\drivers\send;.\drivers\MOTO;.\drivers\EEPROM;.\drivers\RC</IncludePath>
+              <IncludePath>..\Buttons;.\inc;.\driverlib;.\drivers;.\utils;.\inc;..\Timer_pwm;.\drivers\IIC;.\drivers\oled;.\drivers\MPU6050;.\drivers\Algorithm\Algorithm_filter;.\drivers\TIM;.\drivers\IMU;.\drivers\Algorithm\Algorithm_math;.\drivers\HMC5883L;.\drivers\send;.\drivers\MOTO;.\drivers\EEPROM;.\drivers\RC;.\drivers\CONTROL</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -662,6 +662,11 @@
               <FileName>Rc_input.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\drivers\RC\Rc_input.c</FilePath>
+            </File>
+            <File>
+              <FileName>control.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\drivers\CONTROL\control.c</FilePath>
             </File>
           </Files>
         </Group>

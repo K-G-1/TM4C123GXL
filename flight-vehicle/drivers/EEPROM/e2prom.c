@@ -7,6 +7,7 @@
 #include "driverlib/eeprom.h"
 
 #include "mpu6050.h"
+#include "control.h"
 
 void e2prom_init(void)
 {
@@ -63,89 +64,100 @@ void AT24cxx_save_5883_offest(void)
 
 
 
-//void AT24cxx_save_PID_shell(void)
-//{
-//	u16 temp_P,temp_I,temp_D;
-//	
-//	temp_P= ctrl_1.PID[PIDPITCH].kp *1000;
-//	temp_I= ctrl_1.PID[PIDPITCH].ki *1000;
-//	temp_D= ctrl_1.PID[PIDPITCH].kd *1000;
-//	
-//	IIC_ADD_writelen_BYTE(Shell_Pitch_P,temp_P,2);
-//	IIC_ADD_writelen_BYTE(Shell_Pitch_I,temp_I,2);
-//	IIC_ADD_writelen_BYTE(Shell_Pitch_D,temp_D,2);
-
-//	
-//	temp_P= ctrl_1.PID[PIDROLL].kp *1000;
-//	temp_I= ctrl_1.PID[PIDROLL].ki *1000;
-//	temp_D= ctrl_1.PID[PIDROLL].kd *1000;
-//	
-//	IIC_ADD_writelen_BYTE(Shell_Roll_P,temp_P,2);
-//	IIC_ADD_writelen_BYTE(Shell_Roll_I,temp_I,2);
-//	IIC_ADD_writelen_BYTE(Shell_Roll_D,temp_D,2);
-//	
-//	
-//	temp_P= ctrl_1.PID[PIDYAW].kp *1000;
-//	temp_I= ctrl_1.PID[PIDYAW].ki *1000;
-//	temp_D= ctrl_1.PID[PIDYAW].kd *1000;
-//	
-//	IIC_ADD_writelen_BYTE(Shell_Yaw_P,temp_P,2);
-//	IIC_ADD_writelen_BYTE(Shell_Yaw_I,temp_I,2);
-//	IIC_ADD_writelen_BYTE(Shell_Yaw_D,temp_D,2);
-//	
-//	
-//}
+void Save_PID_shell(void)
+{
+	uint32_t temp_P,temp_I,temp_D;
+	
+	temp_P= ctrl.roll.shell.kp *1000;
+	temp_I= ctrl.roll.shell.ki *1000;
+	temp_D= ctrl.roll.shell.kd *1000;
+	
+    EEPROMProgram(&temp_P,Shell_Roll_P,sizeof(temp_P));
+    EEPROMProgram(&temp_I,Shell_Roll_I,sizeof(temp_I));
+    EEPROMProgram(&temp_D,Shell_Roll_D,sizeof(temp_D));
 
 
-
-//void AT24cxx_save_PID_core(void)
-//{
-//	u16 temp_P,temp_I,temp_D;
-//	
-//	temp_P= ctrl_2.PID[PIDPITCH].kp *1000;
-//	temp_I= ctrl_2.PID[PIDPITCH].ki *1000;
-//	temp_D= ctrl_2.PID[PIDPITCH].kd *1000;
-//	
-//	IIC_ADD_writelen_BYTE(Core_Pitch_P,temp_P,2);
-//	IIC_ADD_writelen_BYTE(Core_Pitch_I,temp_I,2);
-//	IIC_ADD_writelen_BYTE(Core_Pitch_D,temp_D,2);
-
-//	
-//	temp_P= ctrl_2.PID[PIDROLL].kp *1000;
-//	temp_I= ctrl_2.PID[PIDROLL].ki *1000;
-//	temp_D= ctrl_2.PID[PIDROLL].kd *1000;
-//	
-//	IIC_ADD_writelen_BYTE(Core_Roll_P,temp_P,2);
-//	IIC_ADD_writelen_BYTE(Core_Roll_I,temp_I,2);
-//	IIC_ADD_writelen_BYTE(Core_Roll_D,temp_D,2);
-//	
-//	
-//	temp_P= ctrl_2.PID[PIDYAW].kp *1000;
-//	temp_I= ctrl_2.PID[PIDYAW].ki *1000;
-//	temp_D= ctrl_2.PID[PIDYAW].kd *1000;
-//	
-//	IIC_ADD_writelen_BYTE(Core_Yaw_P,temp_P,2);
-//	IIC_ADD_writelen_BYTE(Core_Yaw_I,temp_I,2);
-//	IIC_ADD_writelen_BYTE(Core_Yaw_D,temp_D,2);
-
-//	
-//}
+	
+	temp_P= ctrl.pitch.shell.kp *1000;
+	temp_I= ctrl.pitch.shell.ki *1000;
+	temp_D= ctrl.pitch.shell.kd *1000;
+	
+    EEPROMProgram(&temp_P,Shell_Pitch_P,sizeof(temp_P));
+    EEPROMProgram(&temp_I,Shell_Pitch_I,sizeof(temp_I));
+    EEPROMProgram(&temp_D,Shell_Pitch_D,sizeof(temp_D));
+	
+	
+	temp_P= ctrl.yaw.shell.kp *1000;
+	temp_I= ctrl.yaw.shell.ki *1000;
+	temp_D= ctrl.yaw.shell.kd *1000;
+	
+    EEPROMProgram(&temp_P,Shell_Yaw_P,sizeof(temp_P));
+    EEPROMProgram(&temp_I,Shell_Yaw_I,sizeof(temp_I));
+    EEPROMProgram(&temp_D,Shell_Yaw_D,sizeof(temp_D));
+	
+	
+}
 
 
-//void AT24cxx_save_PID_hight(void)
-//{
-//	u16 temp_P,temp_I,temp_D;
-//	
-//	temp_P= pid_setup.groups.hc_height.kp *1000;
-//	temp_I= pid_setup.groups.hc_height.ki *1000;
-//	temp_D= pid_setup.groups.hc_height.kd *1000;
-//	
-//	IIC_ADD_writelen_BYTE(Hight_P,temp_P,2);
-//	IIC_ADD_writelen_BYTE(Hight_I,temp_I,2);
-//	IIC_ADD_writelen_BYTE(Hight_D,temp_D,2);
-//	
-//	
-//}
+
+void Save_PID_core(void)
+{
+	uint32_t temp_P,temp_I,temp_D;
+	
+	temp_P= ctrl.roll.core.kp *1000;
+	temp_I= ctrl.roll.core.ki *1000;
+	temp_D= ctrl.roll.core.kd *1000;
+	
+    EEPROMProgram(&temp_P,Core_Roll_P,sizeof(temp_P));
+    EEPROMProgram(&temp_I,Core_Roll_I,sizeof(temp_I));
+    EEPROMProgram(&temp_D,Core_Roll_D,sizeof(temp_D));
+
+
+	
+	temp_P= ctrl.pitch.core.kp *1000;
+	temp_I= ctrl.pitch.core.ki *1000;
+	temp_D= ctrl.pitch.core.kd *1000;
+
+    EEPROMProgram(&temp_P,Core_Pitch_P,sizeof(temp_P));
+    EEPROMProgram(&temp_I,Core_Pitch_I,sizeof(temp_I));
+    EEPROMProgram(&temp_D,Core_Pitch_D,sizeof(temp_D));
+	
+	
+	temp_P= ctrl.yaw.core.kp *1000;
+	temp_I= ctrl.yaw.core.ki *1000;
+	temp_D= ctrl.yaw.core.kd *1000;
+	
+    EEPROMProgram(&temp_P,Core_Yaw_P,sizeof(temp_P));
+    EEPROMProgram(&temp_I,Core_Yaw_I,sizeof(temp_I));
+    EEPROMProgram(&temp_D,Core_Yaw_D,sizeof(temp_D));
+
+	
+}
+
+
+void Save_PID_hight(void)
+{
+	uint32_t temp_P,temp_I,temp_D;
+	
+	temp_P= ctrl.height.core.kp *1000;
+	temp_I= ctrl.height.core.ki *1000;
+	temp_D= ctrl.height.core.kd *1000;
+	
+    EEPROMProgram(&temp_P,Hight_Rate_P,sizeof(temp_P));
+    EEPROMProgram(&temp_I,Hight_Rate_I,sizeof(temp_I));
+    EEPROMProgram(&temp_D,Hight_Rate_D,sizeof(temp_D));
+
+
+	
+	temp_P= ctrl.height.shell.kp *1000;
+	temp_I= ctrl.height.shell.ki *1000;
+	temp_D= ctrl.height.shell.kd *1000;
+	
+    EEPROMProgram(&temp_P,Hight_Position_P,sizeof(temp_P));
+    EEPROMProgram(&temp_I,Hight_Position_I,sizeof(temp_I));
+    EEPROMProgram(&temp_D,Hight_Position_D,sizeof(temp_D));
+	
+}
 
 //void AT24cxx_save_PID_hight_Rate(void)
 //{
@@ -251,88 +263,91 @@ void AT24cxx_read_5883_offest(void)
 }
 
 
-//void AT24cxx_read_PID_shell(void)
-//{
-//	u16 temp_P,temp_I,temp_D;
-//	
-//	temp_P= IIC_Read_MultiBytes(0xA0,Shell_Pitch_P,2);
-//	temp_I= IIC_Read_MultiBytes(0xA0,Shell_Pitch_I,2);
-//	temp_D= IIC_Read_MultiBytes(0xA0,Shell_Pitch_D,2);
-//	
-//	ctrl_1.PID[PIDPITCH].kp= (float)temp_P/1000.0f;
-//	ctrl_1.PID[PIDPITCH].ki= (float)temp_I/1000.0f;
-//	ctrl_1.PID[PIDPITCH].kd= (float)temp_D/1000.0f;
-//	
-//	
-//	temp_P= IIC_Read_MultiBytes(0xA0,Shell_Roll_P,2);
-//	temp_I= IIC_Read_MultiBytes(0xA0,Shell_Roll_I,2);
-//	temp_D= IIC_Read_MultiBytes(0xA0,Shell_Roll_D,2);
-//	
-//	ctrl_1.PID[PIDROLL].kp= (float)temp_P/1000.0f;
-//	ctrl_1.PID[PIDROLL].ki= (float)temp_I/1000.0f;
-//	ctrl_1.PID[PIDROLL].kd= (float)temp_D/1000.0f;
-//	
-//	
-//	temp_P= IIC_Read_MultiBytes(0xA0,Shell_Yaw_P,2);
-//	temp_I= IIC_Read_MultiBytes(0xA0,Shell_Yaw_I,2);
-//	temp_D= IIC_Read_MultiBytes(0xA0,Shell_Yaw_D,2);
-//	
-//	ctrl_1.PID[PIDYAW].kp= (float)temp_P/1000.0f;
-//	ctrl_1.PID[PIDYAW].ki= (float)temp_I/1000.0f;
-//	ctrl_1.PID[PIDYAW].kd= (float)temp_D/1000.0f;
-//	
-//}
+void Read_PID_shell(void)
+{
+	uint32_t temp_P,temp_I,temp_D;
+	
+    EEPROMRead(&temp_P,Shell_Pitch_P,sizeof(temp_P));
+    EEPROMRead(&temp_I,Shell_Pitch_I,sizeof(temp_I));
+    EEPROMRead(&temp_D,Shell_Pitch_D,sizeof(temp_D));
+	
+	ctrl.pitch.shell.kp= (float)temp_P/1000.0f;
+	ctrl.pitch.shell.ki= (float)temp_I/1000.0f;
+	ctrl.pitch.shell.kd= (float)temp_D/1000.0f;
+	
+	
+	EEPROMRead(&temp_P,Shell_Roll_P,sizeof(temp_P));
+    EEPROMRead(&temp_I,Shell_Roll_I,sizeof(temp_I));
+    EEPROMRead(&temp_D,Shell_Roll_D,sizeof(temp_D));
+	
+	ctrl.roll.shell.kp= (float)temp_P/1000.0f;
+	ctrl.roll.shell.ki= (float)temp_I/1000.0f;
+	ctrl.roll.shell.kd= (float)temp_D/1000.0f;
+    
+    EEPROMRead(&temp_P,Shell_Yaw_P,sizeof(temp_P));
+    EEPROMRead(&temp_I,Shell_Yaw_I,sizeof(temp_I));
+    EEPROMRead(&temp_D,Shell_Yaw_D,sizeof(temp_D));
+	
+	ctrl.yaw.shell.kp= (float)temp_P/1000.0f;
+	ctrl.yaw.shell.ki= (float)temp_I/1000.0f;
+	ctrl.yaw.shell.kd= (float)temp_D/1000.0f;
+}
 
 
 
 
-//void AT24cxx_read_PID_core(void)
-//{
-//		u16 temp_P,temp_I,temp_D;
-//	
-//	temp_P= IIC_Read_MultiBytes(0xA0,Core_Pitch_P,2);
-//	temp_I= IIC_Read_MultiBytes(0xA0,Core_Pitch_I,2);
-//	temp_D= IIC_Read_MultiBytes(0xA0,Core_Pitch_D,2);
-//	
-//	ctrl_2.PID[PIDPITCH].kp= (float)temp_P/1000.0f;
-//	ctrl_2.PID[PIDPITCH].ki= (float)temp_I/1000.0f;
-//	ctrl_2.PID[PIDPITCH].kd= (float)temp_D/1000.0f;
-//	
-//	
-//	temp_P= IIC_Read_MultiBytes(0xA0,Core_Roll_P,2);
-//	temp_I= IIC_Read_MultiBytes(0xA0,Core_Roll_I,2);
-//	temp_D= IIC_Read_MultiBytes(0xA0,Core_Roll_D,2);
-//	
-//	ctrl_2.PID[PIDROLL].kp= (float)temp_P/1000.0f;
-//	ctrl_2.PID[PIDROLL].ki= (float)temp_I/1000.0f;
-//	ctrl_2.PID[PIDROLL].kd= (float)temp_D/1000.0f;
-//	
-//	
-//	temp_P= IIC_Read_MultiBytes(0xA0,Core_Yaw_P,2);
-//	temp_I= IIC_Read_MultiBytes(0xA0,Core_Yaw_I,2);
-//	temp_D= IIC_Read_MultiBytes(0xA0,Core_Yaw_D,2);
-//	
-//	ctrl_2.PID[PIDYAW].kp= (float)temp_P/1000.0f;
-//	ctrl_2.PID[PIDYAW].ki= (float)temp_I/1000.0f;
-//	ctrl_2.PID[PIDYAW].kd= (float)temp_D/1000.0f;
-//	
-//}
+void Read_PID_core(void)
+{
+	uint32_t temp_P,temp_I,temp_D;
+	
+    EEPROMRead(&temp_P,Core_Pitch_P,sizeof(temp_P));
+    EEPROMRead(&temp_I,Core_Pitch_I,sizeof(temp_I));
+    EEPROMRead(&temp_D,Core_Pitch_D,sizeof(temp_D));
+	
+	ctrl.pitch.core.kp= (float)temp_P/1000.0f;
+	ctrl.pitch.core.ki= (float)temp_I/1000.0f;
+	ctrl.pitch.core.kd= (float)temp_D/1000.0f;
+	
+	
+	EEPROMRead(&temp_P,Core_Roll_P,sizeof(temp_P));
+    EEPROMRead(&temp_I,Core_Roll_I,sizeof(temp_I));
+    EEPROMRead(&temp_D,Core_Roll_D,sizeof(temp_D));
+	
+	ctrl.roll.core.kp= (float)temp_P/1000.0f;
+	ctrl.roll.core.ki= (float)temp_I/1000.0f;
+	ctrl.roll.core.kd= (float)temp_D/1000.0f;
+    
+    EEPROMRead(&temp_P,Core_Yaw_P,sizeof(temp_P));
+    EEPROMRead(&temp_I,Core_Yaw_I,sizeof(temp_I));
+    EEPROMRead(&temp_D,Core_Yaw_D,sizeof(temp_D));
+	
+	ctrl.yaw.core.kp= (float)temp_P/1000.0f;
+	ctrl.yaw.core.ki= (float)temp_I/1000.0f;
+	ctrl.yaw.core.kd= (float)temp_D/1000.0f;
+}
 
-//void AT24cxx_read_PID_hight(void)
-//{
-//		u16 temp_P,temp_I,temp_D;
-//	
-//	temp_P= IIC_Read_MultiBytes(0xA0,Hight_P,2);
-//	temp_I= IIC_Read_MultiBytes(0xA0,Hight_I,2);
-//	temp_D= IIC_Read_MultiBytes(0xA0,Hight_D,2);
-//	
-//	pid_setup.groups.hc_height.kp= (float)temp_P/1000.0f;
-//	pid_setup.groups.hc_height.ki= (float)temp_I/1000.0f;
-//	pid_setup.groups.hc_height.kd= (float)temp_D/1000.0f;
-//	
-
-//	
-//}
+void Read_PID_hight(void)
+{
+	uint32_t temp_P,temp_I,temp_D;
+	
+    EEPROMRead(&temp_P,Hight_Rate_P,sizeof(temp_P));
+    EEPROMRead(&temp_I,Hight_Rate_I,sizeof(temp_I));
+    EEPROMRead(&temp_D,Hight_Rate_D,sizeof(temp_D));
+	
+	ctrl.height.core.kp= (float)temp_P/1000.0f;
+	ctrl.height.core.ki= (float)temp_I/1000.0f;
+	ctrl.height.core.kd= (float)temp_D/1000.0f;
+	
+	
+	EEPROMRead(&temp_P,Hight_Position_P,sizeof(temp_P));
+    EEPROMRead(&temp_I,Hight_Position_I,sizeof(temp_I));
+    EEPROMRead(&temp_D,Hight_Position_D,sizeof(temp_D));
+	
+	ctrl.height.shell.kp= (float)temp_P/1000.0f;
+	ctrl.height.shell.ki= (float)temp_I/1000.0f;
+	ctrl.height.shell.kd= (float)temp_D/1000.0f;
+    
+}
 
 
 //void AT24cxx_read_PID_hight_Rate(void)

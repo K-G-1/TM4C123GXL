@@ -50,7 +50,7 @@ u8 IIC_Read_One_Byte(u8 daddr,u8 addr);
 //¶îÍâº¯Êý
 void IIC_ADD_write(u8 DeviceAddr,u8 address,u8 Bytes);
 u8 IIC_ADD_read(u8 DeviceAddr,u8 address);
-u8 IIC_Read_MultiBytes(u8 DeviceAddr,u8 address,u8 Len);
+u8 IIC_Read_MultiBytes(u8 DeviceAddr,u8 address,u8 Len,u8 *data);
 void IIC_NoAddr_WriteByte(unsigned char address,unsigned char Bytes);
 
 void delay_us(uint16_t time);

@@ -60,23 +60,23 @@ u8 MPU_Init(void)
 
 void MPU_Read(void)
 {
-
-	mpu6050_buffer[0]=IIC_ADD_read(MPU_ADDR, 0x3B);
-	mpu6050_buffer[1]=IIC_ADD_read(MPU_ADDR, 0x3C);
-	mpu6050_buffer[2]=IIC_ADD_read(MPU_ADDR, 0x3D);
-	mpu6050_buffer[3]=IIC_ADD_read(MPU_ADDR, 0x3E);
-	mpu6050_buffer[4]=IIC_ADD_read(MPU_ADDR, 0x3F);
-	mpu6050_buffer[5]=IIC_ADD_read(MPU_ADDR, 0x40);
-	
+    IIC_Read_MultiBytes(MPU_ADDR,0x3B,14,mpu6050_buffer);
+//	mpu6050_buffer[0]=IIC_ADD_read(MPU_ADDR, 0x3B);
+//	mpu6050_buffer[1]=IIC_ADD_read(MPU_ADDR, 0x3C);
+//	mpu6050_buffer[2]=IIC_ADD_read(MPU_ADDR, 0x3D);
+//	mpu6050_buffer[3]=IIC_ADD_read(MPU_ADDR, 0x3E);
+//	mpu6050_buffer[4]=IIC_ADD_read(MPU_ADDR, 0x3F);
+//	mpu6050_buffer[5]=IIC_ADD_read(MPU_ADDR, 0x40);
+//	
 //	mpu6050_buffer[6]=IIC_ADD_read(MPU_ADDR, 0x41);
 //	mpu6050_buffer[7]=IIC_ADD_read(MPU_ADDR, 0x42);
 //	
-	mpu6050_buffer[8]=IIC_ADD_read(MPU_ADDR, 0x43);
-	mpu6050_buffer[9]=IIC_ADD_read(MPU_ADDR, 0x44);
-	mpu6050_buffer[10]=IIC_ADD_read(MPU_ADDR, 0x45);
-	mpu6050_buffer[11]=IIC_ADD_read(MPU_ADDR, 0x46);
-	mpu6050_buffer[12]=IIC_ADD_read(MPU_ADDR, 0x47);
-	mpu6050_buffer[13]=IIC_ADD_read(MPU_ADDR, 0x48);
+//	mpu6050_buffer[8]=IIC_ADD_read(MPU_ADDR, 0x43);
+//	mpu6050_buffer[9]=IIC_ADD_read(MPU_ADDR, 0x44);
+//	mpu6050_buffer[10]=IIC_ADD_read(MPU_ADDR, 0x45);
+//	mpu6050_buffer[11]=IIC_ADD_read(MPU_ADDR, 0x46);
+//	mpu6050_buffer[12]=IIC_ADD_read(MPU_ADDR, 0x47);
+//	mpu6050_buffer[13]=IIC_ADD_read(MPU_ADDR, 0x48);
 	
 //
 }

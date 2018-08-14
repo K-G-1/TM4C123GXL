@@ -14,6 +14,8 @@
 #include "driverlib/rom.h"
 #include "driverlib/rom_map.h"
 
+
+
 #define Moto_PwmMax 1000
 #define Moto_scale 50
 #define Moto_Timer WTIMER0_BASE
@@ -80,6 +82,11 @@ void motor_init()
     HWREG(WTIMER1_BASE + TIMER_O_CTL) |= TIMER_BOTH & (TIMER_CTL_TAEN |
                                                   TIMER_CTL_TBEN |TIMER_CTL_TAPWML |TIMER_CTL_TBPWML );
 
+    //给1ms的高电平
+    HWREG(WTIMER0_BASE + TIMER_O_TAMATCHR) = Moto_scale * (0 + 1000);
+    HWREG(WTIMER0_BASE + TIMER_O_TBMATCHR) = Moto_scale * (0 + 1000);
+    HWREG(WTIMER1_BASE + TIMER_O_TAMATCHR) = Moto_scale * (0 + 1000);
+    HWREG(WTIMER1_BASE + TIMER_O_TBMATCHR) = Moto_scale * (0 + 1000);
 }
 
 void Moto_PwmRflash(uint16_t MOTO1_PWM,uint16_t MOTO2_PWM,uint16_t MOTO3_PWM,uint16_t MOTO4_PWM)

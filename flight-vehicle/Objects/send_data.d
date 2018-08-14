@@ -14,3 +14,6 @@
 .\objects\send_data.o: .\drivers\IMU\IMU.h
 .\objects\send_data.o: .\drivers\HMC5883L\hmc5883l.h
 .\objects\send_data.o: ..\Buttons\driverlib/uart.h
+.\objects\send_data.o: .\drivers\RC\Rc_input.h
+.\objects\send_data.o: .\drivers\CONTROL\control.h
+.\objects\send_data.o: .\drivers\EEPROM\e2prom.h

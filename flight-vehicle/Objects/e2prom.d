@@ -10,3 +10,4 @@
 .\objects\e2prom.o: .\drivers\IIC\IIC.h
 .\objects\e2prom.o: ..\Buttons\driverlib/gpio.h
 .\objects\e2prom.o: ..\Buttons\driverlib/pin_map.h
+.\objects\e2prom.o: .\drivers\CONTROL\control.h

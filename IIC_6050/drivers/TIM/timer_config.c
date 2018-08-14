@@ -71,9 +71,8 @@ SysTickIntHandler(void)
     {
         cnt = 0;
         g_ui32Counter++;
-//        UARTprintf("\n   timer status = %d %d %d %d",g_ui32Counter,g_Timer_0_A_Counter,
-//                                                    (int16_t)angle.pitch,(int16_t)angle.roll);
-        oled_dis_data(angle.pitch,angle.roll,angle.yaw,0);
+        UARTprintf("\n   timer status = %d %d",g_ui32Counter,g_Timer_0_A_Counter);
+//        oled_dis_data(angle.pitch,angle.roll,angle.yaw,0);
     }
     
 }
@@ -93,7 +92,7 @@ void Timer_1_A_init(void)
     //
     TimerConfigure(TIMER1_BASE, TIMER_CFG_PERIODIC);
 //    TimerPrescaleSet(TIMER0_BASE,TIMER_A,16);
-    TimerLoadSet(TIMER1_BASE, TIMER_A, SysCtlClockGet()/100);   //200hz 5ms
+    TimerLoadSet(TIMER1_BASE, TIMER_A, SysCtlClockGet()/200);   //200hz 5ms
     //
     // Setup the interrupts for the timer timeouts.
     //
@@ -116,8 +115,8 @@ void Timer1AIntHandler(void)
     TimerIntClear(TIMER1_BASE, TIMER_TIMA_TIMEOUT);
     g_Timer_0_A_Counter ++;
     Get_Attitude();
-    sand_IMU_data();
-    sand_ACC_GYRO_data();
+//    sand_IMU_data();
+//    sand_ACC_GYRO_data();
     
     
     

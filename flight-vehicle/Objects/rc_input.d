@@ -1,7 +1,7 @@
 .\objects\rc_input.o: drivers\RC\Rc_input.c
 .\objects\rc_input.o: drivers\RC\Rc_input.h
-.\objects\rc_input.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\objects\rc_input.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\rc_input.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\objects\rc_input.o: ..\Buttons\inc/hw_memmap.h
 .\objects\rc_input.o: ..\Buttons\inc/hw_ints.h
 .\objects\rc_input.o: ..\Buttons\driverlib/interrupt.h

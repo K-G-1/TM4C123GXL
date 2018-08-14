@@ -21,3 +21,5 @@
 .\objects\timer_config.o: .\drivers\send\send_data.h
 .\objects\timer_config.o: .\drivers\Algorithm\Algorithm_math\Algorithm_math.h
 .\objects\timer_config.o: .\drivers\oled\oled.h
+.\objects\timer_config.o: .\drivers\RC\Rc_input.h
+.\objects\timer_config.o: .\drivers\CONTROL\control.h

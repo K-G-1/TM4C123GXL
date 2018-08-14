@@ -5,10 +5,12 @@
 #include "IMU.h"
 #include "hmc5883l.h"
 #include "driverlib/uart.h"
-
+#include "Rc_input.h"
+#include "control.h"
+#include "e2prom.h"
 
 extern u8 Mag_CALIBRATED;
-extern u16 Moto_duty[4];
+
 
 
 
@@ -333,7 +335,7 @@ void sand_ACC_GYRO_data(void)
 	}
 
 }
-
+extern uint32_t g_Timer_0_A_Counter;
 void sand_IMU_data(void)
 {
 	u8 sum=0,i=0;
@@ -358,7 +360,7 @@ void sand_IMU_data(void)
 	Tx_buff[9]=BYTE0(temp);
 	
 	
-	temp = 0 ;
+	temp = g_Timer_0_A_Counter *100 ;
 	Tx_buff[10]=BYTE3(temp);
 	Tx_buff[11]=BYTE2(temp);		
 	Tx_buff[12]=BYTE1(temp);
@@ -385,63 +387,49 @@ void sand_IMU_data(void)
 
 void sand_RC_data(void)
 {
-//	u8 sum=0,i=0;
+	u8 sum=0,i=0;
 
 
-//	u8 Tx_buff[32]={0};
-//	
-//	Tx_buff[0]=0xAA;
-//	Tx_buff[1]=0xAA;
-//	Tx_buff[2]=0x03;
-//	Tx_buff[3]=18;
-//	
+	u8 Tx_buff[32]={0};
+	
+	Tx_buff[0]=0xAA;
+	Tx_buff[1]=0xAA;
+	Tx_buff[2]=0x03;
+	Tx_buff[3]=18;
+	
 
-//	Tx_buff[4]=BYTE1(Rc_Data.THROTTLE);
-//	Tx_buff[5]=BYTE0(Rc_Data.THROTTLE);	
-//	Tx_buff[6]=BYTE1(Rc_Data.YAW);
-//	Tx_buff[7]=BYTE0(Rc_Data.YAW);
-//	Tx_buff[8]=BYTE1(Rc_Data.ROLL);
-//	Tx_buff[9]=BYTE0(Rc_Data.ROLL);
+	Tx_buff[4]=BYTE1(Rc_Data.THROTTLE);
+	Tx_buff[5]=BYTE0(Rc_Data.THROTTLE);	
+	Tx_buff[6]=BYTE1(Rc_Data.YAW);
+	Tx_buff[7]=BYTE0(Rc_Data.YAW);
+	Tx_buff[8]=BYTE1(Rc_Data.ROLL);
+	Tx_buff[9]=BYTE0(Rc_Data.ROLL);
+	
+	Tx_buff[10]=BYTE1(Rc_Data.PITCH);
+	Tx_buff[11]=BYTE0(Rc_Data.PITCH);
+	Tx_buff[12]=BYTE1(Rc_Data.AUX1);
+	Tx_buff[13]=BYTE0(Rc_Data.AUX1);	
+	
+	Tx_buff[14]=BYTE1(Rc_Data.AUX2);
+	Tx_buff[15]=BYTE0(Rc_Data.AUX2);
 //	
-//	Tx_buff[10]=BYTE1(Rc_Data.PITCH);
-//	Tx_buff[11]=BYTE0(Rc_Data.PITCH);
-//	Tx_buff[12]=BYTE1(Rc_Data.AUX1);
-//	Tx_buff[13]=BYTE0(Rc_Data.AUX1);	
-//	
-//	Tx_buff[14]=BYTE1(Rc_Data.AUX2);
-//	Tx_buff[15]=BYTE0(Rc_Data.AUX2);
-////	
-//	Tx_buff[16]=BYTE1(Rc_Data.AUX3);
-//	Tx_buff[17]=BYTE0(Rc_Data.AUX3);	
-//	Tx_buff[18]=BYTE1(Rc_Data.AUX4);
-//	Tx_buff[19]=BYTE0(Rc_Data.AUX4);
-//	
-//	Tx_buff[20]=BYTE1(TIM5_time);
-//	Tx_buff[21]=BYTE0(TIM5_time);	
-//	
-//	
-////	Tx_buff[22]=BYTE1(sensor.gyro.sand.x);
-////	Tx_buff[23]=BYTE0(sensor.gyro.sand.x);	
-////	Tx_buff[24]=BYTE1(sensor.gyro.sand.y);
-////	Tx_buff[25]=BYTE0(sensor.gyro.sand.y);
-////	Tx_buff[26]=BYTE1(sensor.gyro.sand.z);
-////	Tx_buff[27]=BYTE0(sensor.gyro.sand.z);	
-
-////	Tx_buff[28]=BYTE1(sensor.acc.quiet.x);
-////	Tx_buff[29]=BYTE0(sensor.acc.quiet.x);
-//	
-//	for(i=0;i<22;i++)
-//	{
-//		sum+=Tx_buff[i];
-//	}
-//	
-//	
-//	Tx_buff[22]=sum;
-//	for(i=0;i<23;i++)
-//	{
-//		USART_SendData(USART1,Tx_buff[i]);
-//		while(USART_GetFlagStatus(USART1,USART_FLAG_TXE)!=SET);//等待发送结束
-//	}
+	Tx_buff[16]=BYTE1(Rc_Data.AUX3);
+	Tx_buff[17]=BYTE0(Rc_Data.AUX3);	
+	Tx_buff[18]=BYTE1(Rc_Data.AUX4);
+	Tx_buff[19]=BYTE0(Rc_Data.AUX4);	
+	
+	
+	for(i=0;i<22;i++)
+	{
+		sum+=Tx_buff[i];
+	}
+	
+	
+	Tx_buff[22]=sum;
+	for(i=0;i<23;i++)
+	{
+        UARTCharPut(UART0_BASE,Tx_buff[i]);
+	}
 
 }
 
@@ -449,60 +437,59 @@ void sand_RC_data(void)
 
 void sand_Motor_data(void)
 {
-//	u8 sum=0,i=0;
+	u8 sum=0,i=0;
 
 
-//	u8 Tx_buff[32]={0};
-//	
-//	Tx_buff[0]=0xAA;
-//	Tx_buff[1]=0xAA;
-//	Tx_buff[2]=0x06;
-//	Tx_buff[3]=8;
-//	
+	u8 Tx_buff[32]={0};
+	
+	Tx_buff[0]=0xAA;
+	Tx_buff[1]=0xAA;
+	Tx_buff[2]=0x06;
+	Tx_buff[3]=8;
+	
 
-//	Tx_buff[4]=BYTE1(Moto_duty[0]);
-//	Tx_buff[5]=BYTE0(Moto_duty[0]);	
-//	Tx_buff[6]=BYTE1(Moto_duty[1]);
-//	Tx_buff[7]=BYTE0(Moto_duty[1]);
-//	Tx_buff[8]=BYTE1(Moto_duty[2]);
-//	Tx_buff[9]=BYTE0(Moto_duty[2]);
-//	Tx_buff[10]=BYTE1(Moto_duty[3]);
-//	Tx_buff[11]=BYTE0(Moto_duty[3]);
-////	Tx_buff[12]=BYTE1(sensor.gyro.radian.y);
-////	Tx_buff[13]=BYTE0(sensor.gyro.radian.y);	
-////	Tx_buff[14]=BYTE1(sensor.gyro.radian.z);
-////	Tx_buff[15]=BYTE0(sensor.gyro.radian.z);
-////	
-////	Tx_buff[16]=BYTE1(Magn_x);
-////	Tx_buff[17]=BYTE0(Magn_x);	
-////	Tx_buff[18]=BYTE1(Magn_y);
-////	Tx_buff[19]=BYTE0(Magn_y);
-////	Tx_buff[20]=BYTE1(Magn_z);
-////	Tx_buff[21]=BYTE0(Magn_z);	
+	Tx_buff[4]=BYTE1(Moto_duty[0]);
+	Tx_buff[5]=BYTE0(Moto_duty[0]);	
+	Tx_buff[6]=BYTE1(Moto_duty[1]);
+	Tx_buff[7]=BYTE0(Moto_duty[1]);
+	Tx_buff[8]=BYTE1(Moto_duty[2]);
+	Tx_buff[9]=BYTE0(Moto_duty[2]);
+	Tx_buff[10]=BYTE1(Moto_duty[3]);
+	Tx_buff[11]=BYTE0(Moto_duty[3]);
+//	Tx_buff[12]=BYTE1(sensor.gyro.radian.y);
+//	Tx_buff[13]=BYTE0(sensor.gyro.radian.y);	
+//	Tx_buff[14]=BYTE1(sensor.gyro.radian.z);
+//	Tx_buff[15]=BYTE0(sensor.gyro.radian.z);
 //	
-//	
-////	Tx_buff[22]=BYTE1(sensor.gyro.sand.x);
-////	Tx_buff[23]=BYTE0(sensor.gyro.sand.x);	
-////	Tx_buff[24]=BYTE1(sensor.gyro.sand.y);
-////	Tx_buff[25]=BYTE0(sensor.gyro.sand.y);
-////	Tx_buff[26]=BYTE1(sensor.gyro.sand.z);
-////	Tx_buff[27]=BYTE0(sensor.gyro.sand.z);	
+//	Tx_buff[16]=BYTE1(Magn_x);
+//	Tx_buff[17]=BYTE0(Magn_x);	
+//	Tx_buff[18]=BYTE1(Magn_y);
+//	Tx_buff[19]=BYTE0(Magn_y);
+//	Tx_buff[20]=BYTE1(Magn_z);
+//	Tx_buff[21]=BYTE0(Magn_z);	
+	
+	
+//	Tx_buff[22]=BYTE1(sensor.gyro.sand.x);
+//	Tx_buff[23]=BYTE0(sensor.gyro.sand.x);	
+//	Tx_buff[24]=BYTE1(sensor.gyro.sand.y);
+//	Tx_buff[25]=BYTE0(sensor.gyro.sand.y);
+//	Tx_buff[26]=BYTE1(sensor.gyro.sand.z);
+//	Tx_buff[27]=BYTE0(sensor.gyro.sand.z);	
 
-////	Tx_buff[28]=BYTE1(sensor.acc.quiet.x);
-////	Tx_buff[29]=BYTE0(sensor.acc.quiet.x);
-//	
-//	for(i=0;i<12;i++)
-//	{
-//		sum+=Tx_buff[i];
-//	}
-//	
-//	
-//	Tx_buff[12]=sum;
-//	for(i=0;i<13;i++)
-//	{
-//		USART_SendData(USART1,Tx_buff[i]);
-//		while(USART_GetFlagStatus(USART1,USART_FLAG_TXE)!=SET);//等待发送结束
-//	}
+//	Tx_buff[28]=BYTE1(sensor.acc.quiet.x);
+//	Tx_buff[29]=BYTE0(sensor.acc.quiet.x);
+	
+	for(i=0;i<12;i++)
+	{
+		sum+=Tx_buff[i];
+	}
+	
+	
+	Tx_buff[12]=sum;
+	for(i=0;i<13;i++)
+	{
+		UARTCharPut(UART0_BASE,Tx_buff[i]);
+	}
 }
 
 
@@ -510,97 +497,160 @@ void sand_Motor_data(void)
 
 void sand_PID_shell_data(void)
 {
-//	u8 sum=0,i=0;
-//	vs16 _temp;
+	u8 sum=0,i=0;
+	int16_t _temp;
 
-//	u8 Tx_buff[32]={0};
-//	
-//	Tx_buff[0]=0xAA;
-//	Tx_buff[1]=0xAA;
-//	Tx_buff[2]=0x10;
-//	Tx_buff[3]=18;
-//	
-//	_temp= ctrl.roll.shell.kp *1000 ;
-//	Tx_buff[4]=BYTE1(_temp);
-//	Tx_buff[5]=BYTE0(_temp);
-//	
-//	_temp= ctrl.roll.shell.ki *1000 ;
-//	Tx_buff[6]=BYTE1(_temp);
-//	Tx_buff[7]=BYTE0(_temp);
-//	
-//	_temp= ctrl.roll.shell.kd *1000;
-//	Tx_buff[8]=BYTE1(_temp);
-//	Tx_buff[9]=BYTE0(_temp);
-//	
-//	
-//	_temp= 1000 * ctrl.pitch.shell.kp;
-//	Tx_buff[10]=BYTE1(_temp);
-//	Tx_buff[11]=BYTE0(_temp);
-//	
-//	_temp= 1000 * ctrl.pitch.shell.ki;	
-//	Tx_buff[12]=BYTE1(_temp);
-//	Tx_buff[13]=BYTE0(_temp);
+	u8 Tx_buff[32]={0};
+	
+	Tx_buff[0]=0xAA;
+	Tx_buff[1]=0xAA;
+	Tx_buff[2]=0x11;
+	Tx_buff[3]=18;
+	
+	_temp= ctrl.roll.shell.kp *1000 ;
+	Tx_buff[4]=BYTE1(_temp);
+	Tx_buff[5]=BYTE0(_temp);
+	
+	_temp= ctrl.roll.shell.ki *1000 ;
+	Tx_buff[6]=BYTE1(_temp);
+	Tx_buff[7]=BYTE0(_temp);
+	
+	_temp= ctrl.roll.shell.kd *1000;
+	Tx_buff[8]=BYTE1(_temp);
+	Tx_buff[9]=BYTE0(_temp);
+	
+	
+	_temp= 1000 * ctrl.pitch.shell.kp;
+	Tx_buff[10]=BYTE1(_temp);
+	Tx_buff[11]=BYTE0(_temp);
+	
+	_temp= 1000 * ctrl.pitch.shell.ki;	
+	Tx_buff[12]=BYTE1(_temp);
+	Tx_buff[13]=BYTE0(_temp);
 
-//	_temp= 1000 * ctrl.pitch.shell.kd;
-//	Tx_buff[14]=BYTE1(_temp);
-//	Tx_buff[15]=BYTE0(_temp);
-//	
-//	
-//	_temp= 1000 * ctrl.yaw.shell.kp;
-//	Tx_buff[16]=BYTE1(_temp);
-//	Tx_buff[17]=BYTE0(_temp);
+	_temp= 1000 * ctrl.pitch.shell.kd;
+	Tx_buff[14]=BYTE1(_temp);
+	Tx_buff[15]=BYTE0(_temp);
+	
+	
+	_temp= 1000 * ctrl.yaw.shell.kp;
+	Tx_buff[16]=BYTE1(_temp);
+	Tx_buff[17]=BYTE0(_temp);
 
-//	_temp= 1000 * ctrl.yaw.shell.ki;
-//	Tx_buff[18]=BYTE1(_temp);
-//	Tx_buff[19]=BYTE0(_temp);
-//	
-//		_temp= 1000 * ctrl.yaw.shell.kd;
-//	Tx_buff[20]=BYTE1(_temp);
-//	Tx_buff[21]=BYTE0(_temp);	
-//	
-//	
-//	
-//	for(i=0;i<22;i++)
-//	{
-//		sum+=Tx_buff[i];
-//	}
-//	
-//	
-//	Tx_buff[22]=sum;
-//	for(i=0;i<23;i++)
-//	{
-//		USART_SendData(USART1,Tx_buff[i]);
-//		while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);//等待发送结束
-//	}
+	_temp= 1000 * ctrl.yaw.shell.ki;
+	Tx_buff[18]=BYTE1(_temp);
+	Tx_buff[19]=BYTE0(_temp);
+	
+		_temp= 1000 * ctrl.yaw.shell.kd;
+	Tx_buff[20]=BYTE1(_temp);
+	Tx_buff[21]=BYTE0(_temp);	
+	
+	
+	
+	for(i=0;i<22;i++)
+	{
+		sum+=Tx_buff[i];
+	}
+	
+	
+	Tx_buff[22]=sum;
+	for(i=0;i<23;i++)
+	{
+		UARTCharPut(UART0_BASE,Tx_buff[i]);
+	}
 }
 
 
 
 void sand_PID_core_data(void)
 {
-//	u8 sum=0,i=0;
-//  vs16 _temp;
+	u8 sum=0,i=0;
+  int16_t _temp;
 
-//	u8 Tx_buff[32]={0};
-//	
-//	Tx_buff[0]=0xAA;
-//	Tx_buff[1]=0xAA;
-//	Tx_buff[2]=0x11;
-//	Tx_buff[3]=18;
-//	
-//	_temp= 1000 * ctrl.roll.core.kp;
-//	Tx_buff[4]=BYTE1(_temp);
-//	Tx_buff[5]=BYTE0(_temp);
+	u8 Tx_buff[32]={0};
+	
+	Tx_buff[0]=0xAA;
+	Tx_buff[1]=0xAA;
+	Tx_buff[2]=0x10;
+	Tx_buff[3]=18;
+	
+	_temp= 1000 * ctrl.roll.core.kp;
+	Tx_buff[4]=BYTE1(_temp);
+	Tx_buff[5]=BYTE0(_temp);
 
-//  _temp= 1000 * ctrl.roll.core.ki;	
-//	Tx_buff[6]=BYTE1(_temp);
-//	Tx_buff[7]=BYTE0(_temp);
-//	
-//	_temp= 1000 * ctrl.roll.core.kd;
-//	Tx_buff[8]=BYTE1(_temp);
-//	Tx_buff[9]=BYTE0(_temp);
-//	
-//	
+  _temp= 1000 * ctrl.roll.core.ki;	
+	Tx_buff[6]=BYTE1(_temp);
+	Tx_buff[7]=BYTE0(_temp);
+	
+	_temp= 1000 * ctrl.roll.core.kd;
+	Tx_buff[8]=BYTE1(_temp);
+	Tx_buff[9]=BYTE0(_temp);
+	
+	
+	_temp= 1000 * ctrl.pitch.core.kp;
+	Tx_buff[10]=BYTE1(_temp);
+	Tx_buff[11]=BYTE0(_temp);
+	
+	_temp= 1000 * ctrl.pitch.core.ki;
+	Tx_buff[12]=BYTE1(_temp);
+	Tx_buff[13]=BYTE0(_temp);
+
+  _temp= 1000 * ctrl.pitch.core.kd;
+	Tx_buff[14]=BYTE1(_temp);
+	Tx_buff[15]=BYTE0(_temp);
+	
+	
+	_temp= 1000 * ctrl.yaw.core.kp;
+	Tx_buff[16]=BYTE1(_temp);
+	Tx_buff[17]=BYTE0(_temp);	
+	
+	_temp= 1000 * ctrl.yaw.core.ki;
+	Tx_buff[18]=BYTE1(_temp);
+	Tx_buff[19]=BYTE0(_temp);
+	
+	_temp= 1000 * ctrl.yaw.core.kd;
+	Tx_buff[20]=BYTE1(_temp);
+	Tx_buff[21]=BYTE0(_temp);	
+	
+
+	for(i=0;i<22;i++)
+	{
+		sum+=Tx_buff[i];
+	}
+	
+	
+	Tx_buff[22]=sum;
+	for(i=0;i<23;i++)
+	{
+		UARTCharPut(UART0_BASE,Tx_buff[i]);
+	}
+	
+}
+
+void sand_PID_3_data(void)
+{
+	u8 sum=0,i=0;
+	int16_t _temp;
+
+	u8 Tx_buff[32]={0};
+	
+	Tx_buff[0]=0xAA;
+	Tx_buff[1]=0xAA;
+	Tx_buff[2]=0x12;
+	Tx_buff[3]=18;
+	
+	_temp= 1000 * ctrl.height.core.kp;
+	Tx_buff[4]=BYTE1(_temp);
+	Tx_buff[5]=BYTE0(_temp);
+
+  _temp= 1000 * ctrl.height.core.ki;	
+	Tx_buff[6]=BYTE1(_temp);
+	Tx_buff[7]=BYTE0(_temp);
+	
+	_temp= 1000 * ctrl.height.core.kd;
+	Tx_buff[8]=BYTE1(_temp);
+	Tx_buff[9]=BYTE0(_temp);
+	
 //	_temp= 1000 * ctrl.pitch.core.kp;
 //	Tx_buff[10]=BYTE1(_temp);
 //	Tx_buff[11]=BYTE0(_temp);
@@ -624,161 +674,92 @@ void sand_PID_core_data(void)
 //	
 //	_temp= 1000 * ctrl.yaw.core.kd;
 //	Tx_buff[20]=BYTE1(_temp);
-//	Tx_buff[21]=BYTE0(_temp);	
-//	
-
-//	for(i=0;i<22;i++)
-//	{
-//		sum+=Tx_buff[i];
-//	}
-//	
-//	
-//	Tx_buff[22]=sum;
-//	for(i=0;i<23;i++)
-//	{
-//		USART_SendData(USART1,Tx_buff[i]);
-//		while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);//等待发送结束
-//	}
-//	
-}
-
-void sand_PID_3_data(void)
-{
-//	u8 sum=0,i=0;
-//	int16_t _temp;
-
-//	u8 Tx_buff[32]={0};
-//	
-//	Tx_buff[0]=0xAA;
-//	Tx_buff[1]=0xAA;
-//	Tx_buff[2]=0x12;
-//	Tx_buff[3]=18;
-//	
-//	_temp= 1000 * ctrl.height.shell.kp;
-//	Tx_buff[4]=BYTE1(_temp);
-//	Tx_buff[5]=BYTE0(_temp);
-
-//  _temp= 1000 * ctrl.height.shell.ki;	
-//	Tx_buff[6]=BYTE1(_temp);
-//	Tx_buff[7]=BYTE0(_temp);
-//	
-//	_temp= 1000 * ctrl.height.shell.kd;
-//	Tx_buff[8]=BYTE1(_temp);
-//	Tx_buff[9]=BYTE0(_temp);
-//	
-////	_temp= 1000 * ctrl.pitch.core.kp;
-////	Tx_buff[10]=BYTE1(_temp);
-////	Tx_buff[11]=BYTE0(_temp);
-////	
-////	_temp= 1000 * ctrl.roll.core.ki;
-////	Tx_buff[12]=BYTE1(_temp);
-////	Tx_buff[13]=BYTE0(_temp);
-
-////  _temp= 1000 * ctrl.pitch.core.kd;
-////	Tx_buff[14]=BYTE1(_temp);
-////	Tx_buff[15]=BYTE0(_temp);
-////	
-////	
-////	_temp= 1000 * ctrl.yaw.core.kp;
-////	Tx_buff[16]=BYTE1(_temp);
-////	Tx_buff[17]=BYTE0(_temp);	
-////	
-////	_temp= 1000 * 0;
-////	Tx_buff[18]=BYTE1(_temp);
-////	Tx_buff[19]=BYTE0(_temp);
-////	
-////	_temp= 1000 * ctrl.yaw.core.kd;
-////	Tx_buff[20]=BYTE1(_temp);
-////	Tx_buff[21]=BYTE0(_temp);
-//	
-//	
-//	for(i=0;i<22;i++)
-//	{
-//		sum+=Tx_buff[i];
-//	}
-//	
-//	
-//	Tx_buff[22]=sum;
-//	for(i=0;i<23;i++)
-//	{
-//		USART_SendData(USART1,Tx_buff[i]);
-//		while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);//等待发送结束
-//	}
+//	Tx_buff[21]=BYTE0(_temp);
+	
+	
+	for(i=0;i<22;i++)
+	{
+		sum+=Tx_buff[i];
+	}
+	
+	
+	Tx_buff[22]=sum;
+	for(i=0;i<23;i++)
+	{
+		UARTCharPut(UART0_BASE,Tx_buff[i]);
+	}
 }
 void sand_PID_4_data(void)
 {
-//	u8 sum=0,i=0;
-////	int16_t _temp;
+	u8 sum=0,i=0;
+//	int16_t _temp;
 
-//	u8 Tx_buff[32]={0};
-//	
-//	Tx_buff[0]=0xAA;
-//	Tx_buff[1]=0xAA;
-//	Tx_buff[2]=13;
-//	Tx_buff[3]=18;
-//	
-//	for(i=0;i<22;i++)
-//	{
-//		sum+=Tx_buff[i];
-//	}
-//	
-//	
-//	Tx_buff[22]=sum;
-//	for(i=0;i<23;i++)
-//	{
-//		USART_SendData(USART1,Tx_buff[i]);
-//		while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);//等待发送结束
-//	}
+	u8 Tx_buff[32]={0};
+	
+	Tx_buff[0]=0xAA;
+	Tx_buff[1]=0xAA;
+	Tx_buff[2]=13;
+	Tx_buff[3]=18;
+	
+	for(i=0;i<22;i++)
+	{
+		sum+=Tx_buff[i];
+	}
+	
+	
+	Tx_buff[22]=sum;
+	for(i=0;i<23;i++)
+	{
+		UARTCharPut(UART0_BASE,Tx_buff[i]);
+	}
 }
 void sand_PID_5_data(void)
 {
-//	u8 sum=0,i=0;
-////	int16_t _temp;
+	u8 sum=0,i=0;
+//	int16_t _temp;
 
-//	u8 Tx_buff[32]={0};
-//	
-//	Tx_buff[0]=0xAA;
-//	Tx_buff[1]=0xAA;
-//	Tx_buff[2]=14;
-//	Tx_buff[3]=18;
-//	
-//	for(i=0;i<22;i++)
-//	{
-//		sum+=Tx_buff[i];
-//	}
-//	
-//	
-//	Tx_buff[22]=sum;
-//	for(i=0;i<23;i++)
-//	{
-//		USART_SendData(USART1,Tx_buff[i]);
-//		while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);//等待发送结束
-//	}
+	u8 Tx_buff[32]={0};
+	
+	Tx_buff[0]=0xAA;
+	Tx_buff[1]=0xAA;
+	Tx_buff[2]=14;
+	Tx_buff[3]=18;
+	
+	for(i=0;i<22;i++)
+	{
+		sum+=Tx_buff[i];
+	}
+	
+	
+	Tx_buff[22]=sum;
+	for(i=0;i<23;i++)
+	{
+		UARTCharPut(UART0_BASE,Tx_buff[i]);
+	}
 }
 void sand_PID_6_data(void)
 {
-//	u8 sum=0,i=0;
-////	int16_t _temp;
+	u8 sum=0,i=0;
+//	int16_t _temp;
 
-//	u8 Tx_buff[32]={0};
-//	
-//	Tx_buff[0]=0xAA;
-//	Tx_buff[1]=0xAA;
-//	Tx_buff[2]=15;
-//	Tx_buff[3]=18;
-//	
-//	for(i=0;i<22;i++)
-//	{
-//		sum+=Tx_buff[i];
-//	}
-//	
-//	
-//	Tx_buff[22]=sum;
-//	for(i=0;i<23;i++)
-//	{
-//		USART_SendData(USART1,Tx_buff[i]);
-//		while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);//等待发送结束
-//	}
+	u8 Tx_buff[32]={0};
+	
+	Tx_buff[0]=0xAA;
+	Tx_buff[1]=0xAA;
+	Tx_buff[2]=15;
+	Tx_buff[3]=18;
+	
+	for(i=0;i<22;i++)
+	{
+		sum+=Tx_buff[i];
+	}
+	
+	
+	Tx_buff[22]=sum;
+	for(i=0;i<23;i++)
+	{
+		UARTCharPut(UART0_BASE,Tx_buff[i]);
+	}
 }
 /************************************接收数据并处理******************************************************/
 static void Send_Check(u8 head,u8 check_sum)
@@ -951,66 +932,66 @@ void Data_Receive_Anl(u8 *data_buf,u8 num)
 
 
 
-//	if(*(data_buf+2)==0X10)								//PID1
-//	{
-//		Send_Check(*(data_buf+2),sum );
-//		ctrl.roll.shell.kp= 0.001*( (vs16)(*(data_buf+4)<<8)|*(data_buf+5) );
-//		ctrl.roll.shell.ki= 0.001*( (vs16)(*(data_buf+6)<<8)|*(data_buf+7) );
-//		ctrl.roll.shell.kd= 0.001*( (vs16)(*(data_buf+8)<<8)|*(data_buf+9) );
-//		
-//		ctrl.pitch.shell.kp= 0.001*( (vs16)(*(data_buf+10)<<8)|*(data_buf+11) );
-//		ctrl.pitch.shell.ki= 0.001*( (vs16)(*(data_buf+12)<<8)|*(data_buf+13) );
-//		ctrl.pitch.shell.kd= 0.001*( (vs16)(*(data_buf+14)<<8)|*(data_buf+15) );
-//		
-//		ctrl.yaw.shell.kp= 0.001*( (vs16)(*(data_buf+16)<<8)|*(data_buf+17) );
-//		ctrl.yaw.shell.ki= 0.001*( (vs16)(*(data_buf+18)<<8)|*(data_buf+19) );
-//		ctrl.yaw.shell.kd= 0.001*( (vs16)(*(data_buf+20)<<8)|*(data_buf+21) );
-//		
-//		AT24cxx_save_PID_shell();
-//		
-//	}
-//	if(*(data_buf+2)==0X11)								//PID2
-//	{
-//		Send_Check(*(data_buf+2),sum);
-//		ctrl.roll.core.kp= 0.001*( (vs16)(*(data_buf+4)<<8)|*(data_buf+5) );
-//		ctrl.roll.core.ki= 0.001*( (vs16)(*(data_buf+6)<<8)|*(data_buf+7) );
-//		ctrl.roll.core.kd= 0.001*( (vs16)(*(data_buf+8)<<8)|*(data_buf+9) );
-//		
-//		ctrl.pitch.core.kp= 0.001*( (vs16)(*(data_buf+10)<<8)|*(data_buf+11) );
-//		ctrl.pitch.core.ki= 0.001*( (vs16)(*(data_buf+12)<<8)|*(data_buf+13) );
-//		ctrl.pitch.core.kd= 0.001*( (vs16)(*(data_buf+14)<<8)|*(data_buf+15) );
-//		
-//		ctrl.yaw.core.kp= 0.001*( (vs16)(*(data_buf+16)<<8)|*(data_buf+17) );
-//		ctrl.yaw.core.ki= 0.001*( (vs16)(*(data_buf+18)<<8)|*(data_buf+19) );
-//		ctrl.yaw.core.kd= 0.001*( (vs16)(*(data_buf+20)<<8)|*(data_buf+21) );
-//			
-//		AT24cxx_save_PID_core();
-//	}
-//	if(*(data_buf+2)==0X12)								//PID3
-//	{
-//		Send_Check(*(data_buf+2),sum);
-//		
-//		ctrl.height.shell.kp= 0.001*( (vs16)(*(data_buf+4)<<8)|*(data_buf+5) );
-//		ctrl.height.shell.ki= 0.001*( (vs16)(*(data_buf+6)<<8)|*(data_buf+7) );
-//		ctrl.height.shell.kd= 0.001*( (vs16)(*(data_buf+8)<<8)|*(data_buf+9) );
-//		
-//		AT24cxx_save_PID_hight();
-//	}
-//	if(*(data_buf+2)==0X13)								//PID4
-//	{
-//		Send_Check(*(data_buf+2),sum);
-//		
-//	}
-//	if(*(data_buf+2)==0X14)								//PID5
-//	{
-//		Send_Check(*(data_buf+2),sum);
-//		
-//	}
-//	if(*(data_buf+2)==0X15)								//PID6
-//	{
-//		Send_Check(*(data_buf+2),sum);
-//		
-//	}
+	if(*(data_buf+2)==0X10)								//PID1
+	{
+		Send_Check(*(data_buf+2),sum );
+		ctrl.roll.core.kp= 0.001*( (vs16)(*(data_buf+4)<<8)|*(data_buf+5) );
+		ctrl.roll.core.ki= 0.001*( (vs16)(*(data_buf+6)<<8)|*(data_buf+7) );
+		ctrl.roll.core.kd= 0.001*( (vs16)(*(data_buf+8)<<8)|*(data_buf+9) );
+		
+		ctrl.pitch.core.kp= 0.001*( (vs16)(*(data_buf+10)<<8)|*(data_buf+11) );
+		ctrl.pitch.core.ki= 0.001*( (vs16)(*(data_buf+12)<<8)|*(data_buf+13) );
+		ctrl.pitch.core.kd= 0.001*( (vs16)(*(data_buf+14)<<8)|*(data_buf+15) );
+		
+		ctrl.yaw.core.kp= 0.001*( (vs16)(*(data_buf+16)<<8)|*(data_buf+17) );
+		ctrl.yaw.core.ki= 0.001*( (vs16)(*(data_buf+18)<<8)|*(data_buf+19) );
+		ctrl.yaw.core.kd= 0.001*( (vs16)(*(data_buf+20)<<8)|*(data_buf+21) );
+		
+        Save_PID_core();
+		
+	}
+	if(*(data_buf+2)==0X11)								//PID2
+	{
+		Send_Check(*(data_buf+2),sum);
+		ctrl.roll.shell.kp= 0.001*( (vs16)(*(data_buf+4)<<8)|*(data_buf+5) );
+		ctrl.roll.shell.ki= 0.001*( (vs16)(*(data_buf+6)<<8)|*(data_buf+7) );
+		ctrl.roll.shell.kd= 0.001*( (vs16)(*(data_buf+8)<<8)|*(data_buf+9) );
+		
+		ctrl.pitch.shell.kp= 0.001*( (vs16)(*(data_buf+10)<<8)|*(data_buf+11) );
+		ctrl.pitch.shell.ki= 0.001*( (vs16)(*(data_buf+12)<<8)|*(data_buf+13) );
+		ctrl.pitch.shell.kd= 0.001*( (vs16)(*(data_buf+14)<<8)|*(data_buf+15) );
+		
+		ctrl.yaw.shell.kp= 0.001*( (vs16)(*(data_buf+16)<<8)|*(data_buf+17) );
+		ctrl.yaw.shell.ki= 0.001*( (vs16)(*(data_buf+18)<<8)|*(data_buf+19) );
+		ctrl.yaw.shell.kd= 0.001*( (vs16)(*(data_buf+20)<<8)|*(data_buf+21) );
+			
+        Save_PID_shell();
+	}
+	if(*(data_buf+2)==0X12)								//PID3
+	{
+		Send_Check(*(data_buf+2),sum);
+		
+		ctrl.height.core.kp= 0.001*( (vs16)(*(data_buf+4)<<8)|*(data_buf+5) );
+		ctrl.height.core.ki= 0.001*( (vs16)(*(data_buf+6)<<8)|*(data_buf+7) );
+		ctrl.height.core.kd= 0.001*( (vs16)(*(data_buf+8)<<8)|*(data_buf+9) );
+		
+        Save_PID_hight();
+	}
+	if(*(data_buf+2)==0X13)								//PID4
+	{
+		Send_Check(*(data_buf+2),sum);
+		
+	}
+	if(*(data_buf+2)==0X14)								//PID5
+	{
+		Send_Check(*(data_buf+2),sum);
+		
+	}
+	if(*(data_buf+2)==0X15)								//PID6
+	{
+		Send_Check(*(data_buf+2),sum);
+		
+	}
 
 }
 

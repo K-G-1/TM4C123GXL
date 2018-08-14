@@ -60,7 +60,7 @@ static void read_HMC5883L(void)
 	HMC5883L_buffer[4]= IIC_ADD_read(HMC5883L_Addr, 0x07);
 	HMC5883L_buffer[5]= IIC_ADD_read(HMC5883L_Addr, 0x08);
 
-	
+//	IIC_Read_MultiBytes(HMC5883L_Addr,0x03,6,HMC5883L_buffer);
 //    IIC_Start();                          //起始信号
 //    IIC_Send_Byte(HMC5883L_Addr);                   //发送设备地址+写信号
 //	  IIC_Wait_Ack();
@@ -92,23 +92,26 @@ void Multiple_Read_HMC5883L(void)
 	 static uint8_t filter_cnt=0;
 	 int32_t temp1=0,temp2=0,temp3=0;
 	
-    IIC_Start();                          //起始信号
-    IIC_Send_Byte(HMC5883L_Addr);                   //发送设备地址+写信号
-    IIC_Wait_Ack();
-    IIC_Send_Byte(0x03);                   //发送存储单元地址，从0x3开始	
-    IIC_Wait_Ack();
-    IIC_Start();                          //起始信号
-    IIC_Send_Byte(HMC5883L_Addr+1);     //发送设备地址+读信号
-    IIC_Wait_Ack();
-    for (i=0; i<6; i++)                   //连续读取6个地址数据，存储中BUF
-    {
-    HMC5883L_buffer[i] = IIC_Read_Byte(0);          //BUF[0]存储数据
-    if (i == 5)
-       IIC_NAck();                   //最后一个数据需要回NOACK
-    else
-       IIC_Ack();                     //回应ACK
-    }
-    IIC_Stop();                           //停止信号
+//    IIC_Start();                          //起始信号
+//    IIC_Send_Byte(HMC5883L_Addr);                   //发送设备地址+写信号
+//    IIC_Wait_Ack();
+//    IIC_Send_Byte(0x03);                   //发送存储单元地址，从0x3开始	
+//    IIC_Wait_Ack();
+//    IIC_Start();                          //起始信号
+//    IIC_Send_Byte(HMC5883L_Addr+1);     //发送设备地址+读信号
+//    IIC_Wait_Ack();
+//    for (i=0; i<6; i++)                   //连续读取6个地址数据，存储中BUF
+//    {
+//    HMC5883L_buffer[i] = IIC_Read_Byte(0);          //BUF[0]存储数据
+//    if (i == 5)
+//       IIC_NAck();                   //最后一个数据需要回NOACK
+//    else
+//       IIC_Ack();                     //回应ACK
+//    }
+//    IIC_Stop();  
+
+    IIC_Read_MultiBytes(HMC5883L_Addr,0x03,6,HMC5883L_buffer);    //停止信号
+    
 	Magn_Ori_x = HMC5883L_buffer[0] << 8 | HMC5883L_buffer[1]; //Combine MSB and LSB of X Data output register;
 	Magn_Ori_y = HMC5883L_buffer[4] << 8 | HMC5883L_buffer[5]; //Combine MSB and LSB of Y Data output register;
 	Magn_Ori_z = HMC5883L_buffer[2] << 8 | HMC5883L_buffer[3]; //Combine MSB and LSB of Z Data output register;
