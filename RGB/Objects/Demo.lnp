@@ -1,6 +1,7 @@
 --cpu Cortex-M4.fp
 ".\objects\main.o"
 ".\objects\startup_rvmdk.o"
+".\objects\uartstdio.o"
 ".\objects\adc.o"
 ".\objects\aes.o"
 ".\objects\can.o"
@@ -33,7 +34,9 @@
 ".\objects\udma.o"
 ".\objects\usb.o"
 ".\objects\watchdog.o"
+".\objects\rgb.o"
+".\objects\buttons.o"
 --strict --scatter ".\Objects\Demo.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
---list ".\Listings\Demo.map" -o .\Objects\Demo.axf
+--list ".\Demo.map" -o .\Objects\Demo.axf

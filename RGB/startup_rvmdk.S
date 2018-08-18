@@ -87,6 +87,14 @@ __heap_limit
 ;******************************************************************************
         AREA    RESET, CODE, READONLY
         THUMB
+;******************************************************************************
+;
+; External declarations for the interrupt handlers used by the application.
+;
+;******************************************************************************
+
+
+
 
 ;******************************************************************************
 ;
@@ -146,7 +154,7 @@ __Vectors
         DCD     IntDefaultHandler           ; GPIO Port H
         DCD     IntDefaultHandler           ; UART2 Rx and Tx
         DCD     IntDefaultHandler           ; SSI1 Rx and Tx
-        DCD     IntDefaultHandler           ; Timer 3 subtimer A
+        DCD     IntDefaultHandler            ; Timer 3 subtimer A
         DCD     IntDefaultHandler           ; Timer 3 subtimer B
         DCD     IntDefaultHandler           ; I2C1 Master and Slave
         DCD     IntDefaultHandler           ; Quadrature Encoder 1
@@ -181,7 +189,7 @@ __Vectors
         DCD     0                           ; Reserved
         DCD     IntDefaultHandler           ; I2C2 Master and Slave
         DCD     IntDefaultHandler           ; I2C3 Master and Slave
-        DCD     IntDefaultHandler           ; Timer 4 subtimer A
+        DCD     IntDefaultHandler            ; Timer 4 subtimer A
         DCD     IntDefaultHandler           ; Timer 4 subtimer B
         DCD     0                           ; Reserved
         DCD     0                           ; Reserved

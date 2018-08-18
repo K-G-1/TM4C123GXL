@@ -53,7 +53,7 @@
           <CreateHexFile>0</CreateHexFile>
           <DebugInformation>1</DebugInformation>
           <BrowseInformation>1</BrowseInformation>
-          <ListingPath>.\Listings\</ListingPath>
+          <ListingPath>.\</ListingPath>
           <HexFormatSelection>1</HexFormatSelection>
           <Merge32K>0</Merge32K>
           <CreateBatchFile>0</CreateBatchFile>
@@ -170,12 +170,12 @@
             <UseExternalTool>0</UseExternalTool>
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>1</UpdateFlashBeforeDebugging>
-            <Capability>1</Capability>
-            <DriverSelection>4096</DriverSelection>
+            <Capability>0</Capability>
+            <DriverSelection>-1</DriverSelection>
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>BIN\UL2CM3.DLL</Flash2>
-          <Flash3>"" ()</Flash3>
+          <Flash3></Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -347,7 +347,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>1</Optim>
+            <Optim>3</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>1</OneElfS>
@@ -363,9 +363,9 @@
             <useXO>0</useXO>
             <VariousControls>
               <MiscControls></MiscControls>
-              <Define></Define>
+              <Define>PART_TM4C123GH6PM TARGET_IS_TM4C123_RB1</Define>
               <Undefine></Undefine>
-              <IncludePath>..\RGB;.\driverlib;.\inc</IncludePath>
+              <IncludePath>..\Buttons;.\inc;.\driverlib;.\drivers;.\utils;.\inc;..\Timer_pwm;.\drivers\IIC;.\drivers\oled</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -418,10 +418,15 @@
               <FileType>2</FileType>
               <FilePath>.\startup_rvmdk.S</FilePath>
             </File>
+            <File>
+              <FileName>uartstdio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\utils\uartstdio.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
-          <GroupName>Driver</GroupName>
+          <GroupName>DriverLIB</GroupName>
           <Files>
             <File>
               <FileName>adc.c</FileName>
@@ -429,19 +434,9 @@
               <FilePath>.\driverlib\adc.c</FilePath>
             </File>
             <File>
-              <FileName>adc.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\driverlib\adc.h</FilePath>
-            </File>
-            <File>
               <FileName>aes.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\driverlib\aes.c</FilePath>
-            </File>
-            <File>
-              <FileName>aes.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\driverlib\aes.h</FilePath>
             </File>
             <File>
               <FileName>can.c</FileName>
@@ -449,19 +444,9 @@
               <FilePath>.\driverlib\can.c</FilePath>
             </File>
             <File>
-              <FileName>can.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\driverlib\can.h</FilePath>
-            </File>
-            <File>
               <FileName>comp.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\driverlib\comp.c</FilePath>
-            </File>
-            <File>
-              <FileName>comp.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\driverlib\comp.h</FilePath>
             </File>
             <File>
               <FileName>cpu.c</FileName>
@@ -469,24 +454,9 @@
               <FilePath>.\driverlib\cpu.c</FilePath>
             </File>
             <File>
-              <FileName>cpu.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\driverlib\cpu.h</FilePath>
-            </File>
-            <File>
               <FileName>crc.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\driverlib\crc.c</FilePath>
-            </File>
-            <File>
-              <FileName>crc.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\driverlib\crc.h</FilePath>
-            </File>
-            <File>
-              <FileName>debug.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\driverlib\debug.h</FilePath>
             </File>
             <File>
               <FileName>des.c</FileName>
@@ -494,19 +464,9 @@
               <FilePath>.\driverlib\des.c</FilePath>
             </File>
             <File>
-              <FileName>des.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\driverlib\des.h</FilePath>
-            </File>
-            <File>
               <FileName>eeprom.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\driverlib\eeprom.c</FilePath>
-            </File>
-            <File>
-              <FileName>eeprom.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\driverlib\eeprom.h</FilePath>
             </File>
             <File>
               <FileName>emac.c</FileName>
@@ -514,19 +474,9 @@
               <FilePath>.\driverlib\emac.c</FilePath>
             </File>
             <File>
-              <FileName>emac.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\driverlib\emac.h</FilePath>
-            </File>
-            <File>
               <FileName>epi.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\driverlib\epi.c</FilePath>
-            </File>
-            <File>
-              <FileName>epi.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\driverlib\epi.h</FilePath>
             </File>
             <File>
               <FileName>flash.c</FileName>
@@ -534,19 +484,9 @@
               <FilePath>.\driverlib\flash.c</FilePath>
             </File>
             <File>
-              <FileName>flash.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\driverlib\flash.h</FilePath>
-            </File>
-            <File>
               <FileName>fpu.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\driverlib\fpu.c</FilePath>
-            </File>
-            <File>
-              <FileName>fpu.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\driverlib\fpu.h</FilePath>
             </File>
             <File>
               <FileName>gpio.c</FileName>
@@ -554,19 +494,9 @@
               <FilePath>.\driverlib\gpio.c</FilePath>
             </File>
             <File>
-              <FileName>gpio.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\driverlib\gpio.h</FilePath>
-            </File>
-            <File>
               <FileName>hibernate.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\driverlib\hibernate.c</FilePath>
-            </File>
-            <File>
-              <FileName>hibernate.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\driverlib\hibernate.h</FilePath>
             </File>
             <File>
               <FileName>i2c.c</FileName>
@@ -574,19 +504,9 @@
               <FilePath>.\driverlib\i2c.c</FilePath>
             </File>
             <File>
-              <FileName>i2c.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\driverlib\i2c.h</FilePath>
-            </File>
-            <File>
               <FileName>interrupt.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\driverlib\interrupt.c</FilePath>
-            </File>
-            <File>
-              <FileName>interrupt.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\driverlib\interrupt.h</FilePath>
             </File>
             <File>
               <FileName>lcd.c</FileName>
@@ -594,19 +514,9 @@
               <FilePath>.\driverlib\lcd.c</FilePath>
             </File>
             <File>
-              <FileName>lcd.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\driverlib\lcd.h</FilePath>
-            </File>
-            <File>
               <FileName>mpu.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\driverlib\mpu.c</FilePath>
-            </File>
-            <File>
-              <FileName>mpu.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\driverlib\mpu.h</FilePath>
             </File>
             <File>
               <FileName>onewire.c</FileName>
@@ -614,24 +524,9 @@
               <FilePath>.\driverlib\onewire.c</FilePath>
             </File>
             <File>
-              <FileName>onewire.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\driverlib\onewire.h</FilePath>
-            </File>
-            <File>
-              <FileName>pin_map.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\driverlib\pin_map.h</FilePath>
-            </File>
-            <File>
               <FileName>pwm.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\driverlib\pwm.c</FilePath>
-            </File>
-            <File>
-              <FileName>pwm.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\driverlib\pwm.h</FilePath>
             </File>
             <File>
               <FileName>qei.c</FileName>
@@ -639,39 +534,9 @@
               <FilePath>.\driverlib\qei.c</FilePath>
             </File>
             <File>
-              <FileName>qei.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\driverlib\qei.h</FilePath>
-            </File>
-            <File>
-              <FileName>readme.txt</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\driverlib\readme.txt</FilePath>
-            </File>
-            <File>
-              <FileName>rom.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\driverlib\rom.h</FilePath>
-            </File>
-            <File>
-              <FileName>rom_map.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\driverlib\rom_map.h</FilePath>
-            </File>
-            <File>
-              <FileName>rtos_bindings.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\driverlib\rtos_bindings.h</FilePath>
-            </File>
-            <File>
               <FileName>shamd5.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\driverlib\shamd5.c</FilePath>
-            </File>
-            <File>
-              <FileName>shamd5.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\driverlib\shamd5.h</FilePath>
             </File>
             <File>
               <FileName>ssi.c</FileName>
@@ -679,19 +544,9 @@
               <FilePath>.\driverlib\ssi.c</FilePath>
             </File>
             <File>
-              <FileName>ssi.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\driverlib\ssi.h</FilePath>
-            </File>
-            <File>
               <FileName>sw_crc.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\driverlib\sw_crc.c</FilePath>
-            </File>
-            <File>
-              <FileName>sw_crc.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\driverlib\sw_crc.h</FilePath>
             </File>
             <File>
               <FileName>sysctl.c</FileName>
@@ -699,19 +554,9 @@
               <FilePath>.\driverlib\sysctl.c</FilePath>
             </File>
             <File>
-              <FileName>sysctl.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\driverlib\sysctl.h</FilePath>
-            </File>
-            <File>
               <FileName>sysexc.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\driverlib\sysexc.c</FilePath>
-            </File>
-            <File>
-              <FileName>sysexc.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\driverlib\sysexc.h</FilePath>
             </File>
             <File>
               <FileName>systick.c</FileName>
@@ -719,19 +564,9 @@
               <FilePath>.\driverlib\systick.c</FilePath>
             </File>
             <File>
-              <FileName>systick.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\driverlib\systick.h</FilePath>
-            </File>
-            <File>
               <FileName>timer.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\driverlib\timer.c</FilePath>
-            </File>
-            <File>
-              <FileName>timer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\driverlib\timer.h</FilePath>
             </File>
             <File>
               <FileName>uart.c</FileName>
@@ -739,19 +574,9 @@
               <FilePath>.\driverlib\uart.c</FilePath>
             </File>
             <File>
-              <FileName>uart.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\driverlib\uart.h</FilePath>
-            </File>
-            <File>
               <FileName>udma.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\driverlib\udma.c</FilePath>
-            </File>
-            <File>
-              <FileName>udma.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\driverlib\udma.h</FilePath>
             </File>
             <File>
               <FileName>usb.c</FileName>
@@ -759,19 +584,39 @@
               <FilePath>.\driverlib\usb.c</FilePath>
             </File>
             <File>
-              <FileName>usb.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\driverlib\usb.h</FilePath>
-            </File>
-            <File>
               <FileName>watchdog.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\driverlib\watchdog.c</FilePath>
             </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Drivers</GroupName>
+          <Files>
             <File>
-              <FileName>watchdog.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\driverlib\watchdog.h</FilePath>
+              <FileName>rgb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\drivers\rgb.c</FilePath>
+            </File>
+            <File>
+              <FileName>buttons.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\drivers\buttons.c</FilePath>
+            </File>
+            <File>
+              <FileName>IIC.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\drivers\IIC\IIC.c</FilePath>
+            </File>
+            <File>
+              <FileName>oled.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\drivers\oled\oled.c</FilePath>
+            </File>
+            <File>
+              <FileName>softi2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\utils\softi2c.c</FilePath>
             </File>
           </Files>
         </Group>
